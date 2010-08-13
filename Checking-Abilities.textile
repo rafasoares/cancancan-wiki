@@ -1,0 +1,21 @@
+Use the @can?@ method in the controller or view to check the user's permission for a given action and object.
+
+<pre>
+can? :destroy, @project
+</pre>
+
+You can also pass the class instead of an instance (if you don't have one handy).
+
+<pre>
+<% if can? :create, Project %>
+  <%= link_to "New Project", new_project_path %>
+<% end %>
+</pre>
+
+The "cannot?" method is for convenience and performs the opposite check of "can?"
+
+<pre>
+cannot? :destroy, @project
+</pre>
+
+See [[Aliasing Actions]] and [[Custom Actions]] for additional information on working with actions.
