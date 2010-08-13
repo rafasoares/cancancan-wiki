@@ -1,18 +1,17 @@
-h3. The Basics
+### The Basics
 
-* "README":http://github.com/ryanb/cancan/#readme
+* [[README|http://github.com/ryanb/cancan/#readme]]
 * [[Checking Abilities]]
 * [[Defining Abilities with Hashes]]
 * [[Defining Abilities with Blocks]]
 * [[Fetching Records]]
 * [[Authorizing Controller Actions]]
-* [[Nested Resources]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
 
-h3. And Beyond
+### And Beyond
 
-* [[Upgrading to 1.3]]
+* [[Upgrading to 1.1]]
 * [[Testing Abilities]]
 * [[Role Based Authorization]]
 * [[Admin Namespace]]
