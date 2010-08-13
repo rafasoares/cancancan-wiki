@@ -1,6 +1,6 @@
 h3. The Basics
 
-* "README":http://github.com/ryanb/cancan/ 
+* "README":http://github.com/ryanb/cancan/#readme
 * [[Checking Abilities]]
 * [[Defining Abilities with Hashes]]
 * [[Defining Abilities with Blocks]]
