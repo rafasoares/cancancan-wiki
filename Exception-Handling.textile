@@ -35,4 +35,16 @@ exception.default_message = "Default error message"
 exception.message # => "Default error message"
 </pre>
 
+If you prefer to return the 403 Forbidden HTTP code, create a @public/403.html@ file and write a rescue_from statement like this example in @ApplicationController@:
+
+<pre>
+class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |exception|
+    render :file => "#{RAILS_ROOT}/public/403.html", :status => 403
+  end
+end 
+</pre>
+
+@403.html@ must be pure HTML, CSS, and JavaScript--not a template. The fields of the exception are not available to it.
+
 See [[Authorization in Web Services]] for rescuing exceptions for XML responses.
