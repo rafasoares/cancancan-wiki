@@ -26,7 +26,7 @@ ability.should_not be_able_to(:destroy, Project.new)
 
 h2. Cucumber
 
-By default, Cucumber will ignore the @rescue_from@ call in the @ApplicationController@ and report the @CanCan::AccessDenied@ exception when running the features. If you want true integration testing you can change this behavior so the exception is caught by Rails. You can do so by setting this in the @env.rb@ file.
+By default, Cucumber will ignore the @rescue_from@ call in the @ApplicationController@ and report the @CanCan::AccessDenied@ exception when running the features. If you want full integration testing you can change this behavior so the exception is caught by Rails. You can do so by setting this in the @env.rb@ file.
 
 <pre>
 # in features/support/env.rb
