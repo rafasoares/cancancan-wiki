@@ -3,3 +3,4 @@ See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
 * [[Role Based Authorization]]
+* [[Other Authorization Solutions]]
