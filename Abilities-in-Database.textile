@@ -8,7 +8,7 @@ For example, let's assume that each user has_many :permissions, and each permiss
 
     def initialize(user)
       can :manage, :all do |action, object_class, object|
-        user.permissions.find_all_by_action(action).any? do |permission|
+        user.permissions.find_all_by_action(action).each do |permission|
           permission.object_type == object_class.to_s &&
             (object.nil? || permission.object_id.nil? || permission.object_id == object.id)
         end
