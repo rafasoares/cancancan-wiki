@@ -9,6 +9,7 @@ Generally you only want to show new/edit/destroy links when the user has permiss
 However if you find yourself repeating this pattern often you may want to add helper methods like this.
 
 <pre>
+# in ApplicationHelper
 def create_link(object, content = "New")
   link_to(content, [:new, object]) if can?(:create, object)
 end
