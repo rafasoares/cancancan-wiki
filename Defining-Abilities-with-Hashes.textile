@@ -19,5 +19,7 @@ can :read, Project, :priority => 1..3
 </pre>
 
 The Hash conditions are basically the conditions in a where() call (rails3). 
-Example;        can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now}
+<pre>
+ can :update, Content, :user_id => user.id, :created_at => (7.minutes.ago..Time.now}
+</pre>
 See also [[Defining Abilities with Blocks]].
