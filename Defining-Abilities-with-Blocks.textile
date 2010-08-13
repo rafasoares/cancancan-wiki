@@ -27,3 +27,17 @@ end
 </pre>
 
 If you use both @:manage@ and @:all@ with a block you will have complete flexibility in how permissions are handled. See [[Abilities in Database]] for an example.
+
+If additional arguments are passed to the @can?@ method, those arguments will be passed into the block as well. This is useful for passing additional information about the request.
+
+<pre>
+# in controller or view
+can? :read, article, request.remote_ip
+
+# in ability
+can :read, Article do |article, remote_ip|
+  # ...
+end
+</pre>
+
+See [[Accessing Request Data]] for an alternative solution.
