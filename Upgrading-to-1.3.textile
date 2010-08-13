@@ -1,10 +1,10 @@
 *CanCan version 1.3* greatly changes the way nesting controller resources works. It has support for polymorphic associations, singleton resource, and many more options. The Ability module has also been improved with support for multiple @can@ definitions which get properly translated to SQL.
 
-Also see [[Upgrading to 1.1]] if you are still on 1.0 or below.
+See [[Upgrading to 1.1]] if you are still on 1.0 or below. Also see the "CHANGELOG":http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc for the full list of changes.
 
 h2. Nesting Resources
 
-The @:nested@ option no longer exists on @load_and_authorize_resource@. You should now use the @:through@ option and define the @ load_and_authorize_resource@ option separately. For example, you will need to change this.
+The @:nested@ option no longer exists on @load_and_authorize_resource@. You should now use the @:through@ option and call the @load_and_authorize_resource@ option again. For example, you will need to change this.
 
 <pre>
 class ProductsController < ApplicationController
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 end
 </pre>
 
-This way deep nesting is fully supported and you can pass as many options to each load/authorize_resource call. See [[Nested Resources]] for more information.
+This way deep nesting is fully supported and you can pass any options to each load/authorize_resource call. See [[Nested Resources]] for more information.
 
 h2. Multiple @can@ definitions
 
