@@ -12,7 +12,7 @@ You can also pass the class instead of an instance (if you don't have one handy)
 <% end %>
 </pre>
 
-The "cannot?" method is for convenience and performs the opposite check of "can?"
+The @cannot?@ method is for convenience and performs the opposite check of @can?@
 
 <pre>
 cannot? :destroy, @project
