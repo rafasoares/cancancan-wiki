@@ -6,3 +6,5 @@ See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 * [[Abilities in Database]]
 * [[Share Ability Definitions]]
 * [[Other Authorization Solutions]]
+
+* [[Upgrading to 1.1]]
