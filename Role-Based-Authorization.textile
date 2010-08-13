@@ -82,3 +82,5 @@ end
 # in models/ability.rb
 can :manage, :all if user.is? :admin
 </pre>
+
+See [[Custom Actions]] for a way to restrict which users can assign roles to other users.
