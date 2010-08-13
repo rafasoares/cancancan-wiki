@@ -1,1 +1,4 @@
-Welcome to the cancan wiki!!
+See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
+
+* [[Accessing request variables]]
+* [[Defining abilities in the database]]
