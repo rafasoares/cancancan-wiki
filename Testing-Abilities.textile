@@ -26,4 +26,9 @@ ability.should_not be_able_to(:destroy, Project.new)
 
 h2. Cucumber
 
-If you have difficulty testing CanCan through Cucumber, see "this issue":http://github.com/ryanb/cancan/issues#issue/35. This wiki documentation should be filled out more to contain a complete solution.
+By default, Cucumber will ignore the @rescue_from@ call in the @ApplicationController@ and report the @CanCan::AccessDenied@ exception when running the features. If you want true integration testing you may want to change this behavior so the exception is caught by Rails. You can do so by setting this in the @env.rb@ file.
+
+<pre>
+# in features/support/env.rb
+ActionController::Base.allow_rescue = true
+</pre>
