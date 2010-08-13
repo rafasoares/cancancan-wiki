@@ -34,7 +34,7 @@ class BooksController < ApplicationController
 end
 </pre>
 
-Here the @book@ instance variable is already set so it will not be loaded for that action, only authorized. Alternatively you can use the @:find_by@ option to do this.
+Here the @@book@ instance variable is already set so it will not be loaded for that action, only authorized. Alternatively you can use the @:find_by@ option to do this.
 
 <pre>
 load_and_authorize_resource :find_by => :permalink
