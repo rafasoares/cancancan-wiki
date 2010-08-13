@@ -6,7 +6,7 @@ Since there is such a tight coupling between the list of roles and abilities, I 
 
 <pre>
 class User < ActiveRecord::Base
-  ROLES = %w { admin moderator author banned }
+  ROLES = %w[admin moderator author banned]
 end
 </pre>
 
