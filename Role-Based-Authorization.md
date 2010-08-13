@@ -4,51 +4,51 @@ While you can create a [[Separate Role Model]], I recommend not doing so if you 
 
 Since there is such a tight coupling between the list of roles and abilities, I recommend keeping the list of roles in Ruby. You can do so in a constant under the User class.
 
-<pre>
+```ruby
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator author banned]
 end
-</pre>
+```
 
 But now, how do you set up the association between the user and the roles? You'll need to decide if the user can have many roles or just one.
 
-h2. One role per user
+## One role per user
 
-If a user can have only one role, it's as simple as adding a @role@ string column to the @users@ table.
+If a user can have only one role, it's as simple as adding a `role` string column to the `users` table.
 
-<pre>
+```shell
 script/generate migration add_role_to_users role:string
 rake db:migrate
-</pre>
+```
 
 Now you can provide a select-menu for choosing the roles in the view.
 
-<pre>
+```rhtml
 <!-- in users/_form.html.erb -->
 <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-</pre>
+```
 
-You may not have considered using @collection_select@ when you aren't working with an association, but it will work perfectly. In this case the user will see the humanized name of the role, and the simple lower-cased version will be passed in as the value when the form is submitted.
+You may not have considered using `collection_select` when you aren't working with an association, but it will work perfectly. In this case the user will see the humanized name of the role, and the simple lower-cased version will be passed in as the value when the form is submitted.
 
 It's then very simple to determine the role of the user in the Ability class.
 
-<pre>
+```ruby
 can :manage, :all if user.role == "admin"
-</pre>
+```
 
 
-h2. Many roles per user
+## Many roles per user
 
-It is possible to assign multiple roles to a user and store it into a single integer column using a "bitmask":http://en.wikipedia.org/wiki/Mask_(computing). First add a @roles_mask@ integer column to your @users@ table.
+It is possible to assign multiple roles to a user and store it into a single integer column using a [[bitmask|http://en.wikipedia.org/wiki/Mask_(computing)]]. First add a `roles_mask` integer column to your `users` table.
 
-<pre>
+```shell
 script/generate migration add_roles_mask_to_users roles_mask:integer
 rake db:migrate
-</pre>
+```
 
 Next you'll need to add the following code to the User model for getting and setting the list of roles a user belongs to. This will perform the necessary bitwise operations to translate an array of roles into the integer field.
 
-<pre>
+```ruby
 # in models/user.rb
 def roles=(roles)
   self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
@@ -59,21 +59,21 @@ def roles
     ((roles_mask || 0) & 2**ROLES.index(r)).zero?
   end
 end
-</pre>
+```
 
 You can use checkboxes in the view for setting these roles.
 
-<pre>
+```rhtml
 <% for role in User::ROLES %>
   <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
   <%=h role.humanize %><br />
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>
-</pre>
+```
 
 Finally, you can then add a convenient way to check the user's roles in the Ability class.
 
-<pre>
+```ruby
 # in models/user.rb
 def is?(role)
   roles.include?(role.to_s)
@@ -81,8 +81,8 @@ end
 
 # in models/ability.rb
 can :manage, :all if user.is? :admin
-</pre>
+```
 
 See [[Custom Actions]] for a way to restrict which users can assign roles to other users.
 
-This functionality has also been extracted into a little gem called "role_model":http://rubygems.org/gems/role_model ("code & howto":http://github.com/martinrehfeld/role_model).
+This functionality has also been extracted into a little gem called [[role_model|http://rubygems.org/gems/role_model]] ([[code & howto|http://github.com/martinrehfeld/role_model]]).
