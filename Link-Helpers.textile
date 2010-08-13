@@ -1,0 +1,35 @@
+Generally you only want to show new/edit/destroy links when the user has permission to perform that action. You can do so like this in the view.
+
+<pre>
+<% if edit? :create, @project %>
+  <%= link_to "Edit", edit_project_path(@project) %>
+<% end %>
+</pre>
+
+However if you find yourself repeating this pattern often you may want to add helper methods like this.
+
+<pre>
+def create_link(object, content = "New")
+  link_to(content, [:new, object]) if can?(:create, object)
+end
+
+def edit_link(object, content = "Edit")
+  link_to(content, [:edit, object]) if can?(:edit, object)
+end
+
+def destroy_link(object, content = "Destroy")
+  link_to(content, object, :method => :delete, :confirm => "Are you sure?") if can?(:destroy, object)
+end
+
+def show_link(object, content = "Show")
+  link_to(content, object) if can?(:read, object)
+end
+</pre>
+
+Then the edit link is as simple as this.
+
+<pre>
+<%= edit_link @project %>
+</pre>
+
+I only recommend doing this if you see this pattern a lot in your application. There are times when the view code is more complex where this doesn't fit well.
