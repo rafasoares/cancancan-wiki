@@ -16,7 +16,7 @@ But now, how do you set up the association between the user and the roles? You'l
 
 If a user can have only one role, it's as simple as adding a `role` string column to the `users` table.
 
-```shell
+```bash
 script/generate migration add_role_to_users role:string
 rake db:migrate
 ```
@@ -41,7 +41,7 @@ can :manage, :all if user.role == "admin"
 
 It is possible to assign multiple roles to a user and store it into a single integer column using a [[bitmask|http://en.wikipedia.org/wiki/Mask_(computing)]]. First add a `roles_mask` integer column to your `users` table.
 
-```shell
+```bash
 script/generate migration add_roles_mask_to_users roles_mask:integer
 rake db:migrate
 ```
