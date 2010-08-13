@@ -20,7 +20,7 @@ can :read, Project, :priority => 1..3
 
 Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
 
-h2. Checking Ability on Class
+h2. Checking with Class
 
 It is important to note that even if you have a hash of conditions, calling @can?@ on just the class will return true. For example.
 
