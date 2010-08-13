@@ -30,3 +30,5 @@ An alternative approach is to define a separate "can" ability for each permissio
 </pre>
 
 The actual details will depend largely on your application requirements, but hopefully you can see how it's possible to define permissions in the database and use them with CanCan.
+
+You can mix-and-match this with defining permissions in the code as well. This way you can keep the more complex logic in the code so you don't need to shoe-horn every kind of permission rule into an overly-abstract database.
