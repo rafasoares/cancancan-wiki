@@ -6,6 +6,7 @@ h3. The Basics
 * [[Defining Abilities with Blocks]]
 * [[Fetching Records]]
 * [[Authorizing Controller Actions]]
+* [[Nested Resources]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
 
