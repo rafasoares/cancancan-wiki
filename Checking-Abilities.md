@@ -6,7 +6,7 @@ can? :destroy, @project
 
 You can also pass the class instead of an instance (if you don't have one handy).
 
-```ruby
+```rhtml
 <% if can? :create, Project %>
   <%= link_to "New Project", new_project_path %>
 <% end %>
