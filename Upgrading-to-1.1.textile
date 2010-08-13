@@ -20,7 +20,9 @@ can :update, Article, :visible => true, :user_id => user.id
 
 The block is still available but I encourage you to use condition hashes whenever possible because it can be used in database queries.
 
-h3. Database Queries
+See [[Defining Abilities with Hashes]] for more information.
+
+h3. Fetching Records
 
 One of the biggest limitations of CanCan in the past was that it was not possible to use the Ability logic in a database query to fetch only the readable records. With the addition of condition hashes to define abilities it is now possible to use that in the database through the added @accessible_by@ scope in Active Record.
 
@@ -35,6 +37,8 @@ This will only fetch the articles which the current user has read access to. If 
 current_ability.conditions(:read, Article)
 </pre>
 
+See [[Fetching Records]] for more information.
+
 h3. RSpec Matcher
 
 If you are testing the Ability class through RSpec there is a new @be_able_to@ matcher available. This checks if the @can?@ method returns true.
@@ -44,6 +48,8 @@ require "cancan/matchers"
 # ...
 ability.should be_able_to(:read, Article)
 </pre>
+
+Also see [[Testing Abilities]].
 
 h3. Additional @can?@ Arguments
 
@@ -76,6 +82,8 @@ You can also change the default error message from here. This will be returned a
 exception.default_message = "Unauthorized!"
 exception.message # => "Unauthorized!
 </pre>
+
+See [[Exception Handling]] for more information.
 
 h3. The @authorize!@ method
 
