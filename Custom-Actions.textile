@@ -19,7 +19,7 @@ We can then check if the user has permission to assign roles when displaying the
 
 # users_controller.rb
 def update
-  unauthorized! if params[:user][:roles] && cannot?(:assign_roles, @user)
+  authorize! :assign_roles, @user
   # ...
 end
 </pre>
