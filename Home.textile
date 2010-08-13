@@ -1,5 +1,6 @@
 See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 
+* [[Changing Defaults]]
 * [[Role Based Authorization]]
 * [[Custom Actions]]
 * [[Accessing Request Data]]
