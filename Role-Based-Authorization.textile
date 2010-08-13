@@ -84,3 +84,5 @@ can :manage, :all if user.is? :admin
 </pre>
 
 See [[Custom Actions]] for a way to restrict which users can assign roles to other users.
+
+This functionality has also been extracted into a little gem called "role_model":http://rubygems.org/gems/role_model ("code & howto":http://github.com/martinrehfeld/role_model).
