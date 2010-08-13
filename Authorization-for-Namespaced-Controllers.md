@@ -1,10 +1,10 @@
-The default operation for CanCan is to authorize based only on user and the object identified in load_resource().  So if you have a WidgetsController and also an Admin::WidgetsController, it looks to me like CanCan will allow the same authorizations for each.  This probably defeats the whole purpose of creating a separate Admin controller in the first place.
+The default operation for CanCan is to authorize based only on user and the object identified in `load_resource`.  So if you have a `WidgetsController` and also an `Admin::WidgetsController`, it looks to me like CanCan will allow the same authorizations for each.  This probably defeats the whole purpose of creating a separate Admin controller in the first place.
 
-Just like in the example given for [[Accessing Request Data]], you <b>can</b> also create differing authorization rules that depend on the controller namespace.  
+Just like in the example given for [[Accessing Request Data]], you **can** also create differing authorization rules that depend on the controller namespace.  
 
-In this case, just override the `current_ability` method in @ApplicationController@ to include the controller namespace, and create an Ability class that knows what to do with it.
+In this case, just override the `current_ability` method in `ApplicationController` to include the controller namespace, and create an `Ability` class that knows what to do with it.
 
-<pre>
+```ruby
 class ApplicationController < ActionController::Base
   #...
 
@@ -32,10 +32,10 @@ class Ability
     end
   end
 end
-</pre>
+```
 
 I used the following code on my ApplicationController: 
-<pre>
+```ruby
   private
   def namespace
     cns = @controller.class.to_s.split('::')
@@ -44,6 +44,6 @@ I used the following code on my ApplicationController:
   def current_ability
     Ability.new(current_user, namespace)
   end
-</pre>
+```
 
 I have not test it intensively yet
