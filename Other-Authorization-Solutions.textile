@@ -1,0 +1,7 @@
+There are "many authorization solutions":http://steffenbartsch.com/blog/2008/08/rails-authorization-plugins/ available, and it is important to find one which best meets the application requirements. I've tried to keep CanCan minimal yet extendable so it can be used in many situations, but there are times it doesn't fit the best.
+
+Since the permission rules are written in Ruby, this prevents them from extending into other languages. If you have the need to duplicate these permission rules into SQL for fetching records which the user can access, then CanCan may not be the best choice. I encourage you to check out "declarative_authorization":http://github.com/stffn/declarative_authorization which offers named scopes for dealing with this problem.
+
+Also consider, if you have very unique authorization requirements, the best choice may be to write your own solution instead of trying to shoe-horn an existing plugin.
+
+_If you find a case where another tool meets a specific requirement better than CanCan, please edit this wiki page and add it._
