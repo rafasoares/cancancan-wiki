@@ -4,4 +4,5 @@ See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 * [[Custom Actions]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
+* [[Share Ability Definitions]]
 * [[Other Authorization Solutions]]
