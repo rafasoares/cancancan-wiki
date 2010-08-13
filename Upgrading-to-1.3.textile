@@ -49,4 +49,4 @@ This is a small but really convenient feature which allows you to change what co
 load_and_authorize_resource :find_by => :permalink
 </pre>
 
-In this case it will use @find_by_permalink!(params[:id])@ when fetching the model. Many more options have been added to this method, see the "RDocs":http://rdoc.info/rdoc/ryanb/cancan/blob/c9e0f4e3efd020a2d4ac656ff54b04550ba81e17/CanCan/ControllerAdditions/ClassMethods.html#load_and_authorize_resource-instance_method for details.
+In this case it will use @find_by_permalink!(params[:id])@ when fetching the model. Many more options have been added to this method, see the "RDocs":http://rdoc.info/rdoc/ryanb/cancan/blob/1dccc0252a7d38686e8d83aa43f97eb26cfb9672/CanCan/ControllerAdditions/ClassMethods.html#load_and_authorize_resource-instance_method for details.
