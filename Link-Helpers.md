@@ -1,14 +1,14 @@
 Generally you only want to show new/edit/destroy links when the user has permission to perform that action. You can do so like this in the view.
 
-<pre>
+```rhtml
 <% if can? :update, @project %>
   <%= link_to "Edit", edit_project_path(@project) %>
 <% end %>
-</pre>
+```
 
 However if you find yourself repeating this pattern often you may want to add helper methods like this.
 
-<pre>
+```ruby
 # in ApplicationHelper
 def show_link(object, content = "Show")
   link_to(content, object) if can?(:read, object)
@@ -28,12 +28,12 @@ def create_link(object, content = "New")
     link_to(content, [:new, object_class.name.underscore.to_sym])
   end
 end
-</pre>
+```
 
 Then a link is as simple as this.
 
-<pre>
+```rhtml
 <%= edit_link @project %>
-</pre>
+```
 
 I only recommend doing this if you see this pattern a lot in your application. There are times when the view code is more complex where this doesn't fit well.
