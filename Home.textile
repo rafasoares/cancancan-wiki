@@ -14,6 +14,7 @@ h3. And Beyond
 * [[Upgrading to 1.1]]
 * [[Testing Abilities]]
 * [[Role Based Authorization]]
+* [[Non RESTful Controllers]]
 * [[Admin Namespace]]
 * [[Custom Actions]]
 * [[Accessing Request Data]]
