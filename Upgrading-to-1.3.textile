@@ -30,7 +30,6 @@ It is now possible to specify multiple @can@ and @cannot@ definitions with hashe
 can :manage, User, :id => 1
 can :manage, User, :manager_id => 1
 cannot :manage, User, :self_managed => true
-    #   query(:manage, User).conditions # => "not (self_managed = 't') AND ((manager_id = 1) OR (id = 1))"
 </pre>
 
 When using @accessible_by@ in the controller it will translate to SQL conditions that look like this.
