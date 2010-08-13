@@ -1,4 +1,4 @@
 See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 
-* [[Accessing request variables]]
-* [[Defining abilities in the database]]
+* [[Accessing Request Variables]]
+* [[Abilities in Database]]
