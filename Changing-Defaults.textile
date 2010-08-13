@@ -11,7 +11,7 @@ def current_ability
 end
 </pre>
 
-The +Ability+ class and +current_user+ method can easily be changed to something else.
+The @Ability@ class and @current_user@ method can easily be changed to something else.
 
 <pre>
 # in ApplicationController
