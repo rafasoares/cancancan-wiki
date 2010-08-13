@@ -77,7 +77,7 @@ exception.default_message = "Unauthorized!"
 exception.message # => "Unauthorized!
 </pre>
 
-h3. @authorize!@
+h3. The @authorize!@ method
 
 An @authorize!@ method was added to the controller. Instead of this.
 
