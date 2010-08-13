@@ -18,4 +18,4 @@ The "cannot?" method is for convenience and performs the opposite check of "can?
 cannot? :destroy, @project
 </pre>
 
-See [[Aliasing Actions]] and [[Custom Actions]] for additional information on working with actions.
+See  [[Custom Actions]] for checking abilities on other actions.
