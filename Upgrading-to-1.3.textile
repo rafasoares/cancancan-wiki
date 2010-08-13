@@ -42,6 +42,8 @@ not (self_managed = 't') AND ((manager_id = 1) OR (id = 1))
 
 Special thanks to "funny-falcon":http://github.com/funny-falcon for this feature.
 
+See page [[Multiple can definitions (from 1.3)]] for more information.
+
 h2. @find_by@ option
 
 This is a small but really convenient feature which allows you to change what column is used to fetch the resource.
