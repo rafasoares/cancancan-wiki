@@ -8,11 +8,11 @@ h3. The Basics
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
-* [[Testing Abilities]]
 
 h3. And Beyond
 
 * [[Upgrading to 1.1]]
+* [[Testing Abilities]]
 * [[Role Based Authorization]]
 * [[Custom Actions]]
 * [[Accessing Request Data]]
