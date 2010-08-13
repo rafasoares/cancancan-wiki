@@ -1,7 +1,18 @@
-See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
+h3. The Basics
 
+* "README":http://github.com/ryanb/cancan/ 
+* [[Checking Abilities]]
+* [[Defining Abilities with Hashes]]
+* [[Defining Abilities with Blocks]]
+* [[Fetching Records]]
+* [[Authorizing Controller Actions]]
+* [[Exception Handling]]
 * [[Changing Defaults]]
 * [[Testing Abilities]]
+
+h3. And Beyond
+
+* [[Upgrading to 1.1]]
 * [[Role Based Authorization]]
 * [[Custom Actions]]
 * [[Accessing Request Data]]
@@ -10,5 +21,3 @@ See the "README":http://github.com/ryanb/cancan/ for the primary documentation.
 * [[Ability for Other Users]]
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
-
-* [[Upgrading to 1.1]]
