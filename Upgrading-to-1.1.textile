@@ -1,4 +1,4 @@
-*CanCan version 1.1* includes several new features along with a few backwards incompatible changes. See below for details, and be sure to check out the updated "README":http://github.com/ryanb/cancan/#readme and "Wiki pages":http://github.com/ryanb/cancan/.
+*CanCan version 1.1* includes several new features along with a few backwards incompatible changes. See below for details, and be sure to check out the updated "README":http://github.com/ryanb/cancan/#readme and "Wiki pages":http://wiki.github.com/ryanb/cancan/.
 
 h2. New Features
 
