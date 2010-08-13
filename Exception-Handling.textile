@@ -1,4 +1,4 @@
-The @CanCan::AccessDenied@ exception is raised when calling @authorize!@ in the controller and the user is not authorized to perform the given action. A message can optional be provided.
+The @CanCan::AccessDenied@ exception is raised when calling @authorize!@ in the controller and the user is not able to perform the given action. A message can optionally be provided.
 
 <pre>
 authorize! :read, Article, :message => "Unable to read this article."
