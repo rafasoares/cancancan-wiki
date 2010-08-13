@@ -1,0 +1,32 @@
+You can use the @load_and_authorize_resource@ method in your controller to load the resource into an instance variable and authorize it for each of the 7 RESTful actions. If you have a nested resource you can specify that as well.
+
+<pre>
+class CommentsController < ActionController::Base
+  load_and_authorize_resource :nested => :author
+end
+</pre>
+
+An array can be passed for deep nesting.
+
+<pre>
+load_and_authorize_resource :nested => [:group, :author]
+</pre>
+
+Use a before filter to customize loading behavior. The resource will not be loaded if the instance variable is set.
+
+<pre>
+class BooksController < ApplicationController
+  before_filter :find_book_by_permalink, :only => :show
+  load_and_authorize_resource
+
+  private
+
+  def find_book_by_permalink
+    @book = Book.find_by_permalink!(params[:id)
+  end
+end
+</pre>
+
+Here the @book instance variable is already set so it will not be loaded again for that action. This works for nested resources as well.
+
+For additional information see the @load_resource@ and @authorize_resource@ methods in the "RDoc":http://rdoc.info/projects/ryanb/cancan.
