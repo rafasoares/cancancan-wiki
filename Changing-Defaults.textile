@@ -20,4 +20,4 @@ def current_ability
 end
 </pre>
 
-That's it!
+That's it! See [[Accessing Request Data]] for a more complex example of what you can do here.
