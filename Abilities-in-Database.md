@@ -2,7 +2,7 @@ What if a non-programmer needs to modify the user abilities, or you want to chan
 
 For example, let's assume that each user has_many :permissions, and each permission has "action", "object_type" and "object_id" columns. The last of which is optional.
 
-<pre>
+```ruby
   class Ability
     include CanCan::Ability
 
@@ -15,11 +15,11 @@ For example, let's assume that each user has_many :permissions, and each permiss
       end
     end
   end
-</pre>
+```
 
 An alternative approach is to define a separate "can" ability for each permission.
 
-<pre>
+```ruby
   def initialize(user)
     user.permissions.each do |permission|
       can permission.action.to_sym, permission.object_type.constantize do |object|
@@ -27,7 +27,7 @@ An alternative approach is to define a separate "can" ability for each permissio
       end
     end
   end
-</pre>
+```
 
 The actual details will depend largely on your application requirements, but hopefully you can see how it's possible to define permissions in the database and use them with CanCan.
 
