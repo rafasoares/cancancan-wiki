@@ -13,7 +13,7 @@ If you want to fetch records based on some other action, pass it as the second a
 This is an Active Record scope so other scopes and pagination can be chained onto it. If you are using something other than Active Record you can fetch the conditions hash directly from the current ability.
 
 <pre>
-current_ability.conditions(:read, Article)
+current_ability.query(:read, Article).conditions
 </pre>
 
 Note: This only works when [[Defining Abilities with Hashes]]. It will raise an exception when [[Defining Abilities with Blocks]].
