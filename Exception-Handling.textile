@@ -1,0 +1,38 @@
+The @CanCan::AccessDenied@ exception is raised when calling @authorize!@ in the controller and the user is not authorized to perform the given action. A message can optional be provided.
+
+<pre>
+authorize! :read, Article, :message => "Unable to read this article."
+</pre>
+
+This exception can also be raised manually if you want more custom behavior.
+
+<pre>
+raise CanCan::AccessDenied.new("Not authorized!", :read, Article)
+</pre>
+
+You can catch this exception and modify its behavior in the @ApplicationController@. For example here we set the error message to a flash and redirect to the home page.
+
+<pre>
+class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
+end
+</pre>
+
+The action and subject can be retrieved through the exception to customize the behavior further.
+
+<pre>
+exception.action # => :read
+exception.subject # => Article
+</pre>
+
+The default error message can also be customized through the exception. This will be used if no message was provided.
+
+<pre>
+exception.default_message = "Default error message"
+exception.message # => "Default error message"
+</pre>
+
+See [[Authorization in Web Services]] for rescuing exceptions for XML responses.
