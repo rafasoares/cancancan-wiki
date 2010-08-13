@@ -12,7 +12,7 @@ You can also pass the class instead of an instance (if you don't have one handy)
 <% end %>
 </pre>
 
-**Note:** When passing a class, think of it as asking "Can the user create **a** project?". See [[Defining Abilities with Hashes]] for details.
+**Note:** When passing a class, think of it as asking "Can the user create **a** project?". It will return @true@ even if a hash of conditions exist. See [[Defining Abilities with Hashes]] for details.
 
 The @cannot?@ method is for convenience and performs the opposite check of @can?@
 
