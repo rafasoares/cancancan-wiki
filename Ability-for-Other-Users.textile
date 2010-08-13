@@ -4,7 +4,7 @@ What if you want to determine the abilities of a @User@ record that is not the @
 some_user.ability.can? :update, @article
 </pre>
 
-You can easily add an @abilty@ method in the @User@ model.
+You can easily add an @ability@ method in the @User@ model.
 
 <pre>
 def ability
