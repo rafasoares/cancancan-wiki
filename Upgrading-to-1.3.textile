@@ -6,20 +6,20 @@ h2. Nesting Resources
 
 The @:nested@ option no longer exists on @load_and_authorize_resource@. You should now use the @:through@ option and call the @load_and_authorize_resource@ option again. For example, you will need to change this.
 
-<pre>
+```ruby
 class ProductsController < ApplicationController
   load_and_authorize_resource :nested => :category
 end
-</pre>
+```
 
 To this.
 
-<pre>
+```ruby
 class ProductsController < ApplicationController
   load_and_authorize_resource :category
   load_and_authorize_resource :product, :through => :category
 end
-</pre>
+```
 
 This way deep nesting is fully supported and you can pass any options to each load/authorize_resource call. See [[Nested Resources]] for more information.
 
@@ -27,18 +27,18 @@ h2. Multiple @can@ definitions
 
 It is now possible to specify multiple @can@ and @cannot@ definitions with hashes and have it properly translate to a single SQL query.
 
-<pre>
+```ruby
 # in Ability
 can :manage, User, :id => 1
 can :manage, User, :manager_id => 1
 cannot :manage, User, :self_managed => true
-</pre>
+```
 
 When using @accessible_by@ in the controller it will translate to SQL conditions that look like this.
 
-<pre>
+```ruby
 not (self_managed = 't') AND ((manager_id = 1) OR (id = 1))
-</pre>
+```
 
 Special thanks to "funny-falcon":http://github.com/funny-falcon for this feature.
 
@@ -48,8 +48,8 @@ h2. @find_by@ option
 
 This is a small but really convenient feature which allows you to change what column is used to fetch the resource.
 
-<pre>
+```ruby
 load_and_authorize_resource :find_by => :permalink
-</pre>
+```
 
 In this case it will use @find_by_permalink!(params[:id])@ when fetching the model. Many more options have been added to this method, see the "RDocs":http://rdoc.info/rdoc/ryanb/cancan/blob/1dccc0252a7d38686e8d83aa43f97eb26cfb9672/CanCan/ControllerAdditions/ClassMethods.html#load_and_authorize_resource-instance_method for details.
