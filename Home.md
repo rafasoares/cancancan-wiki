@@ -17,6 +17,7 @@
 * [[Admin Namespace]]
 * [[Custom Actions]]
 * [[Non RESTful Controllers]]
+* [[Nested Resources]]
 * [[Link Helpers]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
