@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_ability
-    Ability.new(user, request.remote_ip)
+    @current_ability ||= Ability.new(user, request.remote_ip)
   end
 end
 
