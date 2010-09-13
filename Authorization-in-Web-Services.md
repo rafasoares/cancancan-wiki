@@ -13,6 +13,7 @@ end
 
 Example from [[Amazon S3|http://doc.s3.amazonaws.com/proposals/copy.html]]
 
+```xml
 HTTP/1.1 403 Forbidden
 x-amz-request-id: E4CA6F6767D6685C
 x-amz-id-2: BHzLOATeDuvN8Es1wI8IcERq4kl4dc2A9tOB8Yqr39Ys6fl7N4EJ8sjGiVvu6wLP
@@ -21,7 +22,6 @@ Date: Wed, 20 Feb 2008 23:19:01 +0000
 Connection: close
 Server: AmazonS3
 
-```xml
 <?xml version="1.0" encoding="UTF-8"?>
   <Error>
    <Code>AccessDenied</Code>
