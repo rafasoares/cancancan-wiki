@@ -21,7 +21,7 @@ can :read, Project, :priority => 1..3
 A standard SQL fragment
 
 ```ruby
-can :read, Products, ["price < 500.0"]
+can :read, Project, ["published_at > now()"]
 ```
 
 Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
