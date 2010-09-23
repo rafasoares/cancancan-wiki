@@ -4,9 +4,7 @@ For example, in [[Role Based Authorization]] I showed you how to define separate
 
 ```ruby
 # in models/ability.rb
-can :assign_roles, User do
-  user.is? :admin
-end
+can :assign_roles, User if user.admin?
 ```
 
 We can then check if the user has permission to assign roles when displaying the role checkboxes and assigning them.
@@ -21,7 +19,7 @@ We can then check if the user has permission to assign roles when displaying the
 ```ruby
 # users_controller.rb
 def update
-  authorize! :assign_roles, @user
+  authorize! :assign_roles, @user if params[:user][:assign_roles]
   # ...
 end
 ```
