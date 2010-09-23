@@ -18,6 +18,12 @@ An array or range can be passed to match multiple values. Here the user can only
 can :read, Project, :priority => 1..3
 ```
 
+A standard SQL fragment
+
+```ruby
+can :read, Products, ["price < 500.0"]
+```
+
 Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
 
 ## Checking with Class
