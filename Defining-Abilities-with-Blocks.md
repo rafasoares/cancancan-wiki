@@ -9,6 +9,16 @@ end
 If the block returns `true` then the user has that `:update` ability for that project, otherwise he will be denied access. It's possible for the passed in model to be `nil` if one isn't specified, so be sure to take that into consideration.
 
 **The downside to using a block is that it cannot be used when [[Fetching Records]].**
+But you could specify raw SQL condition in addition to block:
+
+```ruby
+can :update, Project, ['projects.id in (select project_id 
+                                        from groups_projects gp 
+                                        join groups_users gu on gp.group_id = gu.group_id
+                                        where gu.user_id = ?)', user.id] do |project|
+  project && project.groups.include?(user.group)
+end
+```
 
 If `:all` is passed then the class will be passed into the block along with the object (just in case the object is nil). Here the user has permission to read all objects except orders.
 
