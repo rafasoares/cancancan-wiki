@@ -12,9 +12,9 @@ If the block returns `true` then the user has that `:update` ability for that pr
 But you could specify raw SQL condition in addition to block:
 
 ```ruby
-can :update, Project, ['projects.id in (select project_id 
+can :update, Project, ['projects.id in (select gp.project_id 
                                         from groups_projects gp
-                                        where gu.group_id = ?)', user.group_id] do |project|
+                                        where gp.group_id = ?)', user.group_id] do |project|
   project && project.groups.include?(user.group)
 end
 ```
