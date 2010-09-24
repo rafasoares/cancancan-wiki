@@ -18,13 +18,15 @@ An array or range can be passed to match multiple values. Here the user can only
 can :read, Project, :priority => 1..3
 ```
 
-A standard SQL fragment
+Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
+
+Also you could use standard SQL fragment. But be aware to specify block as well, otherwise it would evaluate to `true` on real objects.
 
 ```ruby
-can :read, Project, ["published_at > now()"]
+can :read, Project, ["published_at > ?", 2.days.ago] do |project|
+  project.nil? || project.published_at > 2.days.ago
+end
 ```
-
-Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
 
 ## Checking with Class
 
