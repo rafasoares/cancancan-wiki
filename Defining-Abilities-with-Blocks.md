@@ -13,9 +13,8 @@ But you could specify raw SQL condition in addition to block:
 
 ```ruby
 can :update, Project, ['projects.id in (select project_id 
-                                        from groups_projects gp 
-                                        join groups_users gu on gp.group_id = gu.group_id
-                                        where gu.user_id = ?)', user.id] do |project|
+                                        from groups_projects gp
+                                        where gu.group_id = ?)', user.group_id] do |project|
   project && project.groups.include?(user.group)
 end
 ```
