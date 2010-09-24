@@ -22,10 +22,10 @@ cannot :manage, User, :self_managed => true
 # translates to "not (self_managed = 't') AND ((manager_id = 1) OR (id = 1))"
 ```
 
+It will raise an exception if any requested model's ability definition is defined using just block. To use it with block conditions, you should define SQL fragment as well (look for examples in [[Defining Abilities with Hashes]] and [[Defining Abilities with Blocks]]).
+
 If you are using something other than Active Record you can fetch the conditions hash directly from the current ability.
 
 ```ruby
 current_ability.query(:read, Article).conditions
 ```
-
-Note: This only works when [[Defining Abilities with Hashes]]. It will raise an exception when [[Defining Abilities with Blocks]].
