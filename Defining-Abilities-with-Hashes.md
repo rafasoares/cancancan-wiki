@@ -20,7 +20,7 @@ can :read, Project, :priority => 1..3
 
 Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
 
-Also you could use standard SQL fragment. But be aware to specify block as well, otherwise it would evaluate to `true` on real objects.
+Also you could use standard SQL fragment (*development version*). But be aware to specify block as well, otherwise it would evaluate to `true` on real objects.
 
 ```ruby
 can :read, Project, ["published_at > ?", 2.days.ago] do |project|
