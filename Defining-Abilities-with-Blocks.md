@@ -9,7 +9,7 @@ end
 If the block returns `true` then the user has that `:update` ability for that project, otherwise he will be denied access. It's possible for the passed in model to be `nil` if one isn't specified, so be sure to take that into consideration.
 
 **The downside to using a block is that it cannot be used when [[Fetching Records]].**
-But you could specify raw SQL condition in addition to block:
+But you could specify raw SQL condition in addition to block (*development version*):
 
 ```ruby
 can :update, Project, ['projects.id in (select gp.project_id 
