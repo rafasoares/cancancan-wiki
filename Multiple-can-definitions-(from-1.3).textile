@@ -43,7 +43,7 @@ if user.admin?
   can :manage, User
 else
   can :manage, User, :id => user.id
-  cannot :assing_roles, User
+  cannot :assign_roles, User
 end
 ```
 
