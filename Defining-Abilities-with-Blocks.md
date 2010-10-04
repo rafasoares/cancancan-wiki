@@ -1,12 +1,14 @@
 If [[Defining Abilities with Hashes]] is not flexible enough for your needs, it is possible to use a block. Here you can use any Ruby code to restrict what the user is able to access.
 
 ```ruby
+cannot :manage, Project
+can :read, Project
 can :update, Project do |project|
   project && project.groups.include?(user.group)
 end
 ```
 
-If the block returns `true` then the user has that `:update` ability for that project, otherwise he will be denied access. It's possible for the passed in model to be `nil` if one isn't specified, so be sure to take that into consideration.
+If the block returns `true` then the user has that `:update` ability for that project, otherwise ability checking *will pass through up* to the next matching definition (`cannot :manage, Project` in this case). It's possible for the passed in model to be `nil` if one isn't specified, so be sure to take that into consideration.
 
 **The downside to using a block is that it cannot be used when [[Fetching Records]].**
 But you could specify raw SQL condition in addition to block (*development version*):
