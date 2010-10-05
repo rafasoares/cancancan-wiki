@@ -1,4 +1,4 @@
-CanCan 1.4 is one of the largest updates yet. Here are the highlights, but check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list.
+CanCan 1.4 is one of the biggest updates yet. Here are the highlights since [[version 1.3|Upgrading to 1.3]]. Check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list.
 
 ## Loading `index` action
 
@@ -6,14 +6,14 @@ A collection of resources is automatically loaded in the `index` action using `a
 
 ```ruby
 class ProductsController < ApplicationController
-  load_resource
+  load_and_authorize_resource
   def index
     # @products automatically set to Product.accessible_by(current_ability)
   end
 end
 ```
 
-Since this is a scope you can either ignore it or build on it further.
+Since this is a scope you can build on it further.
 
 ```ruby
 def index
@@ -32,7 +32,7 @@ The block is no longer triggered if a class is passed in to the `can?` check. Th
 
 ```ruby
 can :read, Project do |project|
-  project.in_group? :foo
+  project.publicly_available?
 end
 can? :read, Project # returns true without triggering block
 can? :read, @project # triggers block
@@ -50,13 +50,15 @@ can :manage, :all do |object|
 end
 ```
 
-If you need the old behavior (like when defining [[Abilities in Database]]), you can call `can` without any arguments and everything will be passed to the block. This block will also be triggered with every check no matter if only a class is passed in to the `can?` check.
+If you need the old behavior (like when defining [[Abilities in Database]]), you can call `can` without any arguments and everything will be passed to the block.
 
 ```ruby
 can do |action, subject_class, subject|
   # ...
 end
 ```
+
+This block will be triggered with every check no matter if only a class is passed in to the `can?` check.
 
 
 ## Internationalization
@@ -77,9 +79,9 @@ en:
 Notice `manage` and `all` can be used to generalize the subject and actions. Also `%{action}` and `%{subject}` can be used as variables in the message.
 
 
-## Ensure Authorization is Performed
+## Ensure authorization is performed
 
-If you want air-tight authorization to be certain you don't forget it in some controller action, add `check_authorization` to your `ApplicationController` or any other controller.
+If you want air-tight authorization to be certain you don't forget it in some controller action, add `check_authorization` to your `ApplicationController`.
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -92,12 +94,22 @@ This will add an `after_filter` to ensure authorization takes place in every inh
 
 ## Nested Resources
 
-TODO
+It is now possible to load a nested resource through a method. This is often used with `current_user`.
+
+```ruby
+class ProjectsController < ApplicationController
+  load_and_authorize_resource :through => :current_user
+end
+```
+
+Here everything will be loaded through the `current_user.projects` association.
+
+This parent resource is now required and will raise an error when `nil`. If you want the parent to be optional, add the `:shallow => true` option.
 
 
 ## Inherited Resources
 
-It will automatically detect if you are using Inherited Resources and load the resource through that. The `load_resource` call is still necessary however to support additional loading such as in the `index` action.
+It will automatically detect if you are using Inherited Resources and load the resource through that. The `load_resource` is still necessary since Inherited Resources does lazy loading.
 
 ```ruby
 class ProjectsController < InheritedResources::Base
@@ -105,7 +117,21 @@ class ProjectsController < InheritedResources::Base
 end
 ```
 
+
+## SQL in `can` definition
+
+If you are defining `can` definitions with a block, it's now possible to pass SQL conditions as an argument for use with `accessible_by`.
+
+<pre>
+can :read, :project, ["publicly_available = ?", true] do |project|
+  project.publicly_available?
+end
+</pre>
+
+In this simple case it would be better to [[define the conditions with a hash|Defining Abilities with Hashes]] instead of a block, but this will be useful in more complex scenarios where a hash is not possible.
+
+
 ## Running Specs
 
-If you want to contribute to this project, a `Gemfile` has been added to make it easy to start developing and running the specs. Just run `bundle` and `rake` to run the specs. This currently does not work in Ruby 1.9.
+If you want to contribute to this project, a `Gemfile` has been added to make it easy to start developing and running the specs. Just run `bundle` and `rake` to run the specs. The specs currently do not work in Ruby 1.9 due to the RR mocking framework.
 
