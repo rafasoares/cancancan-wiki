@@ -1,6 +1,6 @@
 **CanCan version 1.4** is a large update with several backwards-incompatbile changes, specifically concerning blocks.
 
-See [[Upgrading to 1.3]] if you have not upgraded to that yet. Also check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes.
+See [[Upgrading to 1.3]] if you have not upgraded to 1.3 yet. Also check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes.
 
 ## Loading `index` action
 
@@ -119,16 +119,32 @@ class ProjectsController < InheritedResources::Base
 end
 ```
 
+## Default attributes in `new` and `create` actions
+
+The `new` and `create` actions will initialize the resource with the attributes in the hash conditions. For example, if we have this `can` definition.
+
+```ruby
+can :manage, Product, :discontinued => false
+```
+
+Then the product will be built with that attribute in the controller.
+
+```ruby
+@product = Product.new(:discontinued => false)
+```
+
+This way it will pass authorization when the user accesses the `new` action.
+
 
 ## SQL in `can` definition
 
 If you are defining `can` definitions with a block, it's now possible to pass SQL conditions as an argument for use with `accessible_by`.
 
-<pre>
+```ruby
 can :read, :project, ["publicly_available = ?", true] do |project|
   project.publicly_available?
 end
-</pre>
+```
 
 In this simple case it would be better to [[define the conditions with a hash|Defining Abilities with Hashes]] instead of a block, but this will be useful in more complex scenarios where a hash is not possible.
 
