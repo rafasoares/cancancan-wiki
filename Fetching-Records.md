@@ -4,6 +4,8 @@ Sometimes you need to restrict which records are returned from the database base
 @articles = Article.accessible_by(current_ability)
 ```
 
+**Note:** As of 1.4 this is done automatically by `load_resource` for the index action, so it rarely needs to be done manually.
+
 You can change the action by passing it as the second argument. Here we find only the records the user has permission to update.
 
 ```ruby
