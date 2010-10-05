@@ -31,6 +31,8 @@ can :update, Project, ['projects.id in (select gp.project_id
 end
 ```
 
+Here that SQL will be used when fetching records with `accessible_by`.
+
 If additional arguments are passed to the `can?` method, those arguments will be passed into the block. This is useful for passing additional information about the request.
 
 ```ruby
