@@ -133,7 +133,7 @@ Then the product will be built with that attribute in the controller.
 @product = Product.new(:discontinued => false)
 ```
 
-This way it will pass authorization when the user accesses the `new` action.
+This way it will pass authorization when the user accesses the `new` action. The attributes are still overridden by whatever is passed by the user in `params[:product]`.
 
 
 ## SQL in `can` definition
