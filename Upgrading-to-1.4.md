@@ -1,4 +1,6 @@
-CanCan 1.4 is one of the biggest updates yet. Here are the highlights since [[version 1.3|Upgrading to 1.3]]. Check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list.
+**CanCan version 1.4** is a large update with several backwards-incompatbile changes, specifically concerning blocks.
+
+See [[Upgrading to 1.3]] if you have not upgraded to that yet. Also check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes.
 
 ## Loading `index` action
 
@@ -21,7 +23,7 @@ def index
 end
 ```
 
-The `@products` variable will not be set if `Product` does not respond to `accessible_by` (for example if you aren't using Active Record). It will also not be set if you are using blocks in any of the can definitions because that is incompatible with `accessible_by`.
+The `@products` variable will not be set if `Product` does not respond to `accessible_by` (for example if you aren't using Active Record). It will also not be set if you are using blocks in any of the `can` definitions because that is incompatible with `accessible_by`.
 
 
 ## Blocks in `can` definitions
@@ -58,7 +60,7 @@ can do |action, subject_class, subject|
 end
 ```
 
-This block will be triggered with every check no matter if only a class is passed in to the `can?` check.
+This block will be triggered with every check even when a class is passed in to the `can?` call.
 
 
 ## Internationalization
@@ -66,7 +68,7 @@ This block will be triggered with every check no matter if only a class is passe
 The AccessDenied messages can be customized through internationalization. For example:
 
 ```yaml
-# in locales/en.yml
+# in config/locales/en.yml
 en:
   unauthorized:
     manage:
@@ -81,7 +83,7 @@ Notice `manage` and `all` can be used to generalize the subject and actions. Als
 
 ## Ensure authorization is performed
 
-If you want air-tight authorization to be certain you don't forget it in some controller action, add `check_authorization` to your `ApplicationController`.
+If you want to be certain authorization is not forgotten in some controller action, add `check_authorization` to your `ApplicationController`.
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -89,7 +91,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-This will add an `after_filter` to ensure authorization takes place in every inherited controller action. If not it will raise an exception. You can skip this check by adding `skip_authorization` to that controller. Both of these methods take the same arguments as `before_filter` so you can exclude certain actions.
+This will add an `after_filter` to ensure authorization takes place in every inherited controller action. If not it will raise an exception. You can skip this check by adding `skip_authorization` to that controller. Both of these methods take the same arguments as `before_filter` so you can exclude certain actions with `:only` and `:except`.
 
 
 ## Nested Resources
@@ -135,3 +137,4 @@ In this simple case it would be better to [[define the conditions with a hash|De
 
 If you want to contribute to this project, a `Gemfile` has been added to make it easy to start developing and running the specs. Just run `bundle` and `rake` to run the specs. The specs currently do not work in Ruby 1.9 due to the RR mocking framework.
 
+**Special thanks to everyone who helped contribute to this release. See the issue tracker for the history.**
