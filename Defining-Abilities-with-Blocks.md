@@ -1,45 +1,37 @@
 If [[Defining Abilities with Hashes]] is not flexible enough for your needs, it is possible to use a block. Here you can use any Ruby code to restrict what the user is able to access.
 
 ```ruby
-cannot :manage, Project
-can :read, Project
 can :update, Project do |project|
-  project && project.groups.include?(user.group)
+  project.groups.include?(user.group)
 end
 ```
 
-If the block returns `true` then the user has that `:update` ability for that project, otherwise ability checking *will pass through up* to the next matching definition (`cannot :manage, Project` in this case). It's possible for the passed in model to be `nil` if one isn't specified, so be sure to take that into consideration.
+If the block returns `true` then the user has that `:update` ability for that project, otherwise ability checking will *pass through* up to the next matching definition.
+
+As of 1.4, the block is not called when checking permission on a class which means you no longer need to check for `nil`. This makes it consistent with [[Defining Abilities with Hashes]].
+
+```ruby
+can :read, Project do |project|
+  project.publicly_available?
+end
+can? :read, Project # returns true without triggering block
+can? :read, @project # triggers block
+```
+
+Also new in 1.4 is that only the object is passed into the block, never the action or class. See [[Upgrading to 1.4]] for details.
 
 **The downside to using a block is that it cannot be used when [[Fetching Records]].**
-But you could specify raw SQL condition in addition to block (*development version*):
+But as of 1.4 you could specify raw SQL condition in addition to a block.
 
 ```ruby
 can :update, Project, ['projects.id in (select gp.project_id 
                                         from groups_projects gp
                                         where gp.group_id = ?)', user.group_id] do |project|
-  project && project.groups.include?(user.group)
+  project.groups.include?(user.group)
 end
 ```
 
-If `:all` is passed then the class will be passed into the block along with the object (just in case the object is nil). Here the user has permission to read all objects except orders.
-
-```ruby
-can :read, :all do |object_class, object|
-  object_class != Order
-end
-```
-
-If `:manage` is used then the action is passed into the block as well. Here the user can do everything but destroy comments.
-
-```ruby
-can :manage, Comment do |action, comment|
-  action != :destroy
-end
-```
-
-If you use both `:manage` and `:all` with a block you will have complete flexibility in how permissions are handled. See [[Abilities in Database]] for an example.
-
-If additional arguments are passed to the `can?` method, those arguments will be passed into the block as well. This is useful for passing additional information about the request.
+If additional arguments are passed to the `can?` method, those arguments will be passed into the block. This is useful for passing additional information about the request.
 
 ```ruby
 # in controller or view
@@ -52,3 +44,11 @@ end
 ```
 
 See [[Accessing Request Data]] for an alternative solution.
+
+You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
+
+```ruby
+can do |action, subject_class, subject|
+  # ...
+end
+```
