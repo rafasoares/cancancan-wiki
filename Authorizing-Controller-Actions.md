@@ -1,7 +1,7 @@
 You can use the `load_and_authorize_resource` method in your controller to load the resource into an instance variable and authorize it for each of the 7 RESTful actions.
 
 ```ruby
-class CommentsController < ActionController::Base
+class ProductsController < ActionController::Base
   load_and_authorize_resource
 end
 ```
@@ -9,36 +9,96 @@ end
 This is the same as calling `load_resource` and `authorize_resource` because they are two separate steps and you can choose to use one or the other.
 
 ```ruby
-class CommentsController < ActionController::Base
+class ProductsController < ActionController::Base
   load_resource
   authorize_resource
 end
 ```
 
-This will set up a before filter for every action in the controller. For the `new` or `create` action it will build it with `Comment.new(params[:comment])`. Otherwise it will do `Comment.find(params[:id])` if that `:id` param exists.
+## Loading
 
-Next it will authorize the resource by passing the controller action and `@comment` instance into the `authorize!` check. If the instance doesn't exist (such as on the index action) the `Comment` class will be used.
+### index action
+
+As of 1.4 the index action will load the collection resource using `accessible_by`.
+
+```ruby
+def index
+  # @products automatically set to Product.accessible_by(current_ability)
+end
+```
+
+Since this is a scope you can build on it further.
+
+```ruby
+def index
+  @products = @products.paginate(:page => params[:page])
+end
+```
+
+The `@products` variable will not be set if `Product` does not respond to `accessible_by` (for example if you aren't using Active Record). It will also not be set if you are using blocks in any of the `can` definitions because that is incompatible with `accessible_by`.
+
+### show, edit, update and destroy actions
+
+These member actions simply fetch the record directly.
+
+```ruby
+def show
+  # @product automatically set to Product.find(params[:id])
+end
+```
+
+### new and create actions
+
+As of 1.4 these builder actions will initialize the resource with the attributes in the hash conditions. For example, if we have this `can` definition.
+
+```ruby
+can :manage, Product, :discontinued => false
+```
+
+Then the product will be built with that attribute in the controller.
+
+```ruby
+@product = Product.new(:discontinued => false)
+```
+
+This way it will pass authorization when the user accesses the `new` action.
+
+The attributes are then overridden by whatever is passed by the user in `params[:product]`.
+
+### Custom find
+
+If you want to fetch a resource by something other than `id` it can be done so using the `find_by` option.
+
+```ruby
+load_resource :find_by => :permalink # will use find_by_permlink!(params[:id])
+```
+
+### Override loading
 
 The resource will only be loaded into an instance variable if it hasn't been already. This allows you to easily override how the loading happens in a separate `before_filter`.
 
 ```ruby
 class BooksController < ApplicationController
-  before_filter :find_book_by_permalink, :only => :show
+  before_filter :find_published_book, :only => :show
   load_and_authorize_resource
 
   private
 
-  def find_book_by_permalink
-    @book = Book.find_by_permalink!(params[:id])
+  def find_published_book
+    @book = Book.released.find(params[:id])
   end
 end
 ```
 
-Here the `@book` instance variable is already set so it will not be loaded for that action, only authorized. Alternatively you can use the `:find_by` option to do this.
+## Authorization
+
+It will authorize the resource by passing the controller action and `@product` instance into the `authorize!` check. If the instance doesn't exist (such as on the index action) the `Product` class will be used. The before filter basically does this:
 
 ```ruby
-load_and_authorize_resource :find_by => :permalink
+authorize!(params[:action], @product || Product)
 ```
+
+## More info
 
 For additional information see the `load_resource` and `authorize_resource` methods in the [[RDoc|http://rdoc.info/projects/ryanb/cancan]].
 
