@@ -89,4 +89,8 @@ This means you will need to have a project tied to the tasks which you pass into
 <% if can? :create, @project.tasks.build %>
 ```
 
-Basically, if you need to access the parent resource, be sure to pass it in with the child instance.
+As of 1.4 it's also possible to check permission through an association like this.
+
+```rhtml
+<% if can? :read, @project => Task %>
+```
