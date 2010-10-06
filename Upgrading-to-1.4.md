@@ -119,6 +119,8 @@ class ProjectsController < InheritedResources::Base
 end
 ```
 
+See [[Inherited Resources]] for details.
+
 ## Default attributes in `new` and `create` actions
 
 The `new` and `create` actions will initialize the resource with the attributes in the hash conditions. For example, if we have this `can` definition.
