@@ -18,6 +18,7 @@
 * [[Custom Actions]]
 * [[Non RESTful Controllers]]
 * [[Nested Resources]]
+* [[Inherited Resources]]
 * [[Link Helpers]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
