@@ -20,7 +20,32 @@ This will fetch the project using `Project.find(params[:project_id])` on every c
 If the resource name (`:project` in this case) does not match the controller then it will be considered a parent resource. You can manually specify parent/child resources using the `:parent => false` option.
 
 
-## Singleton Resource
+## Nested through method
+
+As of 1.4, it's also possible to nest through a method, this is commonly the `current_user` method.
+
+```ruby
+class ProjectsController < ApplicationController
+  load_and_authorize_resource :through => :current_user
+end
+```
+
+Here everything will be loaded through the `current_user.projects` association.
+
+
+## Shallow nesting
+
+As of 1.4, the parent resource is required to be present and it will raise an exception if the parent is ever `nil`. If you want it to be optional (such as with shallow routes), add the `:shallow => true` option to the child.
+
+```ruby
+class TasksController < ApplicationController
+  load_and_authorize_resource :project
+  load_and_authorize_resource :task, :through => :project, :shallow => true
+end
+```
+
+
+## Singleton resource
 
 What if each project only had one task through a `has_one` association? To set up singleton resources you can use the `:singleton` option.
 
@@ -34,20 +59,20 @@ end
 It will then use the `@project.task` and `@project.build_task` methods for fetching and building respectively.
 
 
-## Polymorphic Associations
+## Polymorphic associations
 
 Let's say tasks can either be assigned to a Project or an Event through a polymorphic association. An array can be passed into the `:through` option and it will use the first one it finds.
 
-<pre>
+```ruby
 load_and_authorize_resource :project
 load_and_authorize_resource :event
 load_and_authorize_resource :task, :through => [:project, :event]
-</pre>
+```
 
 Here it will check for the existence of the `@project` or `@event` variable and whichever one exists it will fetch the task through that.
 
 
-## Accessing Parent in Ability
+## Accessing parent in ability
 
 Sometimes the child permissions are closely tied to the parent resource. For example, if there is a `user_id` column on Project, one may want to only allow access to tasks if the user owns their project.
 
