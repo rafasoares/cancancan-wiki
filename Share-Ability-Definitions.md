@@ -2,7 +2,7 @@ Let's say the ability of one action depends on the ability of another. For examp
 
 ```ruby
 can :update, Task do |task|
-  task && can?(:update, task.project)
+  can?(:update, task.project)
 end
 ```
 
