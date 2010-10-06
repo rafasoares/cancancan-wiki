@@ -1,4 +1,4 @@
-Let's say we have a nested resources set up in our routes.
+Let's say we have nested resources set up in our routes.
 
 ```ruby
 resources :projects do
