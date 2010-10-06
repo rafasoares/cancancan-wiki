@@ -10,7 +10,22 @@ This exception can also be raised manually if you want more custom behavior.
 raise CanCan::AccessDenied.new("Not authorized!", :read, Article)
 ```
 
-You can catch this exception and modify its behavior in the `ApplicationController`. For example here we set the error message to a flash and redirect to the home page.
+The message can also be customized through internationalization. For example:
+
+```yaml
+# in config/locales/en.yml
+en:
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    update:
+      project: "Not allowed to update this project."
+```
+
+Notice `manage` and `all` can be used to generalize the subject and actions. Also `%{action}` and `%{subject}` can be used as variables in the message.
+
+You can catch the exception and modify its behavior in the `ApplicationController`. For example here we set the error message to a flash and redirect to the home page.
 
 ```ruby
 class ApplicationController < ActionController::Base
