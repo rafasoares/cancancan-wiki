@@ -7,7 +7,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :manage, :all do |action, subject_class, subject|
+    can do |action, subject_class, subject|
       user.permissions.find_all_by_action(action).each do |permission|
         permission.subject_class == subject_class.to_s &&
           (subject.nil? || permission.subject_id.nil? || permission.subject_id == subject.id)
@@ -23,7 +23,7 @@ An alternative approach is to define a separate "can" ability for each permissio
 def initialize(user)
   user.permissions.each do |permission|
     can permission.action.to_sym, permission.subject_class.constantize do |subject|
-      subject.nil? || permission.subject_id.nil? || permission.subject_id == subject.id
+      permission.subject_id.nil? || permission.subject_id == subject.id
     end
   end
 end
