@@ -12,6 +12,7 @@
 ### And Beyond
 
 * [[Upgrading to 1.4]]
+* [[Ensure Authorization]]
 * [[Testing Abilities]]
 * [[Role Based Authorization]]
 * [[Admin Namespace]]
