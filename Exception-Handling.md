@@ -10,7 +10,7 @@ This exception can also be raised manually if you want more custom behavior.
 raise CanCan::AccessDenied.new("Not authorized!", :read, Article)
 ```
 
-The message can also be customized through internationalization. For example:
+The message can also be customized through internationalization.
 
 ```yaml
 # in config/locales/en.yml
@@ -30,7 +30,7 @@ You can catch the exception and modify its behavior in the `ApplicationControlle
 ```ruby
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = exception.message
+    flash[:alert] = exception.message
     redirect_to root_url
   end
 end
