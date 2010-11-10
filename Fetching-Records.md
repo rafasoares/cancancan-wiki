@@ -18,10 +18,13 @@ As of CanCan 1.3, this will work with multiple `can` calls which allows you to d
 
 ```ruby
 # in Ability
-can :manage, User, :id => 1
-can :manage, User, :manager_id => 1
+# assuming user.id == 1
+can :manage, User, :manager_id => user.id
 cannot :manage, User, :self_managed => true
-# translates to "not (self_managed = 't') AND ((manager_id = 1) OR (id = 1))"
+can :manage, User, :id => user.id
+# translates to "(id = 1) OR (not (self_managed = 't') AND (manager_id = 1))"
+# as if it is read from bottom to top
+# "user could manage himself, for other he could not manage self_managed users, otherwise he could manage his employees"
 ```
 
 It will raise an exception if any requested model's ability definition is defined using just block. As of 1.4, you could define SQL fragment in addition to block (look for examples in [[Defining Abilities with Blocks]]).
