@@ -117,6 +117,8 @@ class BooksController < ApplicationController
 end
 ```
 
+It is important that any custom loading behavior happens **before** the call to `load_and_authorize_resource`. If you have `authorize_resource` in your `ApplicationController` then you need to use `prepend_before_filter` to do the loading in the controller subclasses so it happens before authorization.
+
 ## authorize_resource
 
 Adding `authorize_resource` will make a before filter which calls `authorize!`, passing the resource instance variable if it exists. If the instance variable isn't set (such as in the index action) it will pass in the class name. For example, if we have a `ProductsController` it will do this before each action.
