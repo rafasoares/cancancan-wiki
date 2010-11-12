@@ -103,7 +103,7 @@ end
 
 ## authorize_resource
 
-Give the `ProductsController` above, calling `authorize_resource` will authorize the resource by passing the controller action and `@product` instance into the `authorize!` check. If the instance doesn't exist (such as on the index action) the `Product` class will be used. The before filter basically does this:
+Adding `authorize_resource` will make a before filter which calls `authorize!`, passing the resource instance variable if it exists. If the instance variable isn't set (such as in the index action) it will pass in the class name. For example, if we have a `ProductsController` it will do this before each action.
 
 ```ruby
 authorize!(params[:action], @product || Product)
