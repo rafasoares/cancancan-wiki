@@ -85,11 +85,11 @@ The attributes are then overridden by whatever is passed by the user in `params[
 
 If the model class is namespaced or different than the controller name you will need to specify the `:class` option.
 
-```ruby
-class ProductsController < ApplicationController
+<pre>
+class ProductsController &lt; ApplicationController
   load_and_authorize_resource :class => "Store::Product"
 end
-```
+</pre>
 
 
 ### Custom find
