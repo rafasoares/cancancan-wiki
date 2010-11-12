@@ -15,6 +15,17 @@ class ProductsController < ActionController::Base
 end
 ```
 
+You can specify which actions to effect using the `:except` and `:only` options, just like a `before_filter`.
+
+```ruby
+load_and_authorize_resource :only => [:index, :show]
+```
+
+**NOTE:** It is currently not possible to remove this load/authorize behavior after it has been set on a controller. Therefore, I recommend you set it separately for each controller. Don't apply it to the `ApplicationController`. If you want to be certain every controller has authorization, see [[Ensure Authorization]].
+
+See [[Non RESTful Controllers]] for how to authorize other controllers.
+
+
 ## Loading
 
 ### index action
