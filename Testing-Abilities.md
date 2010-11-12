@@ -69,3 +69,5 @@ test "render index if have read ability on project" do
   assert_template :index
 end
 ```
+
+If you have very complex permissions it can lead to many branching possibilities. If these are all tested in the controller layer then it can lead to slow and bloated tests. Instead I recommend keeping controller authorization tests light and testing the authorization functionality more thoroughly in the Ability model through unit tests as shown at the top.
