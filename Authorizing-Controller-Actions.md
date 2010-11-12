@@ -81,6 +81,17 @@ This way it will pass authorization when the user accesses the `new` action.
 
 The attributes are then overridden by whatever is passed by the user in `params[:product]`.
 
+### Custom class
+
+If the model class is namespaced or different than the controller name you will need to specify the `:class` option.
+
+```ruby```
+class ProductsController < ApplicationController
+  load_and_authorize_resource :class => "Store::Product"
+end
+```
+
+
 ### Custom find
 
 If you want to fetch a resource by something other than `id` it can be done so using the `find_by` option.
