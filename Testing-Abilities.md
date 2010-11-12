@@ -64,7 +64,7 @@ def setup
 end
 
 test "render index if have read ability on project" do
-  ability.can :read, Project
+  @ability.can :read, Project
   get :index
   assert_template :index
 end
