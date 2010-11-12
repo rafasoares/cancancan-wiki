@@ -15,15 +15,20 @@ class ProductsController < ActionController::Base
 end
 ```
 
+**NOTE:** It is currently not possible to remove this load/authorize behavior after it has been set on a controller. Therefore, I recommend you set it separately for each controller. Don't apply it to the `ApplicationController`. If you want to be certain every controller has authorization, see [[Ensure Authorization]].
+
+See [[Non RESTful Controllers]] for how to authorize other controllers.
+
+
+## Choosing Actions
+
+By default this will apply to **every action** in the controller even if it is not one of the 7 RESTful actions. It will assume it is a member action if `params[:id]` exists.
+
 You can specify which actions to effect using the `:except` and `:only` options, just like a `before_filter`.
 
 ```ruby
 load_and_authorize_resource :only => [:index, :show]
 ```
-
-**NOTE:** It is currently not possible to remove this load/authorize behavior after it has been set on a controller. Therefore, I recommend you set it separately for each controller. Don't apply it to the `ApplicationController`. If you want to be certain every controller has authorization, see [[Ensure Authorization]].
-
-See [[Non RESTful Controllers]] for how to authorize other controllers.
 
 
 ## load_resource
