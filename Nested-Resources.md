@@ -94,3 +94,5 @@ As of 1.4 it's also possible to check permission through an association like thi
 ```rhtml
 <% if can? :read, @project => Task %>
 ```
+
+This will use the above `:project` hash conditions and ensure `@project` meets those conditions.
