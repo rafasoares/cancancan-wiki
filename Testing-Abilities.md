@@ -41,3 +41,31 @@ Scenario: Update Article
 ```
 
 Here the `rescue_from` block will take effect only in this scenario.
+
+
+## Controller Testing
+
+If you want to test authorization functionality at the controller level one option is to log-in the user who has the appropriate permissions.
+
+```ruby
+user = User.create!(:admin => true) # I recommend a factory for this
+session[:user_id] = user.id # log in user however you like, alternatively stub `current_user` method
+get :index
+assert_template :index # render the template since he should have access
+```
+
+Alternatively, if you want to test the controller behavior independently from what is inside the `Ability` class, it is easy to stub out the ability with any behavior you want.
+
+```ruby
+def setup
+  @ability = Object.new
+  @ability.extend(CanCan::Ability)
+  @controller.stubs(:current_ability).returns(ability)
+end
+
+test "render index if have read ability on project" do
+  ability.can :read, Project
+  get :index
+  assert_template :index
+end
+```
