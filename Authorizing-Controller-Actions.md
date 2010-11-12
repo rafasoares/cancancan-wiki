@@ -26,7 +26,7 @@ load_and_authorize_resource :only => [:index, :show]
 See [[Non RESTful Controllers]] for how to authorize other controllers.
 
 
-## Loading
+## load_resource
 
 ### index action
 
@@ -101,7 +101,7 @@ class BooksController < ApplicationController
 end
 ```
 
-## Authorization
+## authorize_resource
 
 Give the `ProductsController` above, calling `authorize_resource` will authorize the resource by passing the controller action and `@product` instance into the `authorize!` check. If the instance doesn't exist (such as on the index action) the `Product` class will be used. The before filter basically does this:
 
