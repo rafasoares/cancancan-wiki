@@ -43,7 +43,7 @@ can? :read, @project # triggers block
 The action and class are no longer passed to the block when using `:manage` or `:all` arguments. Only the object is passed in. Here are a couple examples:
 
 ```ruby
-can :manage, :Project do |project|
+can :manage, Project do |project|
   # ...
 end
 
