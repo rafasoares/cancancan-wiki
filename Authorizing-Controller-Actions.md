@@ -24,7 +24,7 @@ See [[Non RESTful Controllers]] for how to authorize other controllers.
 
 By default this will apply to **every action** in the controller even if it is not one of the 7 RESTful actions. The action name will be passed in when authorizing. For example, if we have a `discontinue` action on `ProductsController` it will have this behavior.
 
-<pre>
+```ruby
 class ProductsController < ActionController::Base
   load_and_authorize_resource
   def discontinue
@@ -33,7 +33,7 @@ class ProductsController < ActionController::Base
     # authorize! :discontinue, @product
   end
 end
-</pre>
+```
 
 You can specify which actions to effect using the `:except` and `:only` options, just like a `before_filter`.
 
