@@ -22,7 +22,18 @@ See [[Non RESTful Controllers]] for how to authorize other controllers.
 
 ## Choosing Actions
 
-By default this will apply to **every action** in the controller even if it is not one of the 7 RESTful actions. It will assume it is a member action if `params[:id]` exists.
+By default this will apply to **every action** in the controller even if it is not one of the 7 RESTful actions. The action name will be passed in when authorizing. For example, if we have a `discontinue` action on `ProductsController` it will have this behavior.
+
+<pre>
+class ProductsController < ActionController::Base
+  load_and_authorize_resource
+  def discontinue
+    # Automatically does the following:
+    # @product = Product.find(params[:id])
+    # authorize! :discontinue, @product
+  end
+end
+</pre>
 
 You can specify which actions to effect using the `:except` and `:only` options, just like a `before_filter`.
 
