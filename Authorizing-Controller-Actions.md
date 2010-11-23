@@ -35,7 +35,7 @@ class ProductsController < ActionController::Base
 end
 ```
 
-You can specify which actions to effect using the `:except` and `:only` options, just like a `before_filter`.
+You can specify which actions to affect using the `:except` and `:only` options, just like a `before_filter`.
 
 ```ruby
 load_and_authorize_resource :only => [:index, :show]
