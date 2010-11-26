@@ -19,18 +19,6 @@ A License encapsulates a small set of permission logic such as 'user_administrat
 
 See [[http://github.com/kristianmandrup/cancan-permits]]
 
-## Cancan Permits
-
-Adds the concept of Permits and Licenses to CanCan.
-
-Generators: 
-* cancan:permits - for creating permits for one or more roles.
-* cancan:licenses - for creating licenses that can be reused across multiple permits.
-
-A License encapsulates a small set of permission logic such as 'user_administration' or 'blog_maintenance' etc. 
-
-See [[http://github.com/kristianmandrup/cancan-permits]]
-
 For demo application, see [[https://github.com/kristianmandrup/cancan-permits-demo]]
 
 ## Cancan REST links
