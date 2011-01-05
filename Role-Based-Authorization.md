@@ -86,3 +86,33 @@ can :manage, :all if user.is? :admin
 See [[Custom Actions]] for a way to restrict which users can assign roles to other users.
 
 This functionality has also been extracted into a little gem called [[role_model|http://rubygems.org/gems/role_model]] ([[code & howto|http://github.com/martinrehfeld/role_model]]).
+
+
+## Role Inheritance
+
+Sometimes you want one role to inherit the behavior of another role. For example, let's say there are three roles: moderator, admin, superadmin and you want each one to inherit the abilities of the one before. There is also a "role" string column in the User model. You should create a method in the User model which has the inheritance logic.
+
+```ruby
+# in User
+ROLES = %w[moderator admin superadmin]
+def access?(base_role)
+  ROLES.index(base_role.to_s) <= ROLES.index(role)
+end
+```
+
+You then use this in the Ability class.
+
+```ruby
+# in Ability#initialize
+if user.role? :moderator
+  can :manage, Post
+end
+if user.role? :admin
+  can :manage, Thread
+end
+if user.role? :superadmin
+  can :manage, Forum
+end
+```
+
+Here a superadmin will be able to manage all three classes but a moderator can only manage the one. Of course you can change the role logic to fit your needs. You can add complex logic so certain roles only inherit from others. And if a given user can have multiple roles you can decide whether the lowest role takes priority or the highest one does. Or use other attributes on the user model such as a "banned", "activated", or "admin" column.
