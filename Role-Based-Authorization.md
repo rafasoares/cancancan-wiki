@@ -95,7 +95,7 @@ Sometimes you want one role to inherit the behavior of another role. For example
 ```ruby
 # in User
 ROLES = %w[moderator admin superadmin]
-def access?(base_role)
+def role?(base_role)
   ROLES.index(base_role.to_s) <= ROLES.index(role)
 end
 ```
