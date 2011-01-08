@@ -33,7 +33,7 @@ Thank you [[bowsersenior|https://github.com/bowsersenior]] for the Mongoid behav
 
 ## Skip Loading and Authorizing
 
-Three new methods have been added to the controller: `skip_load_and_authorize_resource`, `skip_load_resource`, and skip_authorize_resource`. Each of these can be used to skip either the loading or authorization behavior in CanCan. You can pass `:only` or `:except` option to either one to specify which actions to skip. For example.
+Three new methods have been added to the controller: `skip_load_and_authorize_resource`, `skip_load_resource`, and `skip_authorize_resource`. Each of these can be used to skip either the loading or authorization behavior in CanCan. You can pass `:only` or `:except` option to either one to specify which actions to skip. For example.
 
 ```ruby
 class ProjectsController < ApplicationController
