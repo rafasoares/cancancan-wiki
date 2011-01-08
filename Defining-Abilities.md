@@ -55,7 +55,7 @@ Also see [[Custom Subjects]].
 
 ### Third Argument: Conditions
 
-A hash of conditions can be passed for defining user permissions in the `Ability` class. Here the user will only have permission to read active projects which he owns.
+A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which he owns.
 
 ```ruby
 can :read, Project, :active => true, :user_id => user.id
