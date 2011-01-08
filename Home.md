@@ -1,17 +1,15 @@
 ### The Basics
 
 * [[README|http://github.com/ryanb/cancan/#readme]]
+* [[Defining Abilities]]
 * [[Checking Abilities]]
-* [[Defining Abilities with Hashes]]
-* [[Defining Abilities with Blocks]]
-* [[Fetching Records]]
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
 
 ### And Beyond
 
-* [[Upgrading to 1.4]]
+* [[Upgrading to 1.5]]
 * [[Ensure Authorization]]
 * [[Testing Abilities]]
 * [[Role Based Authorization]]
