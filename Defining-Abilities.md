@@ -1,10 +1,11 @@
-The `Ability` class is where all user permissions are defined. An example Ability class looks like this.
+The `Ability` class is where all user permissions are defined. An example class looks like this.
 
 ```ruby
 class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
     else
@@ -22,34 +23,86 @@ The `can` method is used to define permissions and requires two arguments. The f
 can :update, Article
 ```
 
-You can pass an array for either of these parameters to match any one. In this case the user will have the ability to update or destroy both articles and comments.
+You can pass an array for either of these parameters to match any one. For example, here the user will have the ability to update or destroy both articles and comments.
 
 ```ruby
 can [:update, :destroy], [Article, Comment]
 ```
 
-Use `:manage` to represent any action and `:all` to represent any class. Here are some examples.
+### First Argument: Action
+
+The first argument is the action which can be performed. You can use `:manage` to represent any action. Here the user will be able to do anything to an article.
 
 ```ruby
-can :manage, Article   # has permissions to do anything to articles
-can :read, :all        # has permission to read any model
-can :manage, :all      # has permission to do anything to any model
+can :manage, Article
 ```
 
-You can pass a hash of conditions as the third argument to further define what the user is able to access. Here the user will only have permission to read active projects which he owns.
+Other common actions are `:read`, `:create`, `:update` and `:destroy`. If you have custom controller actions you can use those directly here.
+
+Also see [[Action Aliases]] and [[Custom Actions]].
+
+
+### Second Argument: Subject
+
+The second argument is the class which the action can be performed on. Use `:all` to represent any object. Here the user has access to read anything.
+
+```ruby
+can :read, :all
+```
+
+Also see [[Custom Subjects]].
+
+
+### Third Argument: Conditions
+
+A hash of conditions can be passed for defining user permissions in the `Ability` class. Here the user will only have permission to read active projects which he owns.
 
 ```ruby
 can :read, Project, :active => true, :user_id => user.id
 ```
 
-See [[Defining Abilities with Hashes]] for more information.
+It is important to only use database columns for these conditions so it can be used for [[Fetching Records]].
 
-Blocks can also be used if you need more control.
+You can use nested hashes to define conditions on associations. Here the project can only be read if the category it belongs to is visible.
 
 ```ruby
-can :update, Project do |project|
-  project.groups.include?(user.group)
+can :read, Project, :category => { :visible => true }
+```
+
+An array or range can be passed to match multiple values. Here the user can only read projects of priority 1 through 3.
+
+```ruby
+can :read, Project, :priority => 1..3
+```
+
+Basically anything that you can pass to a hash of conditions in ActiveRecord will work here.
+
+
+### Block Conditions
+
+A block can also be used to add conditions which cannot be defined through a hash.
+
+```ruby
+can :update, Project, ["priority < ?", 3] do |project|
+  project.priority < 3
 end
 ```
 
-If the block returns true then the user has that ability for that project, otherwise he will be denied access. See [[Defining Abilities with Blocks]] for more information.
+If the block returns true then the user has that ability, otherwise he will be denied access. The third argument here is SQL representing the same behavior, this is optional but providing it allows it to work with [[Fetching Records]].
+
+### Overriding All Behavior
+
+You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
+
+```ruby
+can do |action, subject_class, subject|
+  # ...
+end
+```
+
+### Additional Docs
+
+* [[Checking Abilities]]
+* [[Testing Abilities]]
+* [[Debugging Abilities]]
+* [[Ability Precedence]]
