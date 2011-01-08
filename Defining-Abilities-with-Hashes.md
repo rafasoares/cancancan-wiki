@@ -1,24 +1,4 @@
-A hash of conditions can be passed for defining user permissions in the `Ability` class. Here the user will only have permission to read active projects which he owns.
-
-```ruby
-can :read, Project, :active => true, :user_id => user.id
-```
-
-It is important to only use database columns for these conditions so it can be used for [[Fetching Records]].
-
-You can use nested hashes to define conditions on associations. Here the project can only be read if the category it belongs to is visible.
-
-```ruby
-can :read, Project, :category => { :visible => true }
-```
-
-An array or range can be passed to match multiple values. Here the user can only read projects of priority 1 through 3.
-
-```ruby
-can :read, Project, :priority => 1..3
-```
-
-Basically anything that you can pass to a hash of conditions in ActiveRecord will work here. If you need more flexibility, try [[Defining Abilities with Blocks]].
+This section has been moved to [[Defining Abilities]] under "Third Argument: Conditions".
 
 ## Checking with Class
 
