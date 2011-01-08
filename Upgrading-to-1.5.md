@@ -18,7 +18,7 @@ Comments are included in the generated file with more information on using the A
 
 ## Mongoid and DataMapper Support
 
-There is improved support with `Mongoid` and `DataMapper`. It now works with [[Fetching Database Records]]. This also means you can use their query syntax in the `can` hash conditions.
+There is improved support with `Mongoid` and `DataMapper`. They now work with [[Fetching Records]]. This also means you can use their query syntax in the `can` hash conditions.
 
 ```ruby
 # in Ability
