@@ -26,4 +26,4 @@
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
 
-### Can't find what you're looking for? See the [[issue tracker|https://github.com/ryanb/cancan/issues]].
+**Can't find what you're looking for? See the [[issue tracker|https://github.com/ryanb/cancan/issues]].**
