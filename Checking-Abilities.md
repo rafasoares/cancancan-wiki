@@ -1,8 +1,18 @@
-Use the `can?` method in the controller or view to check the user's permission for a given action and object.
+After [[abilities are defined|Defining Abilities]], you can use the `can?` method in the controller or view to check the user's permission for a given action and object.
 
 ```ruby
 can? :destroy, @project
 ```
+
+The `cannot?` method is for convenience and performs the opposite check of `can?`
+
+```ruby
+cannot? :destroy, @project
+```
+
+Also see [[Authorizing Controller Actions]] and  [[Custom Actions]].
+
+## Checking with Class
 
 You can also pass the class instead of an instance (if you don't have one handy).
 
@@ -12,12 +22,17 @@ You can also pass the class instead of an instance (if you don't have one handy)
 <% end %>
 ```
 
-**Note:** When passing a class, think of it as asking "Can the user create **a** project?". It will return `true` even if a block or hash of conditions exist. See [[Defining Abilities with Hashes]] for details.
-
-The `cannot?` method is for convenience and performs the opposite check of `can?`
+**Important:** If a block or hash of conditions exist they will be ignored when checking on a class, and it will return `true`. For example:
 
 ```ruby
-cannot? :destroy, @project
+can :read, Project, :priority => 3
+can? :read, Project # returns true
 ```
 
-See  [[Custom Actions]] for checking abilities on other actions.
+It is impossible to answer this `can?` question completely because not enough detail is given. Here the class does not have a `priority` attribute to check on.
+
+Think of it as asking "can the current user read **a** project?". The user can read a project, so this returns `true`. However it depends on which specific project you're talking about. If you are doing a class check, it is important you do another check once an instance becomes available so the hash of conditions can be used.
+
+The reason for this behavior is because of the controller `index` action. Since the `authorize_resource` before filter has no instance to check on, it will use the `Project` class. If the authorization failed at that point then it would be impossible to filter the results later when [[Fetching Records]].
+
+That is why passing a class to `can?` will return `true`.
