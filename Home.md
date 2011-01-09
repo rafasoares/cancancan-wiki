@@ -25,3 +25,5 @@
 * [[Ability for Other Users]]
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
+
+If you are unable to find the answers to your questions in this documentation, please see the [[issue tracker|https://github.com/ryanb/cancan/issues]].
