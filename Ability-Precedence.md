@@ -29,3 +29,4 @@ If you are not getting the behavior you expect, please [[post an issue|https://g
 * [[Defining Abilities]]
 * [[Checking Abilities]]
 * [[Debugging Abilities]]
+* [[Testing Abilities]]
