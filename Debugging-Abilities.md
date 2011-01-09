@@ -22,6 +22,7 @@ ability.can?(:create, Project)
 # in rails console or test
 user = User.first # fetch any user you want to test abilities on
 ability = Ability.new(user)
+ability.can?(:index, Project) # see if user can access the class
 Project.accessible_by(ability) # see if returns the records the user can access
 ```
 
