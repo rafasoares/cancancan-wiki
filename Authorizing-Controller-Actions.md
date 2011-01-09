@@ -1,4 +1,13 @@
-You can use the `load_and_authorize_resource` method in your controller to load the resource into an instance variable and authorize it for each of the 7 RESTful actions.
+You can use the `authorize!` method to manually handle authorization in a controller action. This will raise a `CanCan::AccessDenied` exception when the user does not have permission. See [[Exception Handling]] for how to react to this.
+
+```ruby
+def show
+  @project = Project.find(params[:project])
+  authorize! :show, @project
+end
+```
+
+However that can be tedious to apply to each action. Instead you can use the `load_and_authorize_resource` method in your controller to load the resource into an instance variable and authorize it automatically for every action in that controller.
 
 ```ruby
 class ProductsController < ActionController::Base
@@ -15,9 +24,16 @@ class ProductsController < ActionController::Base
 end
 ```
 
-**NOTE:** It is currently not possible to remove this load/authorize behavior after it has been set on a controller. Therefore, I recommend you set it separately for each controller. Don't apply it to the `ApplicationController`. If you want to be certain every controller has authorization, see [[Ensure Authorization]].
+As of CanCan 1.5 you can use the `skip_load_and_authorize_resource`, `skip_load_resource` or `skip_authorize_resource` methods to skip any of the applied behavior and specify specific actions like in a before filter. For example.
 
-See [[Non RESTful Controllers]] for how to authorize other controllers.
+```ruby
+class ProductsController < ActionController::Base
+  load_and_authorize_resource
+  skip_authorize_resource :only => :new
+end
+```
+
+Also see [[Controller Authorization Example]], [[Ensure Authorization]] and [[Non RESTful Controllers]].
 
 
 ## Choosing Actions
@@ -96,11 +112,11 @@ The attributes are then overridden by whatever is passed by the user in `params[
 
 If the model class is namespaced or different than the controller name you will need to specify the `:class` option.
 
-<pre>
-class ProductsController &lt; ApplicationController
+```ruby
+class ProductsController < ApplicationController
   load_and_authorize_resource :class => "Store::Product"
 end
-</pre>
+```
 
 
 ### Custom find
