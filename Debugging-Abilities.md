@@ -41,3 +41,10 @@ end
 ## Issue Tracker
 
 If you are still unable to resolve the issue, please post on the [[issue tracker|https://github.com/ryanb/cancan/issues]]
+
+## Additional Docs
+
+* [[Defining Abilities]]
+* [[Checking Abilities]]
+* [[Ability Precedence]]
+* [[Testing Abilities]]
