@@ -36,3 +36,10 @@ Think of it as asking "can the current user read **a** project?". The user can r
 The reason for this behavior is because of the controller `index` action. Since the `authorize_resource` before filter has no instance to check on, it will use the `Project` class. If the authorization failed at that point then it would be impossible to filter the results later when [[Fetching Records]].
 
 That is why passing a class to `can?` will return `true`.
+
+## Additional Docs
+
+* [[Defining Abilities]]
+* [[Ability Precedence]]
+* [[Debugging Abilities]]
+* [[Testing Abilities]]
