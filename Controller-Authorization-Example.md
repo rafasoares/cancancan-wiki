@@ -53,6 +53,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize! :destroy, @project
   end
+
+  def some_other_action
+    if params[:id]
+      @project = Project.find(params[:id])
+    else
+      @projects = Project.accessible_by(current_ability)
+    end
+    authorize!(:some_other_action, @project || Project)
+  end
 end
 ```
 
