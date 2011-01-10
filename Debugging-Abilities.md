@@ -34,6 +34,8 @@ can :update, Project, ["priority < ?", 3] do |project|
 end
 ```
 
+See [[issue #213|https://github.com/ryanb/cancan/issues#issue/213]] for a more complex example.
+
 ## Logging `AccessDenied` Exception
 
 If you think the `CanCan::AccessDenied` exception is being raised and you are not sure why, you can log this behavior to help debug what is triggering it.
