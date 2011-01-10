@@ -26,6 +26,14 @@ ability.can?(:index, Project) # see if user can access the class
 Project.accessible_by(ability) # see if returns the records the user can access
 ```
 
+If you find it is fetching the wrong records in complex cases, you may need to use an SQL condition instead of a hash inside the Ability class.
+
+```ruby
+can :update, Project, ["priority < ?", 3] do |project|
+  project.priority < 3
+end
+```
+
 ## Logging `AccessDenied` Exception
 
 If you think the `CanCan::AccessDenied` exception is being raised and you are not sure why, you can log this behavior to help debug what is triggering it.
