@@ -1,4 +1,4 @@
-### The Basics
+### Getting Started
 
 * [[README|http://github.com/ryanb/cancan/#readme]]
 * [[Defining Abilities]]
@@ -6,22 +6,35 @@
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
-
-### And Beyond
-
 * [[Upgrading to 1.5]]
-* [[Ensure Authorization]]
+
+
+### More about Abilities
+
 * [[Testing Abilities]]
-* [[Role Based Authorization]]
-* [[Admin Namespace]]
+* [[Debugging Abilities]]
+* [[Ability Precedence]]
+* [[Fetching Records]]
+* [[Action Aliases]]
 * [[Custom Actions]]
-* [[Non RESTful Controllers]]
+* [[Role Based Authorization]]
+
+
+### More about Controllers & Views
+
+* [[Ensure Authorization]]
+* [[Controller Authorization Example]]
 * [[Nested Resources]]
-* [[Inherited Resources]]
+* [[Non RESTful Controllers]]
+* [[Admin Namespace]]
 * [[Link Helpers]]
+
+
+### Other Use Cases
+
+* [[Inherited Resources]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
-* [[Share Ability Definitions]]
 * [[Ability for Other Users]]
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
