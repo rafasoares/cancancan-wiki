@@ -90,7 +90,7 @@ end
 
 If the block returns true then the user has that ability, otherwise he will be denied access. The third argument here is SQL representing the same behavior, this is optional but providing it allows it to work with [[Fetching Records]].
 
-**Note:** The block is only called if an instance is provided. See [[Checking Abilities]] for details.
+**Note:** The passed in object to the block will always be an instance. If one is checking on a class it will not trigger the block. See [[Checking Abilities]] for details.
 
 ### Overriding All Behavior
 
@@ -101,6 +101,8 @@ can do |action, subject_class, subject|
   # ...
 end
 ```
+
+Here the block will be triggered for every `can?` check, even when only a class is used in the check.
 
 ### Additional Docs
 
