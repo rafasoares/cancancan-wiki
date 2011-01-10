@@ -17,6 +17,8 @@ end
 
 The current user model is passed into the initialize method so the permissions can be modified based on any user attributes. CanCan makes no assumption about how roles are handled in your application. See [[Role Based Authorization]] for an example.
 
+## The `can` Method
+
 The `can` method is used to define permissions and requires two arguments. The first one is the action you're setting the permission for, the second one is the class of object you're setting it on.
 
 ```ruby
@@ -28,6 +30,14 @@ You can pass an array for either of these parameters to match any one. For examp
 ```ruby
 can [:update, :destroy], [Article, Comment]
 ```
+
+A `cannot` method can also be used and takes the same arguments. This is normally done after a more generic `can` call.
+
+```ruby
+can :manage, Project
+cannot :destroy, Project
+```
+
 
 ### First Argument: Action
 
@@ -92,6 +102,7 @@ If the block returns true then the user has that ability, otherwise he will be d
 
 **Note:** The passed in object to the block will always be an instance. If one is checking on a class it will not trigger the block. See [[Checking Abilities]] for details.
 
+
 ### Overriding All Behavior
 
 You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
@@ -104,7 +115,8 @@ end
 
 Here the block will be triggered for every `can?` check, even when only a class is used in the check.
 
-### Additional Docs
+
+## Additional Docs
 
 * [[Checking Abilities]]
 * [[Testing Abilities]]
