@@ -90,6 +90,8 @@ end
 
 If the block returns true then the user has that ability, otherwise he will be denied access. The third argument here is SQL representing the same behavior, this is optional but providing it allows it to work with [[Fetching Records]].
 
+**Note:** The block is only called if an instance is provided. See [[Checking Abilities]] for details.
+
 ### Overriding All Behavior
 
 You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
