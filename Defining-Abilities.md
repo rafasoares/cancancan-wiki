@@ -15,7 +15,7 @@ class Ability
 end
 ```
 
-The current user model is passed into the initialize method so the permissions can be modified based on any user attributes. CanCan makes no assumption about how roles are handled in your application. See [[Role Based Authorization]] for an example.
+The current user model is passed into the initialize method, so the permissions can be modified based on any user attributes. CanCan makes no assumption about how roles are handled in your application. See [[Role Based Authorization]] for an example.
 
 ## The `can` Method
 
@@ -24,6 +24,16 @@ The `can` method is used to define permissions and requires two arguments. The f
 ```ruby
 can :update, Article
 ```
+
+You can pass `:manage` to represent any action and `:all` to represent any subject.
+
+```ruby
+can :manage, Article  # user can perform any action on the article
+can :read, :all       # user can read any object
+can :manage, :all     # user can perform any action on any object
+```
+
+Common actions are `:read`, `:create`, `:update` and `:destroy` but it can be anything. See [[Action Aliases]] and [[Custom Actions]] for more information on actions.
 
 You can pass an array for either of these parameters to match any one. For example, here the user will have the ability to update or destroy both articles and comments.
 
@@ -38,32 +48,10 @@ can :manage, Project
 cannot :destroy, Project
 ```
 
-
-### First Argument: Action
-
-The first argument is the action which can be performed. You can use `:manage` to represent any action. Here the user will be able to do anything to an article.
-
-```ruby
-can :manage, Article
-```
-
-Other common actions are `:read`, `:create`, `:update` and `:destroy`. If you have custom controller actions you can use those directly here.
-
-Also see [[Action Aliases]] and [[Custom Actions]].
+The order of these calls is important. See [[Ability Precedence]] for more details.
 
 
-### Second Argument: Subject
-
-The second argument is the class which the action can be performed on. Use `:all` to represent any object. Here the user has access to read anything.
-
-```ruby
-can :read, :all
-```
-
-Also see [[Custom Subjects]].
-
-
-### Third Argument: Conditions
+### Hash of Conditions
 
 A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which he owns.
 
