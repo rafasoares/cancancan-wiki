@@ -1,9 +1,3 @@
-**CanCan 1.5** is currently in beta. To use this version you will need to mention it specifically in your Gemfile.
-
-```ruby
-gem "cancan", "1.5.0.beta1"
-```
-
 See [[Upgrading to 1.4]] if you have not upgraded to 1.4 yet. Also check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes.
 
 ## Ability Generator
