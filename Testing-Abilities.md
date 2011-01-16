@@ -60,7 +60,7 @@ Alternatively, if you want to test the controller behavior independently from wh
 def setup
   @ability = Object.new
   @ability.extend(CanCan::Ability)
-  @controller.stubs(:current_ability).returns(ability)
+  @controller.stubs(:current_ability).returns(@ability)
 end
 
 test "render index if have read ability on project" do
