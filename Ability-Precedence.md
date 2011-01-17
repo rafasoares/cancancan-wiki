@@ -1,4 +1,4 @@
-The ability rules are interpreted from bottom to top. For example, let's say we want the user to be able to do everything to projects except destroy them. This is the correct way.
+The ability rules further down in a file will override a previous one. For example, let's say we want the user to be able to do everything to projects except destroy them. This is the correct way.
 
 ```ruby
 can :manage, Project
