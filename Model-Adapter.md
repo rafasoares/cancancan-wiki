@@ -56,7 +56,7 @@ if ENV["MODEL_ADAPTER"] == "mongoid"
 end
 ```
 
-To Run the specs run the following commands.
+You will need many more specs for full coverage but add them one at a time. To run the specs execute the following commands.
 
 ```bash
 MODEL_ADAPTER=mongoid bundle
@@ -73,7 +73,7 @@ First add a line to `lib/cancan.rb` for including the adapter only when Mongoid 
 require 'cancan/model_adapters/mongoid_adapter' if defined? Mongoid
 ```
 
-Next create that adapter. Here's a good starting point.
+Next create that adapter under `lib/cancan/model_adapters/mongoid_adapter.rb`.
 
 ```ruby
 module CanCan
