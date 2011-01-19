@@ -33,6 +33,8 @@
 ### Other Use Cases
 
 * [[Inherited Resources]]
+* [[Mongoid]]
+* [[DataMapper]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
 * [[Ability for Other Users]]
