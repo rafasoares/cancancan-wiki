@@ -13,3 +13,7 @@ can :read, Article, :priority.lt => 5
 ```
 
 This is all done through a [[Model Adapter]]. See that page for more information and how you can add your own.
+
+## Needs Improvement
+
+The DataMapper adapter is still in early development so some things are not yet working correctly. This includes the `cannot` call along with support for multiple rules. See [[issue #245|https://github.com/ryanb/cancan/issues#issue/245]] for progress on this.
