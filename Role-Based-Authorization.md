@@ -141,4 +141,4 @@ class Ability
 end
 ```
 
-Here each role is a separate method which is called. You can call one role inside another to define inheritance.
+Here each role is a separate method which is called. You can call one role inside another to define inheritance. This assumes you have a `User#roles` method which returns an array of all roles for that user.
