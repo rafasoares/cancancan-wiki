@@ -116,3 +116,29 @@ end
 ```
 
 Here a superadmin will be able to manage all three classes but a moderator can only manage the one. Of course you can change the role logic to fit your needs. You can add complex logic so certain roles only inherit from others. And if a given user can have multiple roles you can decide whether the lowest role takes priority or the highest one does. Or use other attributes on the user model such as a "banned", "activated", or "admin" column.
+
+## Alternative Role Inheritance
+
+If you would like to keep the inheritance rules in the Ability class instead of the User model it is easy to do so like this.
+
+```ruby
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    @user = user || User.new # for guest
+    @user.roles.each { |role| send(role) }
+  end
+
+  def manager
+    can :manage, Employee
+  end
+
+  def admin
+    manager
+    can :manage, Bill
+  end
+end
+```
+
+Here each role is a separate method which is called. You can call one role inside another to define inheritance.
