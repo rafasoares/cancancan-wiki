@@ -1,6 +1,4 @@
-If you are defining a user's roles in Ruby then I don't recommend using a separate role model and table. See [[Role Based Authorization]] for my recommended way.
-
-But in case a separate model is the best solution for you, here I show how to set up a many-to-many association between User and Role. The join model is called Assignment.
+This approach uses a separate role and shows how to setup a many-to-many association, Assignment, between User and Role. Alternatively, [[Role Based Authorization]] describes a simple ruby based approach that defines the roles within ruby.
 
 ```ruby
 class User < ActiveRecord::Base
