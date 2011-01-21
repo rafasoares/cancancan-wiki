@@ -1,6 +1,6 @@
 CanCan is decoupled from how you implement roles in the User model, but how might one set up basic role-based authorization?
 
-While you can create a [[Separate Role Model]], I recommend not doing so if you are defining the role abilities in Ruby. This is because you will need to edit both the Ruby code and the database in order to add new roles.
+This approach allows you to simply define the role abilities in Ruby and does not need a role model. Alternatively, [[Separate Role Model]] describes how to define the roles and mappings in a database.
 
 Since there is such a tight coupling between the list of roles and abilities, I recommend keeping the list of roles in Ruby. You can do so in a constant under the User class.
 
