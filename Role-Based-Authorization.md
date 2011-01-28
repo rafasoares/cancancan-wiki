@@ -87,6 +87,8 @@ See [[Custom Actions]] for a way to restrict which users can assign roles to oth
 
 This functionality has also been extracted into a little gem called [[role_model|http://rubygems.org/gems/role_model]] ([[code & howto|http://github.com/martinrehfeld/role_model]]).
 
+If you are do not like this bitmask solution, see [[Separate Role Model]] for an alternative way to handle this.
+
 
 ## Role Inheritance
 
