@@ -98,7 +98,7 @@ Sometimes you want one role to inherit the behavior of another role. For example
 # in User
 ROLES = %w[moderator admin superadmin]
 def role?(base_role)
-  role.present? && ROLES.index(base_role.to_s) <= ROLES.index(role)
+  ROLES.index(base_role.to_s) <= ROLES.index(role)
 end
 ```
 
