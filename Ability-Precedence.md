@@ -7,6 +7,17 @@ cannot :destroy, Project
 
 It is important the `cannot` line is near the bottom so it will override the `:manage` behavior. Otherwise CanCan will stop on the `:manage` line since it gives the user access and the `cannot` line would never be reached. Therefore, it is best to place the more generic rules near the top.
 
+Adding `can` rules do not override prior rules, but instead are logically or'ed.
+
+```ruby
+can :manage, Project, :user_id => user.id
+can :update, Project do |project|
+  !project.locked?
+end
+```
+
+For the above, `can? :update` will always return true if the `user_id` equals `user.id`, even if the project is locked. 
+
 This is also important when dealing with roles which have inherited behavior. For example, let's say we have two roles, moderator and admin. We want the admin to inherit the moderator's behavior.
 
 ```ruby
