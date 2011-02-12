@@ -125,6 +125,7 @@ If you want to fetch a resource by something other than `id` it can be done so u
 
 ```ruby
 load_resource :find_by => :permalink # will use find_by_permlink!(params[:id])
+authorize_resource
 ```
 
 ### Override loading
