@@ -41,4 +41,12 @@
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
 
+### Integration
+
+* [[ActiveScaffold|https://github.com/vhochstein/active_scaffold/wiki/CanCan-bridge]]
+
+***
+
+
+
 **Can't find what you're looking for? See the [[issue tracker|https://github.com/ryanb/cancan/issues]].**
