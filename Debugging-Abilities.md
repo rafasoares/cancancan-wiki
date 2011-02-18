@@ -23,8 +23,8 @@ ability.can?(:create, Project)
 user = User.first # fetch any user you want to test abilities on
 ability = Ability.new(user)
 ability.can?(:index, Project) # see if user can access the class
-Project.accessible_by(ability, :index) # see if returns the records the user can access
-Project.accessible_by(ability, :index).to_sql # see what the generated SQL looks like to help determine why it's not fetching the records you want
+Project.accessible_by(ability) # see if returns the records the user can access
+Project.accessible_by(ability).to_sql # see what the generated SQL looks like to help determine why it's not fetching the records you want
 ```
 
 If you find it is fetching the wrong records in complex cases, you may need to use an SQL condition instead of a hash inside the Ability class.
