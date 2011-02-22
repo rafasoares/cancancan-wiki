@@ -9,7 +9,7 @@ end
 This will add an `after_filter` to ensure authorization takes place in every inherited controller action. If no authorization happens it will raise a  exception. You can skip this check by adding `skip_authorization_check` to that controller. Both of these methods take the same arguments as `before_filter` so you can exclude certain actions with `:only` and `:except`.
 
 ```ruby
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
   skip_authorization_check :only => [:new, :create]
   # ...
 end
