@@ -19,3 +19,11 @@ end
 
 This can cause issues with Rails Engines such as [[Devise|https://github.com/plataformatec/devise]] because authorization will not happen there. The best thing to do is [[override|https://github.com/plataformatec/devise/wiki/How-To:-Redirect-after-registration-(sign-up)]] the engine controller and add `skip_authorization_check` or perform any other authorization you see fit.
 
+Alternatively you can do something like this, but it is not as clean.
+
+```ruby
+class ApplicationController < ActionController::Base
+  check_authorization
+  before_filter {|controller| controller.instance_variable_set(:@_authorized, true) if controller.devise_controller? }
+end
+```
