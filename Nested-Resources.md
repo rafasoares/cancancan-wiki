@@ -64,12 +64,20 @@ It will then use the `@project.task` and `@project.build_task` methods for fetch
 Let's say tasks can either be assigned to a Project or an Event through a polymorphic association. An array can be passed into the `:through` option and it will use the first one it finds.
 
 ```ruby
-load_and_authorize_resource :project
-load_and_authorize_resource :event
+load_resource :project
+load_resource :event
 load_and_authorize_resource :task, :through => [:project, :event]
 ```
 
-Here it will check for the existence of the `@project` or `@event` variable and whichever one exists it will fetch the task through that.
+Here it will check both the `@project` and `@event` variables and fetch the task through whichever one exists. Note that this is only loading the parent model, if you want to authorize the parent you will need to do it through a before_filter because there is special logic involved.
+
+```ruby
+before_filter :authorize_parent
+private
+def authorize_parent
+  authorize! :read, (@event || @project)
+end
+```
 
 
 ## Accessing parent in ability
