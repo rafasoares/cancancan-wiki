@@ -73,7 +73,20 @@ An array or range can be passed to match multiple values. Here the user can only
 can :read, Project, :priority => 1..3
 ```
 
-Basically anything that you can pass to a hash of conditions in ActiveRecord will work here.
+Here the project can only be managed if the project belongs to the same group as the user:
+
+```ruby
+can :manage, Project, :group => { :id => user.group_ids }
+```
+
+Note that in the above case, it is necessary to pass an array of object IDs rather than an array of objects. The following will not work:
+
+```ruby
+# This will not work
+can :manage, Project, :group => { :id => user.groups } # Use user.group_ids instead
+```
+
+Apart from this one exception, anything that you can pass to a hash of conditions in ActiveRecord will work here.
 
 
 ### Block Conditions
