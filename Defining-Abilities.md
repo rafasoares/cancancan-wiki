@@ -41,6 +41,13 @@ You can pass an array for either of these parameters to match any one. For examp
 can [:update, :destroy], [Article, Comment]
 ```
 
+It is possible to define multiple abilities for the same resource. Here the user will be able to read products which are released OR available for preview.
+
+```ruby
+can :read, Project, :released => true
+can :read, Project, :preview => true
+```
+
 A `cannot` method can also be used and takes the same arguments. This is normally done after a more generic `can` call.
 
 ```ruby
@@ -79,62 +86,12 @@ Anything that you can pass to a hash of conditions in Active Record will work he
 can :manage, Project, :group => { :id => user.group_ids }
 ```
 
-As of CanCan 1.6, you can use [[MetaWhere]] operator methods here as well if it's installed.
-
-### Block Conditions
-
-A block can also be used to add conditions which cannot be defined through a hash.
-
-```ruby
-can :update, Project, ["priority < ?", 3] do |project|
-  project.priority < 3
-end
-```
-
-If the block returns true then the user has that ability, otherwise he will be denied access. The third argument here is SQL representing the same behavior, this is optional but providing it allows it to work with [[Fetching Records]].
-
-**Note:** The passed in object to the block will always be an instance. If one is checking on a class it will not trigger the block. See [[Checking Abilities]] for details.
-
-
-### Block Conditions with Scopes
-
-As of CanCan 1.6 it's possible to pass a scope instead of an SQL string when using a block in an ability.
-
-```ruby
-can :read, Article, Article.published do |article|
-  article.published_at <= Time.now
-end
-```
-
-This is really useful if you have complex conditions which require `joins`. A couple caveats:
-
-* You cannot use this with multiple `can` definitions that match the same action and model since it is not possible to combine them. An exception will be raised when that is the case.
-* If you use this with `cannot`, the scope needs to be the inverse since it's passed directly through. For example, if you don't want someone to read discontinued products the scope will need to fetch non discontinued ones:
-
-```ruby
-cannot :read, Product, Product.where(:discontinued => false) do |product|
-  product.discontinued?
-end
-```
-
-It is only recommended to use scopes if a situation is too complex for a simple hash condition.
-
-
-### Overriding All Behavior
-
-You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
-
-```ruby
-can do |action, subject_class, subject|
-  # ...
-end
-```
-
-Here the block will be triggered for every `can?` check, even when only a class is used in the check.
+If you have a complex case which cannot be done through a hash of conditions, see [[Defining Abilities with Blocks]] or [[MetaWhere]].
 
 
 ## Additional Docs
 
+* [[Defining Abilities with Blocks]]
 * [[Checking Abilities]]
 * [[Testing Abilities]]
 * [[Debugging Abilities]]
