@@ -41,24 +41,8 @@ You can pass an array for either of these parameters to match any one. For examp
 can [:update, :destroy], [Article, Comment]
 ```
 
-It is possible to define multiple abilities for the same resource. Here the user will be able to read products which are released OR available for preview.
 
-```ruby
-can :read, Project, :released => true
-can :read, Project, :preview => true
-```
-
-A `cannot` method can also be used and takes the same arguments. This is normally done after a more generic `can` call.
-
-```ruby
-can :manage, Project
-cannot :destroy, Project
-```
-
-The order of these calls is important. See [[Ability Precedence]] for more details.
-
-
-### Hash of Conditions
+## Hash of Conditions
 
 A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which he owns.
 
@@ -88,6 +72,23 @@ can :manage, Project, :group => { :id => user.group_ids }
 
 If you have a complex case which cannot be done through a hash of conditions, see [[Defining Abilities with Blocks]] or [[MetaWhere]].
 
+## Combining Abilities
+
+It is possible to define multiple abilities for the same resource. Here the user will be able to read products which are released OR available for preview.
+
+```ruby
+can :read, Project, :released => true
+can :read, Project, :preview => true
+```
+
+The `cannot` method takes the same arguments as `can` and defines which actions the user is unable to perform. This is normally done after a more generic `can` call.
+
+```ruby
+can :manage, Project
+cannot :destroy, Project
+```
+
+The order of these calls is important. See [[Ability Precedence]] for more details.
 
 ## Additional Docs
 
