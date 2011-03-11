@@ -160,3 +160,15 @@ authorize!(params[:action], @product || Product)
 For additional information see the `load_resource` and `authorize_resource` methods in the [[RDoc|http://rdoc.info/projects/ryanb/cancan]].
 
 Also see [[Nested Resources]] and [[Non RESTful Controllers]].
+
+## Reseting Current Ability
+
+If you ever update a User record which may be the current user, it will make the current ability for that request stale. This means any `can?` checks will use the user record before it was updated. You will need to reset the `current_ability` instance so it will be reloaded. Do the same for the `current_user` if you are caching that too.
+
+```ruby
+if @user.update_attributes(params[:user])
+  @current_ability = nil
+  @current_user = nil
+  # ...
+end
+```
