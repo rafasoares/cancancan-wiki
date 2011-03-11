@@ -73,20 +73,11 @@ An array or range can be passed to match multiple values. Here the user can only
 can :read, Project, :priority => 1..3
 ```
 
-Here the project can only be managed if the project belongs to the same group as the user:
+Anything that you can pass to a hash of conditions in Active Record will work here. The only exception is working with model ids. You can't pass in the model objects directly, you must pass in the ids.
 
 ```ruby
 can :manage, Project, :group => { :id => user.group_ids }
 ```
-
-Note that in the above case, it is necessary to pass an array of object IDs rather than an array of objects. The following will not work:
-
-```ruby
-# This will not work
-can :manage, Project, :group => { :id => user.groups } # Use user.group_ids instead
-```
-
-Apart from this one exception, anything that you can pass to a hash of conditions in ActiveRecord will work here.
 
 
 ### Block Conditions
@@ -102,6 +93,30 @@ end
 If the block returns true then the user has that ability, otherwise he will be denied access. The third argument here is SQL representing the same behavior, this is optional but providing it allows it to work with [[Fetching Records]].
 
 **Note:** The passed in object to the block will always be an instance. If one is checking on a class it will not trigger the block. See [[Checking Abilities]] for details.
+
+
+### Block Conditions with Scopes
+
+As of CanCan 1.6 it's possible to pass a scope instead of an SQL string when using a block in an ability.
+
+```ruby
+can :read, Article, Article.published do |article|
+  article.published_at <= Time.now
+end
+```
+
+This is really useful if you have complex conditions which require `joins`. A couple caveats:
+
+* You cannot use this with multiple `can` definitions that match the same action and model since it is not possible to combine them. An exception will be raised when that is the case.
+* If you use this with `cannot`, the scope needs to be the inverse since it's passed directly through. For example, if you don't want someone to read discontinued products the scope will need to fetch non discontinued ones:
+
+```ruby
+cannot :read, Product, Product.where(:discontinued => false) do |product|
+  product.discontinued?
+end
+```
+
+It is only recommended to use scopes if a situation is too complex for a simple hash condition.
 
 
 ### Overriding All Behavior
