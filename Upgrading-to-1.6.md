@@ -36,12 +36,38 @@ end
 
 It is only recommended to use scopes if a situation is too complex for a simple hash condition.
 
-## Conditionally `check_authorization`
+## Conditionally Check Authorization
 
 The `check_authorization` method now supports `:if` and `:unless` options. Either one takes a method name as a symbol. This method will be called to determine if the authorization check will be performed. This makes it very easy to skip this check on all Devise controllers since they provide a `devise_controller?` method.
 
-```
+```ruby
 class ApplicationController < ActionController::Base
   check_authorization :unless => :devise_controller?
 end
 ```
+
+Here's another example where authorization is only ensured for the admin subdomain.
+
+```ruby
+class ApplicationController < ActionController::Base
+  check_authorization :if => :admin_subdomain?
+  private
+  def admin_subdomain?
+    request.subdomain == "admin"
+  end
+end
+```
+
+Note: The `check_authorization` only ensures that authorization is performed. If you have `authorize_resource` the authorization will still be preformed no matter what is returned here.
+
+## Other Fixes
+
+This update includes many other minor fixes and improvements.
+
+* a collection resource is now loaded by default with `load_and_authorize_resource` if `params[:id]` isn't present
+* added a `:prepend` option to `load_and_authorize_resource` to add it before any previously defined filters
+* the current controller action is now passed to `accessible_by` instead of always using `:read` (thanks amw)
+* fixed multi-word model name spacing issues in I18n messages
+* many Inherited Resources fixes (thanks aq1018, tanordheim and stefanoverna)
+
+Check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes and credits.
