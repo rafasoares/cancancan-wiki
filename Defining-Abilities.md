@@ -79,6 +79,7 @@ Anything that you can pass to a hash of conditions in Active Record will work he
 can :manage, Project, :group => { :id => user.group_ids }
 ```
 
+As of CanCan 1.6, you can use [[MetaWhere]] operator methods here as well if it's installed.
 
 ### Block Conditions
 
