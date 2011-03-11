@@ -36,6 +36,7 @@
 * [[MetaWhere]]
 * [[Mongoid]]
 * [[DataMapper]]
+* [[Rails Admin|https://github.com/sferik/rails_admin/wiki/CanCan]]
 * [[ActiveScaffold|https://github.com/vhochstein/active_scaffold/wiki/CanCan-bridge]]
 * [[Accessing Request Data]]
 * [[Abilities in Database]]
