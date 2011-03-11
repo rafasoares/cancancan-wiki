@@ -6,7 +6,7 @@
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
 * [[Changing Defaults]]
-* [[Upgrading to 1.5]]
+* [[Upgrading to 1.6]]
 
 
 ### More about Abilities
@@ -33,6 +33,7 @@
 ### Other Use Cases
 
 * [[Inherited Resources]]
+* [[MetaWhere]]
 * [[Mongoid]]
 * [[DataMapper]]
 * [[Accessing Request Data]]
