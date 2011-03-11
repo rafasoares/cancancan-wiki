@@ -5,6 +5,7 @@
 * [[Checking Abilities]]
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
+* [[Ensure Authorization]]
 * [[Changing Defaults]]
 * [[Upgrading to 1.6]]
 
@@ -22,7 +23,6 @@
 
 ### More about Controllers & Views
 
-* [[Ensure Authorization]]
 * [[Controller Authorization Example]]
 * [[Nested Resources]]
 * [[Non RESTful Controllers]]
