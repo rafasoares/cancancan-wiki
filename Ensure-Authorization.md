@@ -15,15 +15,26 @@ class UsersController < ApplicationController
 end
 ```
 
-## Rails Engines
+## Conditionally Check Authorization
 
-This can cause issues with Rails Engines such as [[Devise|https://github.com/plataformatec/devise]] because authorization will not happen there. The best thing to do is [[override|https://github.com/plataformatec/devise/wiki/How-To:-Redirect-after-registration-(sign-up)]] the engine controller and add `skip_authorization_check` or perform any other authorization you see fit.
-
-Alternatively you can do something like this, but it is not as clean.
+As of CanCan 1.6, the `check_authorization` method supports `:if` and `:unless` options. Either one takes a method name as a symbol. This method will be called to determine if the authorization check will be performed. This makes it very easy to skip this check on all Devise controllers since they provide a `devise_controller?` method.
 
 ```ruby
 class ApplicationController < ActionController::Base
-  check_authorization
-  before_filter {|controller| controller.instance_variable_set(:@_authorized, true) if controller.devise_controller? }
+  check_authorization :unless => :devise_controller?
 end
 ```
+
+Here's another example where authorization is only ensured for the admin subdomain.
+
+```ruby
+class ApplicationController < ActionController::Base
+  check_authorization :if => :admin_subdomain?
+  private
+  def admin_subdomain?
+    request.subdomain == "admin"
+  end
+end
+```
+
+Note: The `check_authorization` only ensures that authorization is performed. If you have `authorize_resource` the authorization will still be preformed no matter what is returned here.
