@@ -70,15 +70,15 @@ def index
 end
 ```
 
-Since this is a scope you can build on it further.
+If you want custom find options such as [[includes|https://github.com/ryanb/cancan/issues#issue/259]] or pagination, you can build on this further since it is a scope.
 
 ```ruby
 def index
-  @products = @products.paginate(:page => params[:page])
+  @products = @products.includes(:category).page(params[:page])
 end
 ```
 
-The `@products` variable will not be set if `Product` does not respond to `accessible_by` (for example if you aren't using Active Record). It will also not be set if you are using blocks in any of the `can` definitions because that is incompatible with `accessible_by`.
+The `@products` variable will not be set initially if `Product` does not respond to `accessible_by` (such as if you aren't using a supported ORM). It will also not be set if you are only using a block in the `can` definitions because there is no way to determine which records to fetch from the database.
 
 ### show, edit, update and destroy actions
 
