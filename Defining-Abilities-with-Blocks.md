@@ -38,7 +38,7 @@ end
 If you are using `load_resource` and don't supply this third option the instance variable will not be set for the index action since they cannot be translated to a database query.
 
 
-### Block Conditions with Scopes
+## Block Conditions with Scopes
 
 As of CanCan 1.6 it's possible to pass a scope instead of an SQL string when using a block in an ability.
 
@@ -62,7 +62,7 @@ end
 It is only recommended to use scopes if a situation is too complex for a hash condition.
 
 
-### Overriding All Behavior
+## Overriding All Behavior
 
 You can override all `can` behavior by passing no arguments, this is useful when permissions are defined outside of ruby such as when defining [[Abilities in Database]].
 
