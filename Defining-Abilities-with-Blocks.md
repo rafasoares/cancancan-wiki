@@ -15,7 +15,7 @@ The block is **only** evaluated when an actual instance object is present. It is
 ```ruby
 # don't do this
 can :update, Project do |project|
-  user.admin?
+  user.admin? # this won't always get called
 end
 
 # do this
