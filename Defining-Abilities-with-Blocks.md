@@ -1,4 +1,4 @@
-Some complex ability conditions are not possible through a hash as shown in the [[Defining Abilities]] page. For these you can use a block.
+If your conditions are too complex to define in a hash (as shown in [[Defining Abilities]] page), you can use a block to define them in Ruby.
 
 ```ruby
 can :update, Project do |project|
@@ -6,7 +6,28 @@ can :update, Project do |project|
 end
 ```
 
-If the block returns true then the user has that ability, otherwise he will be denied access. However this condition is only executable through Ruby, if you try to fetch records using `accessible_by` it will raise an exception. To fetch records from the database based on this condition you need to supply an SQL string representing the condition.
+If the block returns true then the user has that ability, otherwise he will be denied access.
+
+## Only for Object Attributes
+
+The block is **only** evaluated when an actual instance object is present. It is not evaluated when checking permissions on the class (such as in the index action). This means any conditions which are not dependent on the object attributes should be moved outside of the block.
+
+```ruby
+# don't do this
+can :update, Project do |project|
+  user.admin?
+end
+
+# do this
+can :update, Project if user.admin?
+```
+
+See [[Checking Abilities]] for more information.
+
+
+## Fetching Records
+
+A block's conditions are only executable through Ruby. If you try to [[Fetching Records]] using `accessible_by` it will raise an exception. To fetch records from the database you need to supply an SQL string representing the condition.
 
 ```ruby
 can :update, Project, ["priority < ?", 3] do |project|
@@ -14,9 +35,7 @@ can :update, Project, ["priority < ?", 3] do |project|
 end
 ```
 
-You will then be able to use this condition when [[Fetching Records]].
-
-**Note:** The passed in object to the block will always be an instance. If one is checking on a class it will not trigger the block. See [[Checking Abilities]] for details.
+If you are using `load_resource` and don't supply this third option the instance variable will not be set for the index action since they cannot be translated to a database query.
 
 
 ### Block Conditions with Scopes
