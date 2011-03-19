@@ -143,3 +143,7 @@ You can check permissions on specific attributes to determine what to show in th
 ```
 
 If you use this everywhere it will not be necessary to use `attr_accessible` in your models.
+
+# What do you think?
+
+Please submit any feedback to the [issue tracker](https://github.com/ryanb/cancan/issues). If you want want CanCan 2.0 to work a certain way, now is the time to request it.
