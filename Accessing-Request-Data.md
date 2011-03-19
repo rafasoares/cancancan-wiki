@@ -15,7 +15,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user, ip_address)
-    can :create, Comment unless BLACK_LIST_IPS.include? ip_address
+    can :create, Comment unless BLACKLIST_IPS.include? ip_address
   end
 end
 ```
