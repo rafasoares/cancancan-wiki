@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-This will add an authorization check locking down every controller action. If you try visiting a page `CanCan::Unauthorized` exception will be raised since you have not granted the user ability to access it. You can customize the behavior of this exception by passing a block.
+This will add an authorization check locking down every controller action. If you try visiting a page a `CanCan::Unauthorized` exception will be raised since you have not granted the user ability to access it. You can customize the behavior of this exception by passing a block.
 
 ```ruby
 enable_authorization do |exception|
