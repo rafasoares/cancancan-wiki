@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_ability
-    @current_ability ||= Ability.new(user, request.remote_ip)
+    @current_ability ||= Ability.new(current_user, request.remote_ip)
   end
 end
 
@@ -15,9 +15,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user, ip_address)
-    can :create, Comment do |comment|
-      # check if ip_address is bad
-    end
+    can :create, Comment unless BLACK_LIST_IPS.include? ip_address
   end
 end
 ```
