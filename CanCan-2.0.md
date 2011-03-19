@@ -128,7 +128,7 @@ It is possible to define permissions on specific resource attributes. For exampl
 can :update, :projects, [:name, :priority]
 ```
 
-If you use this in combination with `load_and_authorize_resource` it will ensure that only those two attributes exist in `params[:project]` when updating the project.
+If you use this in combination with `load_and_authorize_resource` it will ensure that only those two attributes exist in `params[:project]` when updating the project. If you do this everywhere it will not be necessary to use `attr_accessible` in your models.
 
 You can combine this with a hash of conditions. For example, here the user can only update the price if the product isn't discontinued.
 
@@ -142,7 +142,6 @@ You can check permissions on specific attributes to determine what to show in th
 <%= f.text_field :name if can? :update, @project, :name %>
 ```
 
-If you use this everywhere it will not be necessary to use `attr_accessible` in your models.
 
 # What do you think?
 
