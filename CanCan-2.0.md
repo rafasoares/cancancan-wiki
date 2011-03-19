@@ -133,7 +133,7 @@ If you use this in combination with `load_and_authorize_resource` it will ensure
 You can combine this with a hash of conditions. For example, here the user can only update the price if the product isn't discontinued.
 
 ```ruby
-can :update, :product, :price, :discontinued => false
+can :update, :products, :price, :discontinued => false
 ```
 
 You can check permissions on specific attributes to determine what to show in the form.
