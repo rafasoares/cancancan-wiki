@@ -22,8 +22,10 @@ An alternative approach is to define a separate "can" ability for each permissio
 ```ruby
 def initialize(user)
   user.permissions.each do |permission|
-    can permission.action.to_sym, permission.subject_class.constantize do |subject|
-      permission.subject_id.nil? || permission.subject_id == subject.id
+    if permission.subject_id.nil?
+      can permission.action.to_sym, permission.subject_class.constantize
+    else
+      can permission.action.to_sym, permission.subject_class.constantize, :id => permission.subject_id.nil
     end
   end
 end
