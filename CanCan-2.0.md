@@ -7,7 +7,7 @@ This means abilities will be more focused on controller actions then resource cl
 
 # README
 
-**CanCan 2.0 is still in very early development.** Currently none of this documentation works, but I am writing the [readme first](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html). See the [issue tracker](https://github.com/ryanb/cancan/issues) for progress on the implementation and feedback.
+**CanCan 2.0 is still in very early development.** Currently little of what I'm describing here works, but I am writing the [readme first](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html). See the [[2.0 branch|https://github.com/ryanb/cancan/tree/2.0]] for progress on the implementation and the [issue tracker](https://github.com/ryanb/cancan/issues) for feedback.
 
 ## Setup
 
