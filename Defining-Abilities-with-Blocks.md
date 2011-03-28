@@ -27,7 +27,7 @@ See [[Checking Abilities]] for more information.
 
 ## Fetching Records
 
-A block's conditions are only executable through Ruby. If you try to [[Fetching Records]] using `accessible_by` it will raise an exception. To fetch records from the database you need to supply an SQL string representing the condition.
+A block's conditions are only executable through Ruby. If you are [[Fetching Records]] using `accessible_by` it will raise an exception. To fetch records from the database you need to supply an SQL string representing the condition. The SQL will go in the `WHERE` clause, if you need to do joins consider using sub-queries or scopes (below).
 
 ```ruby
 can :update, Project, ["priority < ?", 3] do |project|
@@ -35,7 +35,7 @@ can :update, Project, ["priority < ?", 3] do |project|
 end
 ```
 
-If you are using `load_resource` and don't supply this third option the instance variable will not be set for the index action since they cannot be translated to a database query.
+If you are using `load_resource` and don't supply this SQL argument, the instance variable will not be set for the index action since they cannot be translated to a database query.
 
 
 ## Block Conditions with Scopes
