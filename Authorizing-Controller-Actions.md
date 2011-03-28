@@ -2,7 +2,7 @@ You can use the `authorize!` method to manually handle authorization in a contro
 
 ```ruby
 def show
-  @project = Project.find(params[:id])
+  @project = Project.find(params[:project])
   authorize! :show, @project
 end
 ```
