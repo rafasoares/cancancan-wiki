@@ -25,7 +25,7 @@ The `can` method is used to define permissions and requires two arguments. The f
 can :update, Article
 ```
 
-You can pass `:manage` to represent any action and `:all` to represent any subject.
+You can pass `:manage` to represent any action and `:all` to represent any object.
 
 ```ruby
 can :manage, Article  # user can perform any action on the article
