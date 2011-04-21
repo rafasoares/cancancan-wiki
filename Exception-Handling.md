@@ -61,6 +61,6 @@ end
 
 `403.html` must be pure HTML, CSS, and JavaScript--not a template. The fields of the exception are not available to it.
 
-If you you are getting unexpected behavior when rescuing from the exception it is best to add some logging . See [[Debugging Abilities]] for details.
+If you are getting unexpected behavior when rescuing from the exception it is best to add some logging . See [[Debugging Abilities]] for details.
 
 See [[Authorization in Web Services]] for rescuing exceptions for XML responses.
