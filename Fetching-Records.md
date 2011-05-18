@@ -14,7 +14,7 @@ You can change the action by passing it as the second argument. Here we find onl
 
 This is an Active Record scope so other scopes and pagination can be chained onto it.
 
-As of CanCan 1.3, this will work with multiple `can` calls which allows you to define complex permission logic and have it translate properly to SQL. Special thanks to "funny-falcon":http://github.com/funny-falcon for this feature.
+As of CanCan 1.3, this will work with multiple `can` calls which allows you to define complex permission logic and have it translate properly to SQL. Special thanks to [[funny-falcon|https://github.com/funny-falcon]] for this feature.
 
 ```ruby
 # in Ability
