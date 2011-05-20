@@ -15,3 +15,4 @@ class TasksController < InheritedResources::Base
   load_and_authorize_resource :task, :through => :project
 end
 ```
+_Please note that even for a has_many :tasks association, the load_and_authorize_resource needs the singular name of the associated model..._
