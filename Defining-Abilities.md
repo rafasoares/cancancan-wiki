@@ -74,7 +74,7 @@ If you have a complex case which cannot be done through a hash of conditions, se
 
 ## Combining Abilities
 
-It is possible to define multiple abilities for the same resource. Here the user will be able to read products which are released OR available for preview.
+It is possible to define multiple abilities for the same resource. Here the user will be able to read projects which are released OR available for preview.
 
 ```ruby
 can :read, Project, :released => true
