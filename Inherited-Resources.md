@@ -15,6 +15,6 @@ class TasksController < InheritedResources::Base
   load_and_authorize_resource :task, :through => :project
 end
 ```
-_Please note that even for a has_many :tasks association, the load_and_authorize_resource needs the singular name of the associated model..._
+_Please note that even for a `has_many :tasks` association, the `load_and_authorize_resource` needs the singular name of the associated model..._
 
 **Warning**: when overwriting the `collection` method in a controller the `load` part of a `load_and_authorize_resource` call will not work correctly. See https://github.com/ryanb/cancan/issues/274 for the discussions.  
