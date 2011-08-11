@@ -32,3 +32,5 @@ end
 ```
 
 The downside of this approach is that [[Accessing Request Data]] is not as easy, so it depends on the needs of your application.
+
+A different approach is taken by [cantango](https://github.com/kristianmandrup/cantango) a gem that builds on top of cancan, and exposes methods such as `#user_can?` and `#admin_can?` for each devise user. These methods wrap the `#current_[user_type]` methods exposed by devise.
