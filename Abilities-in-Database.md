@@ -38,6 +38,7 @@ You can mix-and-match this with defining permissions in the code as well. This w
 
 You can also create a Permission model containing all possible permissions in your app. Use that code to create a rake task that fills a Permission table:
 (The code below is not fully tested)
+
 ```ruby
 def setup_actions_controllers_db
 
