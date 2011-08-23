@@ -37,6 +37,15 @@ The reason for this behavior is because of the controller `index` action. Since 
 
 That is why passing a class to `can?` will return `true`.
 
+## Question
+
+1. My admin `can :manage, Widget`
+1. My user `can :manage, Widget, :user_id => user.id`
+1. In my view, I want to only show a link if the current_user can :manage *all* Widgets.
+1. Is it possible to do this with `can?()`
+
+Thanks
+
 ## Additional Docs
 
 * [[Defining Abilities]]
