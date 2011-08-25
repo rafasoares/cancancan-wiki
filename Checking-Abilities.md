@@ -25,7 +25,7 @@ You can also pass the class instead of an instance (if you don't have one handy)
 **Important:** If a block or hash of conditions exist they will be ignored when checking on a class, and it will return `true`. For example:
 
 ```ruby
-can? :read, Project, :priority => 3
+can :read, Project, :priority => 3
 can? :read, Project # returns true
 ```
 
