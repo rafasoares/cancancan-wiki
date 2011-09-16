@@ -4,7 +4,7 @@ Just like in the example given for [[Accessing Request Data]], you **can** also 
 
 In this case, just override the `current_ability` method in `ApplicationController` to include the controller namespace, and create an `Ability` class that knows what to do with it.
 
-```ruby
+``` ruby
 class ApplicationController < ActionController::Base
   #...
 
@@ -35,7 +35,8 @@ end
 ```
 
 I used the following code on my ApplicationController: 
-```ruby
+
+``` ruby
   private
   def namespace
     cns = @controller.class.to_s.split('::')
