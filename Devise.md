@@ -3,6 +3,6 @@ You can bypass Cancan 2.0's authorization for Devise controllers similar to Canc
 ```ruby
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  enable_authorization :unless => :devise_controller?
+  check_authorization :unless => :devise_controller?
 end
 ```
