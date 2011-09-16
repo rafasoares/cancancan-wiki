@@ -37,14 +37,17 @@ end
 I used the following code on my ApplicationController: 
 
 ``` ruby
-  private
-  def namespace
-    cns = @controller.class.to_s.split('::')
-    cns.size == 2 ? cns.shift.downcase : ""
-  end
-  def current_ability
-    Ability.new(current_user, namespace)
-  end
+# ...
+private
+
+def namespace
+  cns = @controller.class.to_s.split('::')
+  cns.size == 2 ? cns.shift.downcase : ""
+end
+
+def current_ability
+  Ability.new(current_user, namespace)
+end
 ```
 
 I have not test it intensively yet
