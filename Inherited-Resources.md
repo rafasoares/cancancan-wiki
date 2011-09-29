@@ -21,6 +21,7 @@ _Please note that even for a `has_many :tasks` association, the `load_and_author
 
 ## Mongoid
 With mongoid it is necessary to reference `:project_id` instead of just `:project`
+
 ```ruby
 class TasksController < InheritedResources::Base
   ...
