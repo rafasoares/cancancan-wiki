@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 end
 ```
 
-This will fetch the project using `Project.find(params[:project_id])` on every controller action, save it in the `@project` instance variable, and authorize it using the `:read` action to ensure the user has the ability to access that project. If you don't want to do the authorization you can simply use `load_resource`. The task is then loaded through the `@project.tasks` association.
+This will fetch the project using `Project.find(params[:project_id])` on every controller action, save it in the `@project` instance variable, and authorize it using the `:read` action to ensure the user has the ability to access that project. If you don't want to do the authorization you can simply use `load_resource`, but calling just `authorize_resource` for the parent object is insufficient. The task is then loaded through the `@project.tasks` association.
 
 If the resource name (`:project` in this case) does not match the controller then it will be considered a parent resource. You can manually specify parent/child resources using the `:parent => false` option.
 
