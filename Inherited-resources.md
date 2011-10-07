@@ -1,0 +1,1 @@
+ The load part in CanCan is still necessary since Inherited Resources does lazy loading. This will also ensure the behavior is identical to normal
