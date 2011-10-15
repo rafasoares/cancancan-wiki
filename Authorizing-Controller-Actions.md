@@ -56,7 +56,21 @@ You can specify which actions to affect using the `:except` and `:only` options,
 ```ruby
 load_and_authorize_resource :only => [:index, :show]
 ```
+### Choosing actions on nested resources 
 
+For this you can pass a name to skip_authorize_resource.
+For example:
+```ruby
+class CommentsController < ApplicationController
+  load_and_authorize_resource :post
+  load_and_authorize_resource :through => :post
+
+  skip_authorize_resource :only => :show  
+  skip_authorize_resource :post, :only => :show
+end
+```
+
+The first skip_authorize_resource skips authorization check for comment and the second for post. Both are needed if you want to skip all authorization checks for an action.
 
 ## load_resource
 
