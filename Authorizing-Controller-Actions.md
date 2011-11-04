@@ -124,7 +124,15 @@ The attributes are then overridden by whatever is passed by the user in `params[
 
 ### Custom class
 
-If the model class is namespaced or different than the controller name you will need to specify the `:class` option.
+If the model is named differently than the controller than you may explicitly name the model that should be loaded; however, you must specify that it is not a parent in a nested routing situation, ie:
+
+```ruby
+class ArticlesController < ApplicationController
+  load_and_authorize_resource :post, :parent => false
+end
+```
+
+If the model class is namespaced differently than the controller you will need to specify the `:class` option.
 
 ```ruby
 class ProductsController < ApplicationController
