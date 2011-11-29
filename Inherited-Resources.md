@@ -19,6 +19,15 @@ _Please note that even for a `has_many :tasks` association, the `load_and_author
 
 **Warning**: when overwriting the `collection` method in a controller the `load` part of a `load_and_authorize_resource` call will not work correctly. See https://github.com/ryanb/cancan/issues/274 for the discussions. 
 
+In this case you can override collection like
+```ruby
+skip_load_and_authorize_resource :only => :index
+
+def collection
+  @products ||= end_of_association_chain.accessible_by(current_ability).paginate(:page => params[:page], :per_page => 10)
+end
+```
+
 ## Mongoid
 With mongoid it is necessary to reference `:project_id` instead of just `:project`
 
