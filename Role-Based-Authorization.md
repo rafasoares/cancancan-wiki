@@ -1,6 +1,6 @@
 CanCan is decoupled from how you implement roles in the User model, but how might one set up basic role-based authorization?
 
-One approach is to use [cantango](https://github.com/kristianmandrup/cantango) a gem/library built on top of cancan, designed specifically for integrating roles and role groups with access control. Another approach is to do it yourself manually. The pros and cons are described [here](https://github.com/kristianmandrup/cantango/wiki/CanCan-vs-CanTango).
+One approach is to use [cantango](https://github.com/kristianmandrup/cantango), a gem/library built on top of cancan designed specifically for integrating roles and role groups with access control. Another approach is to do it yourself manually. The pros and cons are described [here](https://github.com/kristianmandrup/cantango/wiki/CanCan-vs-CanTango).
 
 The following approach allows you to simply define the role abilities in Ruby and does not need a role model. Alternatively, [[Separate Role Model]] describes how to define the roles and mappings in a database.
 
