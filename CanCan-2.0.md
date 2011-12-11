@@ -41,6 +41,15 @@ enable_authorization do |exception|
 end
 ```
 
+or you can rescue from the exception separately
+
+```ruby
+  enable_authorization
+  rescue_from CanCan::Unauthorized do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+```
+
 Here it will redirect the user to the home page with an alert message when unauthorized. If you do this, make sure the user has permission to access the home page.
 
 
