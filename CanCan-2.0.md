@@ -41,7 +41,7 @@ enable_authorization do |exception|
 end
 ```
 
-or you can rescue from the exception separately
+or you can rescue from the exception itself.
 
 ```ruby
   enable_authorization
