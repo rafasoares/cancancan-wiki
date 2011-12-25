@@ -146,7 +146,7 @@ end
 If you want to fetch a resource by something other than `id` it can be done so using the `find_by` option.
 
 ```ruby
-load_resource :find_by => :permalink # will use find_by_permlink!(params[:id])
+load_resource :find_by => :permalink # will use find_by_permalink!(params[:id])
 authorize_resource
 ```
 
