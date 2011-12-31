@@ -55,3 +55,33 @@ end
 ```
 
 That's it!
+
+## Role Inheritance Within Ability.rb
+
+You can use the Alternative Role Inheritance strategy described in [[Role Based Authorization|https://github.com/ryanb/cancan/wiki/Role-Based-Authorization]] with one minor modification: change "send(role)" to "send(role.name.downcase)" assuming name is the column describing the role's name in the database. 
+
+```ruby
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    @user = user || User.new # for guest
+    @user.roles.each { |role| send(role.name.downcase) }
+
+    if @user.roles.size == 0
+      can :read, :all #for guest without roles
+    end
+  end
+
+  def manager
+    can :manage, Employee
+  end
+
+  def admin
+    manager
+    can :manage, Bill
+  end
+end
+```
+
+Here each role is a separate method which is called. You can call one role inside another to define inheritance. This assumes you have a `User#roles` method which returns an array of all roles for that user.
