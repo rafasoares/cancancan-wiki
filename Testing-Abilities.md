@@ -23,6 +23,24 @@ ability.should be_able_to(:destroy, Project.new(:user => user))
 ability.should_not be_able_to(:destroy, Project.new)
 ```
 
+Pro way ;)
+
+```ruby
+require "cancan/matchers"
+# ...
+describe "User" do
+  describe "abilities" do
+    subject { ability }
+    let(:ability){ Ability.new(user) }
+
+    context "when is an account manager" do
+      let(:user){ Factory(:accounts_manager) }
+
+      it{ should be_able_to(:manage, Account.new) }
+    end
+  end
+```
+
 
 ## Cucumber
 
