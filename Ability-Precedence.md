@@ -5,7 +5,7 @@ can :manage, Project
 cannot :destroy, Project
 ```
 
-It is important that the `cannot` line is near the bottom so it will override the `:manage` behavior. Otherwise CanCan will stop on the `:manage` line since it gives the user access and the `cannot` line would never be reached. Therefore, it is best to place the more generic rules near the top.
+It is important that the `cannot :destroy` line comes after the `can :manage` line. If they were reversed, `cannot :destroy` would be overridden by `can :manage`. Therefore, it is best to place the more generic rules near the top.
 
 Adding `can` rules do not override prior rules, but instead are logically or'ed.
 
