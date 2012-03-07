@@ -22,3 +22,10 @@ can? :update, Comment # => true
 ```
 
 You are not restricted to just the 7 RESTful actions, you can use any action name. See [[Custom Actions]] for details.
+
+Please note that if you are changing the default alias_actions, the original actions associated with the alias will NOT be removed.  For example, following statement will not have any change on the alias :read, which points to :show and :index:
+```ruby
+alias_action :show, :to => :read #this will have no change on the alias :read!
+```
+
+If you want to change the default actions, you should use clear_alias_actions method to remove ALL default aliases first.
