@@ -46,7 +46,8 @@ def namespace
 end
 
 def current_ability
-  Ability.new(current_user, namespace)
+  # Ability.new(current_user, namespace)
+  @current_ability ||= Ability.new(current_user, namespace)
 end
 ```
 
