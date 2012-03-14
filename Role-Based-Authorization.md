@@ -123,6 +123,8 @@ end
 
 Here a superadmin will be able to manage all three classes but a moderator can only manage the one. Of course you can change the role logic to fit your needs. You can add complex logic so certain roles only inherit from others. And if a given user can have multiple roles you can decide whether the lowest role takes priority or the highest one does. Or use other attributes on the user model such as a "banned", "activated", or "admin" column.
 
+This functionality has been extracted into a gem called [[canard|http://rubygems.org/gems/canard]] ([[code & howto|http://github.com/james2m/canard]]).
+
 ## Alternative Role Inheritance
 
 If you would like to keep the inheritance rules in the Ability class instead of the User model it is easy to do so like this.
