@@ -60,6 +60,7 @@ load_and_authorize_resource :only => [:index, :show]
 
 For this you can pass a name to skip_authorize_resource.
 For example:
+
 ```ruby
 class CommentsController < ApplicationController
   load_and_authorize_resource :post
