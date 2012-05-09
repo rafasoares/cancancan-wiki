@@ -10,6 +10,8 @@ The CanCan issue tracker has gotten out of hand because I have not had time to w
 
 * **Bug Reports:**: If CanCan is not behaving in a way that it is documented to, add the `bug` label. Please try to verify this bug by trying it on your own and add a `verified` label to it if you can duplicate it. If the issue is outside your expertise, add a `help` label to it.
 
+  Request that someone write a pull request for a verified bug. When a pull request is available, close the original issue and link to it from the pull request.
+
 * **Dormant Issues:** If you are uncertain if an issue is still applicable and do not want to spend time investigating it, just ask "Are you still having this problem?" and tag with `waiting`. If you do not get a comment within a week or so, close the issue saying that, if they want, you can open the issue again.
 
 * **Duplicate Issues:** If it seems like a common issue, do a search and look for a duplicate. If it is, close the issue and link to the other one.
