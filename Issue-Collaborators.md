@@ -12,7 +12,7 @@ The CanCan issue tracker has gotten out of hand because I have not had time to w
 
 * **Duplicate Issues:** If it seems like a common issue, do a search and look for a duplicate. If it is, close the issue and link to the other original one.
 
-* **Bug Reports:**: If CanCan is not behaving in a way that it is documented to, add the `bug` label. Please verify this bug by trying it on your own and add a `verified` label to it if you can duplicate the problem.
+* **Bug Reports:** If CanCan is not behaving in a way that it is documented to, add the `bug` label. Please verify this bug by trying it on your own and add a `verified` label to it if you can duplicate the problem.
 
   If you would like to submit a pull request to fix this bug, assign the issue to yourself so others know you are working on it. If not, add a comment saying you are looking for someone to write a pull request and add a `help` label to it. When a pull request is available, close the original issue and link to it from the pull request.
 
