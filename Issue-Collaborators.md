@@ -14,7 +14,7 @@ The CanCan issue tracker has gotten out of hand because I have not had time to w
 
 * **Bug Reports:**: If CanCan is not behaving in a way that it is documented to, add the `bug` label. Please verify this bug by trying it on your own and add a `verified` label to it if you can duplicate the problem.
 
-  Request that someone write a pull request for a verified bug and add a `help` label to it. When a pull request is available, close the original issue and link to it from the pull request.
+  If you would like to submit a pull request to fix this bug, assign the issue to yourself so others know you are working on it. If not, add a comment saying you are looking for someone to write a pull request and add a `help` label to it. When a pull request is available, close the original issue and link to it from the pull request.
 
 * **Pull Requests:** Please try pull requests on your local machine to see if the tests pass and the functionality works as described. If so, add a `verified` label. Also add a `bug` or `feature` label depending on the type of request. If it is urgent, add a `critical` tag and ping me at @rbates on Twitter and I'll try to get it pulled in quickly.
 
