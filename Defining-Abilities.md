@@ -58,6 +58,25 @@ You can use nested hashes to define conditions on associations. Here the project
 can :read, Project, :category => { :visible => true }
 ```
 
+The above will issue a query that performs an `INNER JOIN` to query conditions on associated records. If you require the associations to be queried with a `LEFT OUTER JOIN` then you can pass in a scope. The example below will use a scope that returns all Photos that do not belong to a group.
+
+```ruby 
+class Photo
+  has_and_belongs_to_many :groups
+  scope :unowned, includes(:groups).where(:groups => {:id => nil})
+end
+
+class Group
+  has_and_belongs_to_many :photos
+end
+
+class Ability
+  can :read, Photo, Photo.unowned
+    photo.groups.empty?
+  end
+end
+```
+
 An array or range can be passed to match multiple values. Here the user can only read projects of priority 1 through 3.
 
 ```ruby
