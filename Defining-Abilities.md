@@ -71,8 +71,11 @@ class Group
 end
 
 class Ability
-  can :read, Photo, Photo.unowned
-    photo.groups.empty?
+  def initialize(user)
+    user ||= User.new # guest user (not logged in)
+    can :read, Photo, Photo.unowned do |photo|
+      photo.groups.empty?
+    end
   end
 end
 ```
