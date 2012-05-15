@@ -6,7 +6,7 @@ The CanCan issue tracker has gotten out of hand because I have not had time to w
 
 * **Questions:** If someone has a question that can be solved with the [wiki docs](https://github.com/ryanb/cancan/wiki) please point them to the appropriate docs and close the issue. If the question is not clearly answered by the wiki please improve the wiki so that it is and close the issue. If you do not have time to add docs at the moment, tag it with `docs` and `help` labels and keep it open.
 
-* **Feature Requests:** If it is a feature request that you believe should go in CanCan 2.0, please tag it with `2.0` and `feature` tags. If you are uncertain, add a `discuss` tag. I don't plan to add features to CanCan 1 at this point, if it only applies to that please close it and add a comment saying so.
+* **Feature Requests:** If it is a feature request that could go in CanCan 2.0, please tag it with `2.0` and `feature` tags. If you are uncertain whether it's a good idea, add a `discuss` tag to get some feedback. I don't plan to add features to CanCan 1 at this point, if it only applies to that release please close it and add a comment saying so.
 
 * **Dormant Issues:** If you are uncertain if an issue is still applicable and do not want to spend time investigating it, just ask "Are you still having this problem?" and tag with `waiting`. If you do not get a response within a week or so, close the issue. Mention you can open the issue again if they respond.
 
