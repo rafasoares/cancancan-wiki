@@ -67,7 +67,7 @@ def initialize(user)
 end
 ```
 
-As you can see here, if a logged in user exists he can access the entire application, but guest users can only access the the HomeController.
+As you can see here, if a logged in user exists he can access the entire application, but guest users can only access the HomeController.
 
 The first argument to `can` is the name of the controller action. Using `:access` here will allow access to all actions on that controller. The second argument is the name of the controller. Using `:all` here will represent all controllers. Either one can be an array to represent multiple actions and controllers.
 
