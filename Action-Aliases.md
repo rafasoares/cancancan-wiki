@@ -29,4 +29,4 @@ Please note that if you are changing the default alias_actions, the original act
 alias_action :show, :to => :read #this will have no change on the alias :read!
 ```
 
-If you want to change the default actions, you should use clear_alias_actions method to remove ALL default aliases first.
+If you want to change the default actions, you should use clear_aliased_actions method to remove ALL default aliases first.
