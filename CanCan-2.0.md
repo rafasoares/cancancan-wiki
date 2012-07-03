@@ -52,6 +52,13 @@ or you can rescue from the exception itself.
 
 Here it will redirect the user to the home page with an alert message when unauthorized. If you do this, make sure the user has permission to access the home page.
 
+If you're using devise and only want to enable authorization for non-devise controllers, then you can achieve it like the code below.
+
+```ruby
+enable_authorization do |exception|
+  redirect_to root_url, :alert => exception.message
+end unless :devise_controller?
+```
 
 ## Defining Abilities
 
