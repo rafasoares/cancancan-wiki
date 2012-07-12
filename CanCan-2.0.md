@@ -94,6 +94,16 @@ You can check permissions in any controller or view using the `can?` method.
 
 Here the link will only show up if one can create comments.
 
+## Ability Precedence
+
+In CanCan 2.0, there's a slight change in the way in which can rules are evaluated. A more specific `can` rule below a general `can` rule will overwrite it. 
+
+```ruby
+can :read, :projects
+can :read, :projects, :title => 'Sir'
+```
+
+The specific rule in the end will override a previous generic rule.
 
 ## Resources
 
