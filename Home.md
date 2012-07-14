@@ -7,6 +7,7 @@
 * [[Exception Handling]]
 * [[Ensure Authorization]]
 * [[Changing Defaults]]
+* [[Translating your app]]
 * [[Upgrading to 1.6]]
 * [[CanCan 2.0]]
 
