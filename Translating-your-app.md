@@ -36,10 +36,10 @@ can :vote, Article
 en:
   unauthorized:
     vote:
-      article: "Only users whitch have one or more article may do this!"
+      article: "Only users which have one or more article may do this!"
 ```
 ## Variables for translations
-Finally you may use `action`(whitch contain ability like 'create') and `subject`(for example 'article') variables in your translattion:
+Finally you may use `action`(which contain ability like 'create') and `subject`(for example 'article') variables in your translattion:
 ```yaml
 # en.yml
 en:
