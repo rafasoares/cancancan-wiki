@@ -53,7 +53,7 @@ Next you'll need to add the following code to the User model for getting and set
 ```ruby
 # in models/user.rb
 def roles=(roles)
-  self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
 end
 
 def roles
@@ -69,8 +69,8 @@ You can use checkboxes in the view for setting these roles.
 
 ```rhtml
 <% for role in User::ROLES %>
-  <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
-  <%=h role.humanize %><br />
+  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role). {:name = "user[roles][]"}%>
+  <%= label_tag "user_roles_#{role}", role.humanize %><br />
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>
 ```
