@@ -69,7 +69,7 @@ You can use checkboxes in the view for setting these roles.
 
 ```rhtml
 <% for role in User::ROLES %>
-  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role). {:name = "user[roles][]"}%>
+  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
   <%= label_tag "user_roles_#{role}", role.humanize %><br />
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>
