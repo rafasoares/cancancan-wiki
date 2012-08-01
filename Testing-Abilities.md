@@ -39,6 +39,7 @@ describe "User" do
       it{ should be_able_to(:manage, Account.new) }
     end
   end
+end
 ```
 
 
