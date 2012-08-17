@@ -23,5 +23,3 @@ end
 This concept can apply to session and cookies as well.
 
 You may wonder, why I pass only the IP Address instead of the entire request object? I prefer to pass only the information needed, this makes testing and debugging the behavior easier.
-Last edited by turadg, 7 months ago
-Delete this Page
