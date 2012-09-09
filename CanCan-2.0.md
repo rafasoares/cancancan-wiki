@@ -2,7 +2,7 @@ My ultimate goal in CanCan 2.0 is to make the behavior more intuitive. I've seen
 
 The biggest change is that basic controller action authorization will be handled by default. This means everything will be locked down with one simple `enable_authorization` call. The `load_and_authorize_resource` behavior is still there, but now only necessary if needing to check permission on resource instances.
 
-This means abilities will be more focused on controller actions then resource classes, but this doesn't mean resources are being left in the dust. Another big feature is that you can add fine-grain permissions on specific resource attributes. See the Resource Attributes section below.
+This means abilities will be more focused on controller actions than resource classes, but this doesn't mean resources are being left in the dust. Another big feature is that you can add fine-grain permissions on specific resource attributes. See the Resource Attributes section below.
 
 
 # README
