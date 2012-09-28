@@ -38,6 +38,7 @@
 * [[MetaWhere]]
 * [[Mongoid]]
 * [[DataMapper]]
+* [[Rails API Gem]]
 * [[Rails Admin|https://github.com/sferik/rails_admin/wiki/CanCan]]
 * [[ActiveScaffold|https://github.com/vhochstein/active_scaffold/wiki/CanCan-bridge]]
 * [[Devise]]
