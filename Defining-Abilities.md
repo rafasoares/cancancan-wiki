@@ -2,6 +2,7 @@ The `Ability` class is where all user permissions are defined. An example class 
 
 ```ruby
 class Ability
+
   include CanCan::Ability
 
   def initialize(user)
