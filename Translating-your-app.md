@@ -7,7 +7,7 @@ en:
       all: "You have no access!"
 ```
 ## Translation for individual abilities
-If you want to castomize messages for some model or even for some ability define translation like this:
+If you want to customize messages for some model or even for some ability define translation like this:
 
 ```ruby
 # models/ability.rb
