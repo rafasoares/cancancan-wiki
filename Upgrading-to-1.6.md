@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Note: The `check_authorization` only ensures that authorization is performed. If you have `authorize_resource` the authorization will still be preformed no matter what is returned here.
+Note: The `check_authorization` only ensures that authorization is performed. If you have `authorize_resource` the authorization will still be performed no matter what is returned here.
 
 ## Other Fixes
 
