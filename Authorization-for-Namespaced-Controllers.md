@@ -58,4 +58,4 @@ def current_ability
 end
 ```
 
-I have not tested it intensively yet.
+I have not tested it extensively yet.
