@@ -39,12 +39,12 @@ en:
       article: "Only users which have one or more article may do this!"
 ```
 ## Variables for translations
-Finally you may use `action`(which contain ability like 'create') and `subject`(for example 'article') variables in your translattion:
+Finally you may use `action`(which contain ability like 'create') and `subject`(for example 'article') variables in your translation:
 ```yaml
 # en.yml
 en:
   unauthorized:
     manage:
-      all: "You have not access to %{action} %{subject}!"
+      all: "You do not have access to %{action} %{subject}!"
 ```
 Enjoy!
