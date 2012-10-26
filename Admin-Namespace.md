@@ -52,7 +52,7 @@ Then use this `AdminAbility` for admin controllers.
 ```ruby
 # in admin/base_controller.rb
 def current_ability
-  @current_ability ||= ::AdminAbility.new(current_user)
+  @current_ability ||= AdminAbility.new(current_user)
 end
 ```
 
