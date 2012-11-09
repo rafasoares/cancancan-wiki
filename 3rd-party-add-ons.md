@@ -27,7 +27,11 @@ Adds some convenience view and controller helpers to encapsulate usage of cancan
 
 [[https://github.com/kristianmandrup/cancan-rest-links]]
 
+## Draper with Cancan
 
+Draper-CanCan adds a few simple methods to your decorators to make it easier to work with cancan
+
+[[https://github.com/anlek/draper-cancan]]
 
 
 
