@@ -32,6 +32,7 @@ describe "User" do
   describe "abilities" do
     subject { ability }
     let(:ability){ Ability.new(user) }
+    let(:user){ nil }
 
     context "when is an account manager" do
       let(:user){ Factory(:accounts_manager) }
