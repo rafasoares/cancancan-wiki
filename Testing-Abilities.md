@@ -45,6 +45,7 @@ end
 
 Custom matcher, make test code more sense:
 
+```ruby
     # e.g.:
     # @user.should have_ability(:create, for: Post.new)
     # @user.should have_ability([:create, :read], for: Post.new)
@@ -70,7 +71,7 @@ Custom matcher, make test code more sense:
         message              = "expected User:#{user} to have ability:#{ability_hash} for #{target}, but actual result is #{@ability_result}"
       end
     end
-
+```
 
 ## Cucumber
 
