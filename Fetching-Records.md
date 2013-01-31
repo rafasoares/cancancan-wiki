@@ -1,6 +1,7 @@
 Sometimes you need to restrict which records are returned from the database based on what the user is able to access. This can be done with the `accessible_by` method on any Active Record model. Simply pass it the current ability to find only the records which the user is able to `:read`.
 
 ```ruby
+# current_ability is a method made available by CanCan to your controllers extending ActionController::Base
 @articles = Article.accessible_by(current_ability)
 ```
 
