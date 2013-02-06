@@ -13,6 +13,12 @@ You can change the action by passing it as the second argument. Here we find onl
 @articles = Article.accessible_by(current_ability, :update) 
 ```
 
+If you want to use the current controller's action, make sure to call `to_sym` on it:
+
+```ruby
+@articles = Article.accessible_by(current_ability, params[:action].to_sym)
+```
+
 This is an Active Record scope so other scopes and pagination can be chained onto it.
 
 As of CanCan 1.3, this will work with multiple `can` calls which allows you to define complex permission logic and have it translate properly to SQL. Special thanks to [[funny-falcon|https://github.com/funny-falcon]] for this feature.
