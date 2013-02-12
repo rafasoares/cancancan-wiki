@@ -79,6 +79,7 @@ Custom matcher, make test code more sense:
         "have abilities #{expected.to_s.match(/\[(\[[^\]]*\]),/)[1]} for #{expected.to_s.match(/<([^ ]*)/)[1]}"
       end
     end
+end
 ```
 
 ## Cucumber
