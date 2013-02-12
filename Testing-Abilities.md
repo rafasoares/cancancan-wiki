@@ -70,6 +70,14 @@ Custom matcher, make test code more sense:
         target               = options[:for]
         message              = "expected User:#{user} to have ability:#{ability_hash} for #{target}, but actual result is #{@ability_result}"
       end
+
+    #to clean up output of RSpec Documentation format
+    description do 
+      if ability_hash.length == 1
+        "have ability #{expected.to_s.match(/(:[^ ]*)/)[1]} for #{expected.to_s.match(/<([^ ]*)/)[1]}"
+      else
+        "have abilities #{expected.to_s.match(/\[(\[[^\]]*\]),/)[1]} for #{expected.to_s.match(/<([^ ]*)/)[1]}"
+      end
     end
 ```
 
