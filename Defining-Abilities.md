@@ -60,7 +60,7 @@ can [:update, :destroy], [Article, Comment]
 
 >   alias_action :create, :read, :update, :destroy, :to => :crud
 >   
->   can :manage, User
+>   can :crud, User
 >   can :invite, User
 > end
 > ```
