@@ -36,6 +36,28 @@ can :manage, :all     # user can perform any action on any object
 
 Common actions are `:read`, `:create`, `:update` and `:destroy` but it can be anything. See [[Action Aliases]] and [[Custom Actions]] for more information on actions.
 
+> **Important notice about :manage**. As you read above it represents ANY action on the object. So if you have something like:
+
+> ```ruby
+> can :manage, User
+> can :invite, User
+> ```
+
+> and if you take a test of last `:invite` rule you always get `true`. Why? That's because `:manage` represents ANY action on object and `:manage` is not just `:create`, `:read`, `:update`, `:destroy` on object.
+
+> If you want only CRUD actions on object, you should create custom action that called `:crud` for example, and use it instead of `:manage`:
+
+> ```ruby
+> def initialize(user)
+>   user ||= User.new
+
+>   alias_action :create, :read, :update, :destroy, :to => :crud
+>   
+>   can :manage, User
+>   can :invite, User
+> end
+> ```
+
 You can pass an array for either of these parameters to match any one. For example, here the user will have the ability to update or destroy both articles and comments.
 
 ```ruby
