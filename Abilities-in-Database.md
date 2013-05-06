@@ -39,12 +39,14 @@ You can mix-and-match this with defining permissions in the code as well. This w
 You can also create a Permission model containing all possible permissions in your app. Use that code to create a rake task that fills a Permission table:
 (The code below is not fully tested)
 
+To use the following code, the permissions table should have such fields :name, :user_id, :subject_class, :subject_id, :action, and :description.You can generate the code by the command: `rails g model Permission user_id:integer name:string subject_class:string subject_id:integer action:string description:text`.
+
 ```ruby
 def setup_actions_controllers_db
 
   write_permission("all", "manage", "Everything", "All operations", true)
 
-  controllers = Dir.new("#{RAILS_ROOT}/app/controllers").entries
+  controllers = Dir.new("#{Rails.root}/app/controllers").entries
   controllers.each do |controller|
     if controller =~ /_controller/
       foo_bar = controller.camelize.gsub(".rb","").constantize.new
