@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 end
 ```
 
-It will add a before filter that has this behavior for the actions if they exist. This means you do not need to put this code in your controller.
+It will add a before filter that has this behavior for the actions if they exist. This means you do not need to put code below in your controller.
 
 ```ruby
 class ProjectsController < ApplicationController
