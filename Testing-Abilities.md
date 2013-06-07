@@ -72,12 +72,9 @@ Custom matcher, make test code more sense:
       end
 
       #to clean up output of RSpec Documentation format
-      description do 
-        if ability_hash.length == 1
-          "have ability #{expected.to_s.match(/(:[^ ]*)/)[1]} for #{expected.to_s.match(/<([^ ]*)/)[1]}"
-        else
-          "have abilities #{expected.to_s.match(/\[(\[[^\]]*\]),/)[1]} for #{expected.to_s.match(/<([^ ]*)/)[1]}"
-        end
+      description do
+        target = expected.last[:for]
+        "have ability #{ability_hash.keys.join(", ")} for #{target.class.name}"
       end
     end
 ```
