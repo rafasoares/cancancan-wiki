@@ -94,7 +94,7 @@ def write_permission(class_name, cancan_action, name, description, force_id_1 = 
   permission  = Permission.find(:first, :conditions => ["subject_class = ? and action = ?", class_name, cancan_action]) 
   if not permission
     permission = Permission.new
-    permission.id = 1 unless not force_id_1
+    permission.id = 1 if force_id_1
     permission.subject_class =  class_name
     permission.action = cancan_action
     permission.name = name
