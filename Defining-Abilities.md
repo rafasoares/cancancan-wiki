@@ -43,27 +43,27 @@ can [:update, :destroy], [Article, Comment]
 ```
 
 
-> **Important notice about :manage**. As you read above it represents ANY action on the object. So if you have something like:
+**Important notice about :manage**. As you read above it represents ANY action on the object. So if you have something like:
 
-> ```ruby
-> can :manage, User
-> can :invite, User
-> ```
+```ruby
+can :manage, User
+can :invite, User
+```
 
-> and if you take a test of last `:invite` rule you always get `true`. Why? That's because `:manage` represents ANY action on object and `:manage` is not just `:create`, `:read`, `:update`, `:destroy` on object.
+and if you take a test of last `:invite` rule you always get `true`. Why? That's because `:manage` represents ANY action on object and `:manage` is not just `:create`, `:read`, `:update`, `:destroy` on object.
 
-> If you want only CRUD actions on object, you should create custom action that called `:crud` for example, and use it instead of `:manage`:
+If you want only CRUD actions on object, you should create custom action that called `:crud` for example, and use it instead of `:manage`:
 
-> ```ruby
-> def initialize(user)
->   user ||= User.new
+```ruby
+def initialize(user)
+  user ||= User.new
 
->   alias_action :create, :read, :update, :destroy, :to => :crud
->   
->   can :crud, User
->   can :invite, User
-> end
-> ```
+  alias_action :create, :read, :update, :destroy, :to => :crud
+ 
+  can :crud, User
+  can :invite, User
+end
+```
 
 ## Hash of Conditions
 
