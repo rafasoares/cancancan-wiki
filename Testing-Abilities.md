@@ -60,7 +60,7 @@ Custom matcher, make test code more sense:
         ability_hash.each do |action, true_or_false|
           @ability_result[action] = ability.can?(action, target)
         end
-        !ability_hash.diff(@ability_result).any?
+        ability_hash == @ability_result
       end
 
       failure_message_for_should do |user|
