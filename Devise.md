@@ -3,14 +3,14 @@ You can bypass Cancan 2.0's authorization for Devise controllers similar to Canc
 ```ruby
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization :unless => :devise_controller?
+  enable_authorization :unless => :devise_controller?
 end
 ```
 
 It may be a good idea to specify the rescue from action:
 
 ```ruby
-rescue_from CanCan::AccessDenied do |exception|
+rescue_from CanCan::Unauthorized do |exception|
     if current_user.nil?
       session[:next] = request.fullpath
       puts session[:next]
