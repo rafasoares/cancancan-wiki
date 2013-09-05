@@ -20,4 +20,17 @@ def current_ability
 end
 ```
 
+Sometimes you might have a gem in your project which provides its own Rails engine which also uses CanCan such as LocomotiveCMS. In this case the current_ability override in the ApplicationController can also be useful.
+
+```ruby
+# in ApplicationController
+def current_ability
+  if request.fullpath =~ /\/locomotive/
+    @current_ability ||= Locomotive::Ability.new(current_user)
+  else
+    @current_ability ||= Ability.new(current_user)
+  end
+end
+```
+
 That's it! See [[Accessing Request Data]] for a more complex example of what you can do here.
