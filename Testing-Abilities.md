@@ -73,7 +73,21 @@ Custom matcher, make test code more sense:
       #to clean up output of RSpec Documentation format
       description do
         target = expected.last[:for]
-        "have ability #{ability_hash.keys.join(", ")} for #{target.class.name}"
+        target = if target.class == Symbol
+          target.to_s.capitalize
+        elsif target.class == Class || target.class == Module
+          target.to_s.capitalize
+        else
+          target.class.name
+        end
+        authorized_abilities = ability_hash.select{|key, val| val == true}
+        authorized_string = "authorized to #{authorized_abilities.keys.join(", ")}"
+        unauthorized_abilities = ability_hash.select{|key, val| val == false}
+        unauthorized_string = "unauthorized to #{unauthorized_abilities.keys.join(", ")}"
+        "be #{authorized_string unless authorized_abilities.empty?}" \
+        "#{' and ' unless authorized_abilities.empty? || unauthorized_abilities.empty?}" \
+        "#{unauthorized_string unless unauthorized_abilities.empty?}" \
+        " for #{target}"
       end
     end
 ```
