@@ -1,4 +1,3 @@
-# CanCan 2.0 Aliases
 ## Actions
 * `:read => [:index, :show]`
 * `:create => [:new]`
