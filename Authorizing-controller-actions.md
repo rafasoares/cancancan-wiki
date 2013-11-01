@@ -124,7 +124,7 @@ The attributes are then overridden by whatever is passed by the user in `params[
 
 ### Custom class
 
-If the model is named differently than the controller than you may explicitly name the model that should be loaded; however, you must specify that it is not a parent in a nested routing situation, ie:
+If the model is named differently than the controller, then you may explicitly name the model that should be loaded; however, you must specify that it is not a parent in a nested routing situation, ie:
 
 ```ruby
 class ArticlesController < ApplicationController
