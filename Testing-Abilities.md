@@ -80,10 +80,10 @@ Custom matcher, make test code more sense:
         else
           target.class.name
         end
-        authorized_abilities = ability_hash.select{|key, val| val == true}
-        authorized_string = "authorized to #{authorized_abilities.keys.join(", ")}"
+        authorized_abilities   = ability_hash.select{|key, val| val == true}
+        authorized_string      = "authorized to #{authorized_abilities.keys.join(", ")}"
         unauthorized_abilities = ability_hash.select{|key, val| val == false}
-        unauthorized_string = "unauthorized to #{unauthorized_abilities.keys.join(", ")}"
+        unauthorized_string    = "unauthorized to #{unauthorized_abilities.keys.join(", ")}"
         "be #{authorized_string unless authorized_abilities.empty?}" \
         "#{' and ' unless authorized_abilities.empty? || unauthorized_abilities.empty?}" \
         "#{unauthorized_string unless unauthorized_abilities.empty?}" \
