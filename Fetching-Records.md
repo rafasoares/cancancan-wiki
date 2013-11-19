@@ -39,5 +39,5 @@ It will raise an exception if any requested model's ability definition is define
 If you are using something other than Active Record you can fetch the conditions hash directly from the current ability.
 
 ```ruby
-current_ability.query(:read, Article).conditions
+current_ability.model_adapter(TargetClass, :target_action).conditions
 ```
