@@ -1,6 +1,6 @@
 What if a non-programmer needs to modify the user abilities, or you want to change them without having to re-deploy the application? In that case it may be best to store the permission logic in a separate model, let's call it Permission. It is easy to use the database records when defining abilities.
 
-For example, let's assume that each user has_many :permissions, and each permission has "action", "subject_class" and "subject_id" columns. The last of which is optional.
+For example, let's assume that each user `has_many :permissions`, and each permission has "action", "subject_class" and "subject_id" columns. The last of which is optional.
 
 ```ruby
 class Ability
