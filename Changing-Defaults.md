@@ -33,4 +33,12 @@ def current_ability
 end
 ```
 
+If your method that returns the currently logged in user just has another name than `current_user`, it may be the easiest solution to simply alias the method in your ApplicationController like this:
+
+```ruby
+class ApplicationController < ActionController::Base
+  alias_method :current_user, :name_of_your_method # Could be :current_member or :logged_in_user
+end
+```
+
 That's it! See [[Accessing Request Data]] for a more complex example of what you can do here.
