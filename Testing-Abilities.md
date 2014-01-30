@@ -42,7 +42,7 @@ describe "User" do
 end
 ```
 
-Custom matcher, make test code more sense:
+Custom matcher, helps test code make more sense:
 
 ```ruby
     # e.g.:
