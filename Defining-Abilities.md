@@ -95,7 +95,7 @@ end
 class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    can :read, Photo.unowned do |photo|
+    can :read, Photo, Photo.unowned do |photo|
       photo.groups.empty?
     end
   end
