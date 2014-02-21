@@ -27,6 +27,7 @@
 
 * [[Controller Authorization Example]]
 * [[Nested Resources]]
+* [[Strong Parameters]]
 * [[Non RESTful Controllers]]
 * [[Admin Namespace]]
 * [[Link Helpers]]
