@@ -1,6 +1,6 @@
 ### Getting Started
 
-* [[README|http://github.com/ryanb/cancan/#readme]]
+* [[README|https://github.com/CanCanCommunity/cancancan#readme]]
 * [[Defining Abilities]]
 * [[Checking Abilities]]
 * [[Authorizing Controller Actions]]
