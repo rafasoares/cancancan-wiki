@@ -171,4 +171,4 @@ You can check permissions on specific attributes to determine what to show in th
 
 # What do you think?
 
-Please submit any feedback to the [issue tracker](https://github.com/ryanb/cancan/issues). If you want CanCan 2.0 to work a certain way, now is the time to request it.
+Please submit any feedback to the [issue tracker](https://github.com/CanCanCommunity/cancancan/issues). If you want CanCan 2.0 to work a certain way, now is the time to request it.
