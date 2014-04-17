@@ -48,6 +48,14 @@ can :read, Article, Article.published do |article|
 end
 ```
 
+Generally, this breaks down to looks something like:
+
+```ruby
+can [:ability], Model, Model.scope_to_select_on_index_action do |model_instance|
+  model_instance.condition_to_evaluate_for_new_create_edit_update_destroy
+end
+```
+
 This is really useful if you have complex conditions which require `joins`. A couple caveats:
 
 * You cannot use this with multiple `can` definitions that match the same action and model since it is not possible to combine them. An exception will be raised when that is the case.
