@@ -25,5 +25,3 @@ end
 ```
 
 Now only admins will be able to assign roles to users.
-
-You may want to check out [[trusted-params|http://github.com/ryanb/trusted-params]] for a convenient way to handle permissions on specific attributes in the controller.
