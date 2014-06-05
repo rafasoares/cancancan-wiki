@@ -10,12 +10,17 @@ This means that using `can :read, Article.find(2)` or `can? :create, Article` is
 # defining abilities
 can :read, @article           # bad
 can :read, Article.find(2)    # bad
+can :manage, User             # good
+can :create, Article          # good
 can :read, Article, id: 2     # good
 
 # checking abilities
-can? :create, Article         # bad
-can? :create, Article.new     # good
-can? :read, Article.find(2)   # good
+can? :destroy, User                    # bad
+can? :create, Article                  # bad
+can? :create, Article.new              # good
+can? :create, @user.articles.build     # good
+can? :read, @article                   # good
+can? :read, Article.find(2)            # good
 ```
 
 ## load_and_authorize_resource
