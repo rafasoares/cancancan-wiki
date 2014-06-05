@@ -24,7 +24,9 @@ can? :read, Article.find(2) # good, the user can read the article with id 2
 
 ### load_and_authorize_resource with :manage
 
-`load_and_authorize_resource` with a rule like `can :manage, Article, id: 23` will allow rendering the `new` method of the ArticlesController. The rule really means _"you can manage any Article resource but it has to have an ID of 23"_, which includes creating a new Article with the id set to 23.
+`load_and_authorize_resource` with a rule like `can :manage, Article, id: 23` will allow rendering the `new` method of the ArticlesController, which is unexpected because this rule naively reads as _"the user can manage the existing article with id 23"_, which should have nothing to do with creating new articles.
+
+But in reality the rule means _"the user can manage any article object with an id field set to 23"_, which includes creating a new Article with the id set to 23 (`Article.new(id: 23)`).
 
 Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work tho.
 
