@@ -16,13 +16,17 @@ can :read, Article, id: 2     # good
 
 # checking abilities
 can? :destroy, User                    # bad
-can? :create, Article                  # bad
-can? :create, Article.new              # good
+can? :create, Article                  # bad, this does NOT mean "can create an article"
+can? :create, Article.new              # good, this means "can create an article"
 can? :create, @user.articles.build     # good
 can? :read, @article                   # good
 can? :read, Article.find(2)            # good
 ```
 
-## load_and_authorize_resource
+## load_and_authorize_resource with :manage
 
-`load_and_authorize_resource` with a rule like `can :manage, Article, id: 23` will allow rendering the `new` method of the ArticlesController. The rule really means _"you can manage any Article resource but it has to have an ID of 23"_, which includes creating a new Article with the id set to 23. Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work tho.
+`load_and_authorize_resource` with a rule like `can :manage, Article, id: 23` will allow rendering the `new` method of the ArticlesController. The rule really means _"you can manage any Article resource but it has to have an ID of 23"_, which includes creating a new Article with the id set to 23.
+
+Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work tho.
+
+The correct intended rule to avoid `new` being allowed is `can [:read, :update, :destroy], Article, id: 23`.
