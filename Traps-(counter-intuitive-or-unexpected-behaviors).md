@@ -29,4 +29,8 @@ can? :read, Article.find(2)            # good
 
 Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work tho.
 
-The correct intended rule to avoid `new` being allowed is `can [:read, :update, :destroy], Article, id: 23`.
+The correct intended rule to avoid `new` being allowed would be:
+
+``` ruby
+can [:read, :update, :destroy], Article, id: 23
+```
