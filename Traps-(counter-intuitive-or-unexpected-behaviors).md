@@ -1,6 +1,6 @@
 Here's a list of common counter-intuitive behaviors.
 
-## Abilities are not defined the same way they are checked
+## Abilities are not defined and checked the same way
 
 You have to use a **class** when defining abilities but an **instance** when checking abilities.
 
