@@ -2,7 +2,9 @@ Here's a list of common counter-intuitive behaviors.
 
 ## Abilities are not defined the same way they are checked
 
-You can check abilites like `can? :read, Article.find(2)` but you **cannot** define abilities with `can :read, Article.find(2)`. You have to define abilities on the class, like `can :read, Article, id: 2` instead. You **cannot** check abilities with `can? :create, Article`, you have to use `can? :create, Article.new` instead.
+You **have** to use a class when defining abilities.
+You **have** to use an instance when checking abilities.
+You **cannot** do `can :read, Article.find(2)` or `can? :create, Article`.
 
 ``` ruby
 # defining abilities
