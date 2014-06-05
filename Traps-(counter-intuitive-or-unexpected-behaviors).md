@@ -4,23 +4,15 @@ Here's a list of common counter-intuitive behaviors.
 
 You have to use a **class** when defining abilities but an **instance** when checking abilities.
 
-This means that using `can :read, Article.find(2)` or `can? :create, Article` is wrong.
+This means that using `can :read, Article.find(2)` is wrong and that `can? :create, Article` doesn't do what you expect it to do.
 
-``` ruby
-# defining abilities
-can :read, @article        # bad
-can :read, Article.find(2) # bad
-can :manage, Item          # good, user can manage any items
-can :create, Article       # good, user can create any articles
-can :read, Article, id: 2  # good, user can read the article with id 2
+| N | Question                                | Ability                       | Is checked with                                         |
+|---|-----------------------------------------|-------------------------------|---------------------------------------------------------|
+| 1 | "User can update the article with id 2" | can(:update, Article, id: 2)  | can?(:update, Article.find(2))                          |
+| 2 | "User can update any article"           | can(:update, Article)         | Article.reject{ &#124;a&#124; can?(:update, a) }.empty? |
+| 3 | "User can update one of the articles"   | 1 or 2                        | can?(:update, Article)                                  |
+| 4 | (invalid)                               | can(:update, Article.find(2)) | -                                                       |
 
-# checking abilities
-can? :destroy, User         # bad
-can? :create, Article       # bad, this does NOT mean "can create an article"
-can? :create, Article.new   # good, the user can create an article
-can? :read, @article        # good, the user can read this specific article
-can? :read, Article.find(2) # good, the user can read the article with id 2
-```
 
 ### load_and_authorize_resource with :manage
 
