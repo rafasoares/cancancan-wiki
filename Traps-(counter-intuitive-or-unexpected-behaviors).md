@@ -8,19 +8,19 @@ This means that using `can :read, Article.find(2)` or `can? :create, Article` is
 
 ``` ruby
 # defining abilities
-can :read, @article           # bad
-can :read, Article.find(2)    # bad
-can :manage, Item             # good, user can manage any items
-can :create, Article          # good, user can create any articles
-can :read, Article, id: 2     # good, user can read the article with id 2
+can :read, @article        # bad
+can :read, Article.find(2) # bad
+can :manage, Item          # good, user can manage any items
+can :create, Article       # good, user can create any articles
+can :read, Article, id: 2  # good, user can read the article with id 2
 
 # checking abilities
-can? :destroy, User                    # bad
-can? :create, Article                  # bad, this does NOT mean "can create an article"
-can? :create, Article.new              # good, the user can create an article
-can? :create, @user.articles.build     # good, the user can create an article for this user
-can? :read, @article                   # good, the user can read this specific article
-can? :read, Article.find(2)            # good, the user can read the article with id 2
+can? :destroy, User                # bad
+can? :create, Article              # bad, this does NOT mean "can create an article"
+can? :create, Article.new          # good, the user can create an article
+can? :create, @user.articles.build # good, the user can create an article for this user
+can? :read, @article               # good, the user can read this specific article
+can? :read, Article.find(2)        # good, the user can read the article with id 2
 ```
 
 ### load_and_authorize_resource with :manage
