@@ -6,7 +6,7 @@ Since there is such a tight coupling between the list of roles and abilities, I 
 
 ```ruby
 class User < ActiveRecord::Base
-  ROLES = %w[admin moderator author banned]
+  ROLES = %i[admin moderator author banned]
 end
 ```
 
@@ -51,6 +51,7 @@ Next you'll need to add the following code to the User model for getting and set
 ```ruby
 # in models/user.rb
 def roles=(roles)
+  roles = roles.map { |r| r.to_sym }
   self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
 end
 
@@ -68,7 +69,7 @@ You can use checkboxes in the view for setting these roles.
 ```rhtml
 <% for role in User::ROLES %>
   <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-  <%= label_tag "user_roles_#{role}", role.humanize %><br />
+  <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>
 ```
@@ -77,12 +78,12 @@ Finally, you can then add a convenient way to check the user's roles in the Abil
 
 ```ruby
 # in models/user.rb
-def is?(role)
-  roles.include?(role.to_s)
+def has_role?(role)
+  roles.include?(role)
 end
 
 # in models/ability.rb
-can :manage, :all if user.is? :admin
+can :manage, :all if user.has_role? :admin
 ```
 
 See [[Custom Actions]] for a way to restrict which users can assign roles to other users.
