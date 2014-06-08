@@ -104,3 +104,38 @@ As of 1.4 it's also possible to check permission through an association like thi
 ```
 
 This will use the above `:project` hash conditions and ensure `@project` meets those conditions.
+
+
+## Has_many through associations
+How to load and authorize resources with a has_many :through association?
+
+Given that situation:
+
+```ruby
+class User < ActiveRecord::Base
+  has_many :groups_users
+  has_many :groups, through: :groups_users
+end
+```
+
+```ruby
+class Group < ActiveRecord::Base
+  has_many :groups_users
+  has_many :users, through: :groups_users
+end
+```
+
+```ruby
+class GroupsUsers < ActiveRecord::Base
+  belongs_to :group
+  belongs_to :user
+end
+```
+
+and in the controller:
+
+```ruby
+class UsersController < ApplicationController
+  load_and_authorize_resource :group
+  load_and_authorize_resource through: :group
+```
