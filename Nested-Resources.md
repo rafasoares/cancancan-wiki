@@ -146,4 +146,8 @@ in ability.rb
 can :create, User, groups_users: {group: {CONDITION_ON_GROUP} }
 ```
 
-Don't forget the **inverse_of* option. Is the trick to make it works correctly
+Don't forget the **inverse_of** option, is the trick to make it works correctly. 
+
+Remember to define the ability through the **groups_users** model (i.e. don't write `can :create, User, groups: {CONDITION_ON_GROUP}`)
+
+You will be able to persist the association just calling `@user.save` instead of `@group.save`
