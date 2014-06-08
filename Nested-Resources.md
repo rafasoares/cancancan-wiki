@@ -127,8 +127,8 @@ end
 
 ```ruby
 class GroupsUsers < ActiveRecord::Base
-  belongs_to :group
-  belongs_to :user
+  belongs_to :group, inverse_of: :groups_users
+  belongs_to :user, inverse_of: :groups_users
 end
 ```
 
@@ -139,3 +139,11 @@ class UsersController < ApplicationController
   load_and_authorize_resource :group
   load_and_authorize_resource through: :group
 ```
+
+in ability.rb
+
+```ruby
+can :create, User, groups_users: {group: {CONDITION_ON_GROUP} }
+```
+
+Don't forget the **inverse_of* option. Is the trick to make it works correctly
