@@ -40,7 +40,7 @@ That is why passing a class to `can?` will return `true`.
 The code answering the question "can the user update all the articles?" would be something like:
 
 ``` ruby
-Article.reject{ |a| can?(:update, a) }.empty?
+Article.accessible_by(current_ability).count == Article.count
 ```
 
 ## Additional Docs
