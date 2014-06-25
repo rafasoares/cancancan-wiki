@@ -51,7 +51,7 @@ Next you'll need to add the following code to the User model for getting and set
 ```ruby
 # in models/user.rb
 def roles=(roles)
-  roles = roles.map { |r| r.to_sym }
+  roles = [*roles].map { |r| r.to_sym }
   self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
 end
 
