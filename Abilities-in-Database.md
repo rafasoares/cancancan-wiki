@@ -42,6 +42,17 @@ You can also create a Permission model containing all possible permissions in yo
 To use the following code, the permissions table should have such fields :name, :user_id, :subject_class, :subject_id, :action, and :description.You can generate the permission model by the command: `rails g model Permission user_id:integer name:string subject_class:string subject_id:integer action:string description:text`.
 
 ```ruby
+class ApplicationController < ActionController::Base
+  ...
+  protected
+
+  # Derive the model name from the controller. egs UsersController will return User
+  def self.permission
+    return name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name rescue nil
+  end
+end
+
+```ruby
 def setup_actions_controllers_db
 
   write_permission("all", "manage", "Everything", "All operations", true)
