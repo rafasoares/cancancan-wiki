@@ -51,6 +51,7 @@ class ApplicationController < ActionController::Base
     return name = self.name.gsub('Controller','').singularize.split('::').last.constantize.name rescue nil
   end
 end
+```
 
 ```ruby
 def setup_actions_controllers_db
