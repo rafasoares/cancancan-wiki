@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   # Derive the model name from the controller. egs UsersController will return User
   def self.permission
-    return name = controller_name.classify
+    return name = controller_name.classify.constantize
   end
 end
 ```
