@@ -39,7 +39,7 @@ Using `load_and_authorize_resource` with a rule like `can :manage, Article, id: 
 
 But in reality the rule means _"the user can manage any article object with an id field set to 23"_, which includes creating a new Article with the id set to 23 like `Article.new(id: 23)`.
 
-Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work tho.
+Thus `load_and_authorize_resource` will initialize a model in the `:new` action and set its id to 23, and happily render the page. Saving will not work though.
 
 The correct intended rule to avoid `new` being allowed would be:
 
