@@ -3,7 +3,7 @@ It can be difficult to thoroughly test user permissions at the functional/integr
 The `can?` method can be called directly on any `Ability` (like you would in the controller or view) so it is easy to test permission logic.
 
 ```ruby
-test "user can only destroy projects which he owns" do
+test "user can only destroy projects which they own" do
   user = User.create!
   ability = Ability.new(user)
   assert ability.can?(:destroy, Project.new(:user => user))
@@ -71,7 +71,7 @@ If you want to test authorization functionality at the controller level one opti
 user = User.create!(:admin => true) # I recommend a factory for this
 session[:user_id] = user.id # log in user however you like, alternatively stub `current_user` method
 get :index
-assert_template :index # render the template since he should have access
+assert_template :index # render the template since they should have access
 ```
 
 Alternatively, if you want to test the controller behavior independently from what is inside the `Ability` class, it is easy to stub out the ability with any behavior you want.
