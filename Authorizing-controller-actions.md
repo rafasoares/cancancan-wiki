@@ -188,7 +188,7 @@ It is important that any custom loading behavior happens **before** the call to 
 Adding `authorize_resource` will make a before filter which calls `authorize!`, passing the resource instance variable if it exists. If the instance variable isn't set (such as in the index action) it will pass in the class name. For example, if we have a `ProductsController` it will do this before each action.
 
 ```ruby
-authorize!(params[:action], @product || Product)
+authorize!(params[:action].to_sym, @product || Product)
 ```
 
 ## More info
