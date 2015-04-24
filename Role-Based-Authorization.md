@@ -62,7 +62,7 @@ def roles
 end
 ```
 
-If you're using devise, don't forget to add `attr_accessible :roles` to you user model.
+If you're using devise, don't forget to add `attr_accessible :roles` to your user model.
 
 You can use checkboxes in the view for setting these roles.
 
