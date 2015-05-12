@@ -38,7 +38,7 @@ Now you can provide a select-menu for choosing the roles in the view.
 
 ```rhtml
 <!-- in users/_form.html.erb -->
-<%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize %>
+<%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
 ```
 
 You may not have considered using `collection_select` when you aren't working with an association, but it will work perfectly. In this case the user will see the humanized name of the role, and the simple lower-cased version will be passed in as the value when the form is submitted.
