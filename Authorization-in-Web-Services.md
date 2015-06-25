@@ -3,9 +3,9 @@ If your web application provides a web service which returns XML or JSON respons
 ```ruby
 rescue_from CanCan::AccessDenied do |exception|
   respond_to do |format|
-    format.html { redirect_to main_app.root_url, :alert => exception.message }
-    format.xml { render xml: "...", :status => :forbidden }
     format.json { render nothing: true, :status => :forbidden }
+    format.xml { render xml: "...", :status => :forbidden }
+    format.html { redirect_to main_app.root_url, :alert => exception.message }
   end
 end
 ```
