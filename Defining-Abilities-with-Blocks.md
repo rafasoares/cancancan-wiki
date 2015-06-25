@@ -21,11 +21,12 @@ end
 # do this
 can :update, Project if user.admin?
 ```
-It's noteworthy to mention that if you pass any block or hash to a `can` or `cannot`, regardless of whether or not the block actually asks for any parameters (ex. `|project|`) the block will only execute if an instance of a class is passed to `can?` or `cannot?`. 
+Note that if you pass a block to a `can` or `cannot`, regardless of whether the block asks for parameters (ex. `|project|`) the block only executes if an instance of a class is passed to `can?` or `cannot?`. 
 
-If you define a `can` or `cannot` with a block and a parameter is not passed it will just pass the check. 
+If you define a `can` or `cannot` with a block and an object is not passed, the check will pass. 
 ```ruby
 can :update, Project do |project|
+  false
 end
 ```
 ```ruby
