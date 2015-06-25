@@ -25,12 +25,15 @@ en:
 
 Notice `manage` and `all` can be used to generalize the subject and actions. Also `%{action}` and `%{subject}` can be used as variables in the message.
 
-You can catch the exception and modify its behavior in the `ApplicationController`. For example here we set the error message to a flash and redirect to the home page.
+You can catch the exception and modify its behavior in the `ApplicationController`. The behavior may vary depending on the request format. For example here we set the error message to a flash and redirect to the home page for HTML requests and return `403 Forbidden` for JSON requests.
 
 ```ruby
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_url, :alert => exception.message
+    respond_to do |format|
+      format.html { redirect_to main_app.root_url, :alert => exception.message }
+      format.json { render nothing: true, status: :forbidden }
+    end
   end
 end
 ```
