@@ -1,4 +1,4 @@
-You will usually be working with four actions when [[defining|Defining Abilities]] and [[checking|Checking Abilities]] permissions: `:read`, `:create`, `:update`, `:destroy`. These aren't the same as the 7 RESTful actions in Rails. CanCan automatically adds some convenient aliases for mapping the controller actions.
+You will usually be working with four actions when [[defining|Defining Abilities]] and [[checking|Checking Abilities]] permissions: `:read`, `:create`, `:update`, `:destroy`. These aren't the same as the 7 RESTful actions in Rails. CanCanCan automatically adds some convenient aliases for mapping the controller actions.
 
 ```ruby
 alias_action :index, :show, :to => :read
