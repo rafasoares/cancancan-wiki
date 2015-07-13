@@ -81,7 +81,7 @@ If you're using devise, don't forget to add `attr_accessible :roles` to your use
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up)  { |u| u.permit(  roles: [], :email, :password, :password_confirmation ) }
+    devise_parameter_sanitizer.for(:sign_up)  { |u| u.permit(  :email, :password, :password_confirmation, roles: [] ) }
   end
 ```
 You can use checkboxes in the view for setting these roles.
