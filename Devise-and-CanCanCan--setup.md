@@ -1,3 +1,3 @@
 Here is a quick tutorial link .
 
-`github.com/mezbahalam/devise_cancan`
+[devise_cancancan](github.com/mezbahalam/devise_cancan)
