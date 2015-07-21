@@ -1,3 +1,8 @@
+Here is a quick tutorial link .
+`github.com/mezbahalam/devise_cancan`
+
+or 
+
 You can bypass Cancan 2.0's authorization for Devise controllers similar to Cancan 1.6:
 
 ```ruby
