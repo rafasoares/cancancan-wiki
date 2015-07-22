@@ -114,7 +114,7 @@ Anything that you can pass to a hash of conditions in Active Record will work he
 can :manage, Project, :group => { :id => user.group_ids }
 ```
 
-If you have a complex case which cannot be done through a hash of conditions, see [[Defining Abilities with Blocks]] or [[MetaWhere]].
+If you have a complex case which cannot be done through a hash of conditions, see [[Defining Abilities with Blocks]].
 
 ## Combining Abilities
 
