@@ -24,10 +24,10 @@ Connection: close
 Server: AmazonS3
 
 <?xml version="1.0" encoding="UTF-8"?>
-  <Error>
-   <Code>AccessDenied</Code>
-   <Message>Access Denied</Message>
-   <RequestId>E4CA6F6767D6685C</RequestId>
-   <HostId>BHzLOATeDuvN8Es1wI8IcERq4kl4dc2A9tOB8Yqr39Ys6fl7N4EJ8sjGiVvu6wLP</HostId>
-  </Error>
+<Error>
+  <Code>AccessDenied</Code>
+  <Message>Access Denied</Message>
+  <RequestId>E4CA6F6767D6685C</RequestId>
+  <HostId>BHzLOATeDuvN8Es1wI8IcERq4kl4dc2A9tOB8Yqr39Ys6fl7N4EJ8sjGiVvu6wLP</HostId>
+</Error>
 ```
