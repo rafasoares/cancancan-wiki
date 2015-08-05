@@ -108,7 +108,7 @@ An array or range can be passed to match multiple values. Here the user can only
 can :read, Project, :priority => 1..3
 ```
 
-Anything that you can pass to a hash of conditions in Active Record will work here. The only exception is working with model ids. You can't pass in the model objects directly, you must pass in the ids.
+Almost anything that you can pass to a hash of conditions in Active Record will work here. The only exception is working with model ids. You can't pass in the model objects directly, you must pass in the ids.
 
 ```ruby
 can :manage, Project, :group => { :id => user.group_ids }
