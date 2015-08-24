@@ -40,7 +40,7 @@
 * [[Mongoid]]
 * [[DataMapper]]
 * [[Rails API Gem]]
-* [[Rails Admin|https://github.com/sferik/rails_admin/wiki/CanCan]]
+* [[Rails Admin|https://github.com/sferik/rails_admin/wiki/CanCanCan]]
 * [[ActiveScaffold|https://github.com/vhochstein/active_scaffold/wiki/CanCan-bridge]]
 * [[Devise]]
 * [[Accessing Request Data]]
