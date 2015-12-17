@@ -66,7 +66,7 @@ end
 
 ## Hash of Conditions
 
-A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which he owns.
+A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which they own.
 
 ```ruby
 can :read, Project, :active => true, :user_id => user.id
