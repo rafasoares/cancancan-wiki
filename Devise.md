@@ -1,5 +1,5 @@
 Here is a quick tutorial link
-[github.com/mezbahalam/devise_cancan](github.com/mezbahalam/devise_cancan)
+[github.com/mezbahalam/devise_cancan](https://github.com/mezbahalam/devise_cancan)
 
 or 
 
