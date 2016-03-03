@@ -1,4 +1,4 @@
-Here is the single best practice for defining `Ability` in real-world applications more complicated than your standard CRUD.
+Here is the *single best practice* for defining `Ability` in real-world applications more complicated than your standard CRUD.
 
 ## TL;DR: Use hash conditions!
 
