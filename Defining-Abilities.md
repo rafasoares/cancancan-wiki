@@ -136,6 +136,7 @@ The order of these calls is important. See [[Ability Precedence]] for more detai
 
 ## Additional Docs
 
+* [[Defining Abilities: Best Practice]]
 * [[Defining Abilities with Blocks]]
 * [[Checking Abilities]]
 * [[Testing Abilities]]
