@@ -2,6 +2,7 @@
 
 * [[README|https://github.com/CanCanCommunity/cancancan#readme]]
 * [[Defining Abilities]]
+* [[Defining-Ability:-Best-Practice]]
 * [[Checking Abilities]]
 * [[Authorizing Controller Actions]]
 * [[Exception Handling]]
