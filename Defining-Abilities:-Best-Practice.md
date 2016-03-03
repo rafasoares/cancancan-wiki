@@ -27,7 +27,7 @@ Here's why:
 
 2. Hash conditions are DRYer.
 
-  By using hashes instead of blocks for all actions, you won't have to worry about translating blocks used for member controller actions (`:create`, `:destroy`, `:update`) to equivalent blocks for collection actions (`:index`, `:show`).
+  By using hashes instead of blocks for all actions, you won't have to worry about translating blocks used for member controller actions (`:create`, `:destroy`, `:update`) to equivalent blocks for collection actions (`:index`, `:show`)—which require hashes anyway!
 
 3. Hash conditions are OR'd in SQL, giving you maximum flexibilty.
 
