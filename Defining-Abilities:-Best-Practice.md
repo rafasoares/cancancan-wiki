@@ -4,7 +4,7 @@ Here is the *single best practice* for defining `Ability` in real-world applicat
 
 Here's why:
 
-1. Although scopes are fine for fetching, they pose a problem when authorizing a discrete action.
+**1. Although scopes are fine for fetching, they pose a problem when authorizing a discrete action.**
 
   For example, this declaration in Ability:
 
@@ -25,11 +25,11 @@ Here's why:
   can :read, Article, is_published: true
   ```
 
-2. Hash conditions are DRYer.
+**2. Hash conditions are DRYer.**
 
   By using hashes instead of blocks for all actions, you won't have to worry about translating blocks used for member controller actions (`:create`, `:destroy`, `:update`) to equivalent blocks for collection actions (`:index`, `:show`)—which require hashes anyway!
 
-3. Hash conditions are OR'd in SQL, giving you maximum flexibilty.
+**3. Hash conditions are OR'd in SQL, giving you maximum flexibilty.**
 
   Even though `ActiveRecord` treats chained scopes as SQL `AND`s, CanCanCan treats hash conditions for a given model/action pair as SQL `OR`s.
 
@@ -53,4 +53,6 @@ Here's why:
                 OR     `articles`.`is_published` IS NULL )
   ```
 
-4. For complex object graphs, hash conditions easily accommodate `joins`. See https://github.com/CanCanCommunity/cancancan/wiki/defining-abilities#hash-of-conditions.
+**4. For complex object graphs, hash conditions accommodate `joins` easily.**
+
+  See https://github.com/CanCanCommunity/cancancan/wiki/defining-abilities#hash-of-conditions.
