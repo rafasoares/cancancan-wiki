@@ -14,14 +14,14 @@ Here's why:
 
   causes this `CanCan::Error`:
 
-  ```
+  ```ruby
   The can? and cannot? call cannot be used with a raw sql 'can' definition.
   The checking code cannot be determined for :read #<Article ..>.
   ```
 
   The fix is:
 
-  ```
+  ```ruby
   can :read, Article, is_published: true
   ```
 
