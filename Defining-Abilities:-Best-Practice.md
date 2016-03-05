@@ -47,7 +47,7 @@ Here's why:
   FROM   `articles`
   WHERE  `articles`.`is_published` = 1
   OR     (
-                `articles`.`author_id` = x'08d4fda58b0d40c789f036c0bcf9248a'
+                `articles`.`author_id` = 97
          AND    (
                        `articles`.`is_published` = 0
                 OR     `articles`.`is_published` IS NULL )
