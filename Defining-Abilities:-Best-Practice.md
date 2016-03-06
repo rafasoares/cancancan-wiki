@@ -9,7 +9,7 @@ Here's why:
   For example, this declaration in Ability:
 
   ```ruby
-  can :read, Article, Article.published
+  can :read, Article, Article.is_published
   ```
 
   causes this `CanCan::Error`:
