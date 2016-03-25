@@ -62,6 +62,30 @@ class ArticlesController < ApplicationController
 end
 ```
 
+#### When Model and Controller names differ
+
+When you specify `class` option note that the method will still be `articles_params` and not `post_params`, since we are in `ArticlesController`.
+
+```ruby
+class ArticlesController < ApplicationController
+  load_and_authorize_resource class: 'Post'
+
+  def create
+    if @article.save
+      # hurray
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:name)
+  end
+end
+```
+
 ### By Static Method Name
 
 CanCanCan also recognizes a static method name: `resource_params`, as a general param method name you can use to standardize on.
