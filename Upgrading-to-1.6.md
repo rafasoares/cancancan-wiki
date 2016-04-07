@@ -1,6 +1,6 @@
-This document explains what's new in CanCan 1.6. If you are just getting started with CanCan, first check out the [[README|https://github.com/ryanb/cancan]].
+This document explains what's new in CanCan 1.6. If you are just getting started with CanCan, first check out the [[README|https://github.com/CanCanCommunity/cancancan]].
 
-See [[Upgrading to 1.5]] if you are using version 1.4 or older. Also check out the [[CHANGELOG|http://github.com/ryanb/cancan/blob/master/CHANGELOG.rdoc]] for the full list of changes.
+See [[Upgrading to 1.5]] if you are using version 1.4 or older. Also check out the [[CHANGELOG|https://github.com/CanCanCommunity/cancancan/blob/develop/CHANGELOG.rdoc]] for the full list of changes.
 
 ## MetaWhere Support
 
