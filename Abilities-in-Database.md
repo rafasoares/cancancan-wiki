@@ -67,12 +67,12 @@ def setup_actions_controllers_db
   # You can change ApplicationController for a super-class used by your restricted controllers
   ApplicationController.subclasses.each do |controller|
     if controller.respond_to?(:permission)	
-      clazz, description = controller.permission
-      write_permission(clazz, "manage", description, "All operations")
+      klass, description = controller.permission
+      write_permission(klass, "manage", description, "All operations")
       controller.action_methods.each do |action|
         if action.to_s.index("_callback").nil?
           action_desc, cancan_action = eval_cancan_action(action)
-          write_permission(clazz, cancan_action, description, action_desc)
+          write_permission(klass, cancan_action, description, action_desc)
         end
       end
     end
