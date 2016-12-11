@@ -4,7 +4,7 @@ To use translations in your app define some yaml like this:
 en:
   unauthorized:
     manage:
-      all: "You have no access!"
+      all: "You have no access to this resource"
 ```
 ## Translation for individual abilities
 If you want to customize messages for some model or even for some ability define translation like this:
@@ -20,7 +20,7 @@ can :create, Article
 en:
   unauthorized:
     create:
-      article: "Only admin may do this!"
+      article: "Only an admin can create an article"
 ```
 
 ### Translating custom abilities
@@ -36,7 +36,7 @@ can :vote, Article
 en:
   unauthorized:
     vote:
-      article: "Only users which have one or more article may do this!"
+      article: "Only users which have one or more article can vote"
 ```
 ## Variables for translations
 Finally you may use `action`(which contain ability like 'create') and `subject`(for example 'article') variables in your translation:
