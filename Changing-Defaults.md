@@ -1,4 +1,4 @@
-CanCan makes two assumptions about your application.
+CanCanCan makes two assumptions about your application.
 
 * You have an `Ability` class which defines the permissions.
 * You have a `current_user` method in the controller which returns the current user model.
@@ -20,7 +20,7 @@ def current_ability
 end
 ```
 
-Sometimes you might have a gem in your project which provides its own Rails engine which also uses CanCan such as LocomotiveCMS. In this case the current_ability override in the ApplicationController can also be useful.
+Sometimes you might have a gem in your project which provides its own Rails engine which also uses CanCanCan such as LocomotiveCMS. In this case the current_ability override in the ApplicationController can also be useful.
 
 ```ruby
 # in ApplicationController
