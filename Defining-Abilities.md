@@ -15,7 +15,7 @@ class Ability
 end
 ```
 
-The current user model is passed into the initialize method, so the permissions can be modified based on any user attributes. CanCan makes no assumption about how roles are handled in your application. See [[Role Based Authorization]] for an example.
+The current user model is passed into the initialize method, so the permissions can be modified based on any user attributes. CanCanCan makes no assumption about how roles are handled in your application. See [[Role Based Authorization]] for an example.
 
 ## The `can` Method
 
