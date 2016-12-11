@@ -33,7 +33,6 @@
 ### Other Use Cases
 
 * [[Inherited Resources]]
-* [[MetaWhere]]
 * [[Mongoid]]
 * [[Rails API Gem]]
 * [[Rails Admin|https://github.com/sferik/rails_admin/wiki/CanCanCan]]
