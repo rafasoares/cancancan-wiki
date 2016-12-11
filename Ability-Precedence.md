@@ -1,16 +1,19 @@
-The ability rules further down in a file will override a previous one. For example, let's say we want the user to be able to do everything to projects except destroy them. This is the correct way.
+An ability rule will override a previous one. 
+For example, let's say we want the user to be able to do everything to projects except destroy them. 
+
+This is the correct way:
 
 ```ruby
 can :manage, Project
 cannot :destroy, Project
 ```
 
-It is important that the `cannot :destroy` line comes after the `can :manage` line. If they were reversed, `cannot :destroy` would be overridden by `can :manage`. Therefore, it is best to place the more generic rules near the top.
+It is important that the `cannot :destroy` line comes after the `can :manage` line. If they were reversed, `cannot :destroy` would be overridden by `can :manage`.
 
 Adding `can` rules do not override prior rules, but instead are logically or'ed.
 
 ```ruby
-can :manage, Project, :user_id => user.id
+can :manage, Project, user_id: user.id
 can :update, Project do |project|
   !project.locked?
 end
@@ -26,6 +29,7 @@ if user.role? :moderator
   cannot :destroy, Project
   can :manage, Comment
 end
+
 if user.role? :admin
   can :destroy, Project
 end
