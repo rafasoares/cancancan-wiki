@@ -50,4 +50,4 @@
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
 
-**Can't find what you're looking for? Add an issue to the [[issue tracker|https://github.com/bryanrite/cancancan/issues]] or ping us at #cancancan in Freenode.**
+**Can't find what you're looking for? Add an issue to the [[issue tracker|https://github.com/bryanrite/cancancan/issues]] or submit a Question on StackOverflow
