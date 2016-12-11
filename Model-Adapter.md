@@ -3,7 +3,7 @@ CanCan includes a model adapter layer which allows it to change behavior dependi
 * ActiveRecord
 * [[Mongoid]]
 
-See [[spec/README|https://github.com/ryanb/cancan/blob/master/spec/README.rdoc]] for how to run specs for a given adapter.
+See [[spec/README|https://github.com/CanCanCommunity/cancancan/blob/master/spec/README.rdoc]] for how to run specs for a given adapter.
 
 ## Creating a Model Adapter
 
