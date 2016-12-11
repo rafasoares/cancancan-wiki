@@ -7,7 +7,7 @@
 * [[Exception Handling]]
 * [[Ensure Authorization]]
 * [[Changing Defaults]]
-* [[Translating your app]]
+* [[Translations (i18n)]]
 
 ### More about Abilities
 
