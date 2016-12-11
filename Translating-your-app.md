@@ -47,4 +47,3 @@ en:
     manage:
       all: "You do not have access to %{action} %{subject}!"
 ```
-Enjoy!
