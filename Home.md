@@ -8,7 +8,6 @@
 * [[Ensure Authorization]]
 * [[Changing Defaults]]
 * [[Translating your app]]
-* [[Upgrading to 1.6]]
 
 ### More about Abilities
 
@@ -46,5 +45,6 @@
 * [[Ability for Other Users]]
 * [[Authorization in Web Services]]
 * [[Other Authorization Solutions]]
+* [[Upgrading to 1.6]]
 
 **Can't find what you're looking for? Add an issue to the [[issue tracker|https://github.com/bryanrite/cancancan/issues]] or submit a Question on StackOverflow
