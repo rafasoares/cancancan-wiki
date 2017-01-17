@@ -69,7 +69,7 @@ end
 A hash of conditions can be passed to further restrict which records this permission applies to. Here the user will only have permission to read active projects which they own.
 
 ```ruby
-can :read, Project, active: true, :user_id user.id
+can :read, Project, active: true, user_id: user.id
 ```
 
 It is important to only use database columns for these conditions so it can be used for [[Fetching Records]].
