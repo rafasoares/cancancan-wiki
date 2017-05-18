@@ -1,4 +1,6 @@
-As of 1.4, the `load_and_authorize_resource` call will automatically detect if you are using [[Inherited Resources|http://github.com/josevalim/inherited_resources]] and load the resource through that. The `load` part in CanCan is still necessary since Inherited Resources does lazy loading. This will also ensure the behavior is identical to normal loading.
+** **Supported only on cancancan < 2.0** **
+
+The `load_and_authorize_resource` call will automatically detect if you are using [[Inherited Resources|http://github.com/josevalim/inherited_resources]] and load the resource through that. The `load` part in CanCan is still necessary since Inherited Resources does lazy loading. This will also ensure the behavior is identical to normal loading.
 
 ```ruby
 class ProjectsController < InheritedResources::Base
