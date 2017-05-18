@@ -193,7 +193,7 @@ authorize!(params[:action].to_sym, @product || Product)
 
 ## More info
 
-For additional information see the `load_resource` and `authorize_resource` methods in the [[RDoc|http://rdoc.info/projects/ryanb/cancan]].
+For additional information see the `load_resource` and `authorize_resource` methods in the [[RDoc|http://www.rubydoc.info/github/CanCanCommunity/cancancan]].
 
 Also see [[Nested Resources]] and [[Non RESTful Controllers]].
 
