@@ -1,4 +1,4 @@
-** Attention: Supported only on cancancan < 2.0! **
+** **Attention: Supported only on cancancan < 2.0!** **
 
 CanCanCan supports [[Mongoid|http://mongoid.org]]. All you have to do is mention `mongoid` before `cancan` in your Gemfile so it is required first.
 
