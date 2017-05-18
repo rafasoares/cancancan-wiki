@@ -1,4 +1,6 @@
-CanCan 1.5 adds support for [[Mongoid|http://mongoid.org]]. All you have to do is mention `mongoid` before `cancan` in your Gemfile so it is required first.
+** **Supported only on cancancan < 2.0** **
+
+CanCanCan supports [[Mongoid|http://mongoid.org]]. All you have to do is mention `mongoid` before `cancan` in your Gemfile so it is required first.
 
 ```ruby
 gem "mongoid"
