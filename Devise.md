@@ -1,14 +1,9 @@
-Here is a quick tutorial link
-[github.com/mezbahalam/devise_cancan](https://github.com/mezbahalam/devise_cancan)
-
-or 
-
-You can bypass Cancan 2.0's authorization for Devise controllers similar to Cancan 1.6:
+You can bypass CanCanCan's authorization for Devise controllers:
 
 ```ruby
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  enable_authorization :unless => :devise_controller?
+  check_authorization unless: :devise_controller?
 end
 ```
 
@@ -18,15 +13,10 @@ It may be a good idea to specify the rescue from action:
 rescue_from CanCan::Unauthorized do |exception|
     if current_user.nil?
       session[:next] = request.fullpath
-      puts session[:next]
-      redirect_to login_url, :alert => "You have to log in to continue."
+      redirect_to login_url, alert: 'You have to log in to continue.'
     else
-      #render :file => "#{Rails.root}/public/403.html", :status => 403
-      if request.env["HTTP_REFERER"].present?
-        redirect_to :back, :alert => exception.message
-      else
-        redirect_to root_url, :alert => exception.message
-      end
+      # render file: "#{Rails.root}/public/403.html", status: 403
+      redirect_back(fallback_location: root_path)
     end
   end
 ```
