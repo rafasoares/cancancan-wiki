@@ -17,6 +17,15 @@ end
 
 This will fetch the project using `Project.find(params[:project_id])` on every controller action, save it in the `@project` instance variable, and authorize it using the `:read` action to ensure the user has the ability to access that project. If you don't want to do the authorization you can simply use `load_resource`, but calling just `authorize_resource` for the parent object is insufficient. The task is then loaded through the `@project.tasks` association.
 
+If the name of the association doesn't match the resource name, for instance `has_many :issues, class_name: 'Task'`, you can specify the association name using `:through_association`.
+
+```ruby
+class TasksController < ApplicationController
+  load_and_authorize_resource :project
+  load_and_authorize_resource :task, :through => :project, :through_association => :issues
+end
+```
+
 If the resource name (`:project` in this case) does not match the controller then it will be considered a parent resource. You can manually specify parent/child resources using the `:parent => false` option.
 
 
@@ -146,7 +155,7 @@ in ability.rb
 can :create, User, groups_users: {group: {CONDITION_ON_GROUP} }
 ```
 
-Don't forget the **inverse_of** option, is the trick to make it works correctly. 
+Don't forget the **inverse_of** option, is the trick to make it works correctly.
 
 Remember to define the ability through the **groups_users** model (i.e. don't write `can :create, User, groups: {CONDITION_ON_GROUP}`)
 
